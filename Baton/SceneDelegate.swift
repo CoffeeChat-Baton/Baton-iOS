@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = ViewController(titleString: "큰 제목", subTitleString: "부제목")
+        window?.rootViewController = HomeViewController() //ViewController(titleString: "큰 제목", subTitleString: "부제목")
         window?.makeKeyAndVisible()
     }
 

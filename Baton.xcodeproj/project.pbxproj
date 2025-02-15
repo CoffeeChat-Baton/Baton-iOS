@@ -17,6 +17,7 @@
 		20535D342D5B916600E4904E /* BatonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D332D5B916600E4904E /* BatonUITests.swift */; };
 		20535D362D5B916600E4904E /* BatonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D352D5B916600E4904E /* BatonUITestsLaunchTests.swift */; };
 		20535D4B2D5B926000E4904E /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D4A2D5B926000E4904E /* BasicButton.swift */; };
+		20535D4E2D60AED400E4904E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D4D2D60AED400E4904E /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		20535D332D5B916600E4904E /* BatonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonUITests.swift; sourceTree = "<group>"; };
 		20535D352D5B916600E4904E /* BatonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		20535D4A2D5B926000E4904E /* BasicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
+		20535D4D2D60AED400E4904E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,9 +104,9 @@
 			isa = PBXGroup;
 			children = (
 				20535D442D5B91CA00E4904E /* Presentation */,
+				20535D162D5B916400E4904E /* ViewController.swift */,
 				20535D122D5B916400E4904E /* AppDelegate.swift */,
 				20535D142D5B916400E4904E /* SceneDelegate.swift */,
-				20535D162D5B916400E4904E /* ViewController.swift */,
 				20535D182D5B916400E4904E /* Main.storyboard */,
 				20535D1B2D5B916600E4904E /* Assets.xcassets */,
 				20535D1D2D5B916600E4904E /* LaunchScreen.storyboard */,
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				20535D472D5B922D00E4904E /* Common */,
+				20535D4D2D60AED400E4904E /* HomeViewController.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20535D4E2D60AED400E4904E /* HomeViewController.swift in Sources */,
 				20535D172D5B916400E4904E /* ViewController.swift in Sources */,
 				20535D132D5B916400E4904E /* AppDelegate.swift in Sources */,
 				20535D4B2D5B926000E4904E /* BasicButton.swift in Sources */,
