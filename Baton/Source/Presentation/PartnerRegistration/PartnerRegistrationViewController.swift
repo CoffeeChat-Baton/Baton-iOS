@@ -1,79 +1,96 @@
 import UIKit
+import Combine
 
-class PartnerRegistrationViewController: UIPageViewController {
+class PartnerRegistrationViewController: UIPageViewController, UIPageViewControllerDelegate{
     private var navigationBarTitle = "파트너 등록"
-    private var pages: [UIViewController] = []
-    private var currentIndex = 0
+    private var pages: [StepViewController] = []
+    private let viewModel: PartnerRegistrationViewModel
+    private var cancellables = Set<AnyCancellable>()
+    
+    init(viewModel: PartnerRegistrationViewModel) {
+        self.viewModel = viewModel
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        self.delegate = self
+        
+        viewModel.onCompletion = { [weak self] in
+            DispatchQueue.main.async {
+                if let navigationController = self?.navigationController {
+                    navigationController.popToRootViewController(animated: true)
+                } else {
+                    self?.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPages()
         setupNavigationBar()
+        bindViewModel()
     }
-
     private func setupPages() {
-        let step1 = Step1ViewController(mainTitle: "프로필 정보를 확인해주세요", subTitle: "파트너 프로필에 보여지는 정보입니다.\n아래 정보가 정확한지 다시 한 번 확인해주세요!", actionButtonTitle: "파트너 등록 신청하기", contentView: UIView())
-        let step2 = Step2ViewController(mainTitle: "재직 사실을 인증해주세요", subTitle: "재직을 증명할 수 있는 서류(재직증명서, 사원증 등)를 업로드해주세요.", actionButtonTitle: "다음", contentView: UIView())
+        // `viewModel.steps`를 기반으로 `StepViewController` 리스트 생성
+        pages = viewModel.steps.enumerated().map { index, _ in
+            StepViewController(viewModel: viewModel, stepIndex: index)
+        }
         
-        pages = [step1, step2]
-
+        // 첫 번째 페이지를 초기화하여 UIPageViewController에 설정
         if let firstPage = pages.first {
-            setViewControllers([firstPage], direction: .forward, animated: true, completion: nil)
+            setViewControllers([firstPage], direction: .forward, animated: false, completion: nil)
         }
     }
-
+    
     private func setupNavigationBar() {
         let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backButtonTapped))
         navigationItem.leftBarButtonItem = backButton
         navigationItem.title = navigationBarTitle
     }
-
+    
+    private func bindViewModel() {
+        viewModel.$currentStepIndex
+            .dropFirst() // 첫 번째 값 무시 (초기 상태 방지)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] index in
+                guard let self = self, index < self.pages.count else { return }
+                self.setViewControllers([self.pages[index]], direction: .forward, animated: true, completion: nil)
+            }
+            .store(in: &cancellables)
+    }
+    
     @objc private func backButtonTapped() {
-        if currentIndex > 0 {
-            currentIndex -= 1
-            setViewControllers([pages[currentIndex]], direction: .reverse, animated: true, completion: nil)
+        if viewModel.currentStepIndex > 0 {
+            viewModel.goToPreviousStep()
+            setViewControllers([pages[viewModel.currentStepIndex]], direction: .reverse, animated: true, completion: nil)
         } else {
             navigationController?.popViewController(animated: true)
         }
     }
-
-    func goToNextPage() {
-        if currentIndex < pages.count - 1 {
-            currentIndex += 1
-            setViewControllers([pages[currentIndex]], direction: .forward, animated: true, completion: nil)
-        } else {
-            print("파트너 등록 완료!")
-            navigationController?.popToRootViewController(animated: true)
-        }
-    }
 }
 
-
-class Step1ViewController: BaseViewController {
-
+class StepViewController: BaseViewController {
+    
+    private let stepIndex: Int
+    
+    init(viewModel: PartnerRegistrationViewModel, stepIndex: Int) {
+        self.stepIndex = stepIndex
+        super.init(viewModel: viewModel, contentView: UIView(), onNext: {
+            viewModel.goToNextStep()
+        })
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        actionButton.setTitle("다음", for: .normal)
-        actionButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
-    }
-
-    @objc private func nextButtonTapped() {
-        (parent as? PartnerRegistrationViewController)?.goToNextPage()
-    }
-}
-
-
-class Step2ViewController: BaseViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        actionButton.setTitle("완료", for: .normal)
-        actionButton.addTarget(self, action: #selector(completeRegistration), for: .touchUpInside)
-    }
-
-    @objc private func completeRegistration() {
-        (parent as? PartnerRegistrationViewController)?.goToNextPage()
+        
+        let step = viewModel.steps[stepIndex]
+        actionButton.setTitle(step.actionButtonTitle, for: .normal)
     }
 }

@@ -12,7 +12,7 @@ final class HomeViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("파트너 등록하기", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        button.pretendardStyle = .headline
+        button.pretendardStyle = .head1
         button.addTarget(self, action: #selector(centerButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -39,7 +39,8 @@ final class HomeViewController: UIViewController {
     
     @objc private func centerButtonTapped() {
         // 파트너 등록 버튼 추가
-        let registerPartnerVC = PartnerRegistrationViewController()
+        let viewModel = PartnerRegistrationViewModel()
+        let registerPartnerVC = PartnerRegistrationViewController(viewModel: viewModel)
         navigationController?.pushViewController(registerPartnerVC, animated: true)
     }
 }

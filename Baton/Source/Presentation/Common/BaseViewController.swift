@@ -2,11 +2,14 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
+    let viewModel: PartnerRegistrationViewModel
+    private var onNext: (() -> Void)?
+    
     // 1. 제목
     lazy var mainTitleLabel: UILabel  = {
         let label = UILabel()
         label.text = mainTitle
-        label.font = UIFont.boldSystemFont(ofSize: 22) // TODO: head1으로 수정
+        label.pretendardStyle = .head1
         label.textColor = .black
         label.textAlignment = .left
         label.numberOfLines = 0
@@ -18,7 +21,7 @@ class BaseViewController: UIViewController {
     lazy var subTitleLabel: UILabel  = {
         let label = UILabel()
         label.text = subTitle
-        label.font = UIFont.boldSystemFont(ofSize: 14) // TODO: body4으로 수정
+        label.pretendardStyle = .body5
         label.textColor = UIColor(resource: .subtitle)
         label.textAlignment = .left
         label.numberOfLines = 2
@@ -32,32 +35,34 @@ class BaseViewController: UIViewController {
     // 4. 하단 고정 버튼
     lazy var actionButton: BasicButton = {
         let button = BasicButton(title: actionButtonTitle, status: .enabled)
+        button.isEnabled = true
+        button.isUserInteractionEnabled = true
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(nextStep), for: .touchUpInside)
         return button
     }()
     
-    private let mainTitle: String
-    private let subTitle: String
-    private let actionButtonTitle: String
+    private let mainTitle: String = ""
+    private let subTitle: String = ""
+    private let actionButtonTitle: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         addSubViews()
         setupLayout()
+        bindViewModel()
+
     }
     
-    init(mainTitle: String, subTitle: String, actionButtonTitle: String, contentView: UIView) {
-        self.mainTitle = mainTitle
-        self.subTitle = subTitle
-        self.actionButtonTitle = actionButtonTitle
+    init(viewModel: PartnerRegistrationViewModel, contentView: UIView = UIView(), onNext: (() -> Void)?) {
+        self.viewModel = viewModel
         self.contentView = contentView
+        self.onNext = onNext
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
-        self.mainTitle = "기본 타이틀"
-        self.subTitle = "기본 서브 타이틀"
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -91,6 +96,22 @@ class BaseViewController: UIViewController {
             actionButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -Spacing.large.value),
         ])
     }
+    
+    private func bindViewModel() {
+            viewModel.$currentStepIndex
+                .receive(on: DispatchQueue.main)
+                .sink { [weak self] _ in
+                    guard let self = self else { return }
+                    self.mainTitleLabel.text = self.viewModel.currentStep.mainTitle
+                    self.subTitleLabel.text = self.viewModel.currentStep.subTitle
+                    self.actionButton.setTitle(self.viewModel.currentStep.actionButtonTitle, for: .normal)
+                }
+                .store(in: &viewModel.cancellables)
+        }
+
+        @objc private func nextStep() {
+            onNext?()
+        }
 }
 
 

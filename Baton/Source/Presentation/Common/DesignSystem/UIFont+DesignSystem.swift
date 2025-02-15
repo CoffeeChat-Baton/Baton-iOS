@@ -1,40 +1,33 @@
 import UIKit
 
+enum PretendardFontName: String {
+    case semibold = "Pretendard-SemiBold"
+    case medium = "Pretendard-Medium"
+    case regular = "Pretendard-Regular"
+}
+
 extension UIFont {
     enum Pretendard {
-        case title
-        case headline
-        case body
-        case caption
-        case button
+        case head1, title1, title2, body1, body2, body3, body4, body5, caption1, caption2
 
         var name: String {
             switch self {
-            case .title: return "Pretendard-Bold"
-            case .headline: return "Pretendard-SemiBold"
-            case .body: return "Pretendard-Medium"
-            case .caption: return "Pretendard-Regular"
-            case .button: return "Pretendard-Bold"
+            case .head1, .title1, .body1, .body3, .caption1:
+                return PretendardFontName.semibold.rawValue
+            case .title2, .body2, .body4, .caption2:
+                return PretendardFontName.medium.rawValue
+            case .body5:
+                return PretendardFontName.regular.rawValue
             }
         }
 
         var size: CGFloat {
             switch self {
-            case .title: return 24
-            case .headline: return 20
-            case .body: return 16
-            case .caption: return 12
-            case .button: return 14
-            }
-        }
-
-        var weight: UIFont.Weight {
-            switch self {
-            case .title: return .bold
-            case .headline: return .semibold
-            case .body: return .medium
-            case .caption: return .regular
-            case .button: return .bold
+            case .head1: return 22
+            case .title1, .title2: return 18
+            case .body1, .body2: return 16
+            case .body3, .body4, .body5: return 14
+            case .caption1, .caption2: return 12
             }
         }
 
@@ -50,7 +43,17 @@ extension UIFont {
 
         /// **UIFont 생성**
         var font: UIFont {
-            return UIFont(name: self.name, size: self.size) ?? UIFont.systemFont(ofSize: self.size, weight: self.weight)
+            if let customFont = UIFont(name: self.name, size: self.size) {
+                return customFont
+            } else {
+                print("⚠️ Warning: '\(self.name)' 폰트를 찾을 수 없음. 시스템 폰트로 대체됨.")
+                if let testFont = UIFont(name: "Pretendard-SemiBold", size: 18) {
+                    print("✅ Pretendard-SemiBold 로드 성공: \(testFont)")
+                } else {
+                    print("❌ Pretendard-SemiBold 로드 실패! Info.plist 확인 필요")
+                }
+                return UIFont.systemFont(ofSize: self.size, weight: .regular)
+            }
         }
     }
 }

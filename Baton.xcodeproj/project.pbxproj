@@ -26,6 +26,21 @@
 		20535D692D60C80300E4904E /* ButtonSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D682D60C80300E4904E /* ButtonSize.swift */; };
 		20535D6B2D60D5C700E4904E /* PartnerRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D6A2D60D5C700E4904E /* PartnerRegistrationViewController.swift */; };
 		20535D732D60DDE700E4904E /* BaseContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D722D60DDE700E4904E /* BaseContent.swift */; };
+		20535D792D60ED7700E4904E /* CheckProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D782D60ED7700E4904E /* CheckProfileViewController.swift */; };
+		20535D7B2D60EDBC00E4904E /* EmployeeStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D7A2D60EDBC00E4904E /* EmployeeStatusViewController.swift */; };
+		20535D7D2D60EEDE00E4904E /* JobInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D7C2D60EEDE00E4904E /* JobInfoViewController.swift */; };
+		20535D7F2D60EEEA00E4904E /* ChatScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D7E2D60EEEA00E4904E /* ChatScheduleViewController.swift */; };
+		20535D812D60EEF900E4904E /* SelfIntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D802D60EEF900E4904E /* SelfIntroductionViewController.swift */; };
+		20535D832D60EF8A00E4904E /* PartnerRegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D822D60EF8A00E4904E /* PartnerRegistrationViewModel.swift */; };
+		20535D842D60FD7800E4904E /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20535D562D60C08400E4904E /* Pretendard-Black.otf */; };
+		20535D852D60FD7C00E4904E /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20535D582D60C08400E4904E /* Pretendard-ExtraBold.otf */; };
+		20535D862D60FD7C00E4904E /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20535D5B2D60C14F00E4904E /* Pretendard-Thin.otf */; };
+		20535D872D60FD7C00E4904E /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20535D5A2D60C08500E4904E /* Pretendard-SemiBold.otf */; };
+		20535D882D60FD7C00E4904E /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20535D592D60C08400E4904E /* Pretendard-Bold.otf */; };
+		20535D892D60FD7C00E4904E /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20535D532D60C08400E4904E /* Pretendard-Medium.otf */; };
+		20535D8A2D60FD7C00E4904E /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20535D552D60C08400E4904E /* Pretendard-Light.otf */; };
+		20535D8B2D60FD7C00E4904E /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20535D572D60C08400E4904E /* Pretendard-Regular.otf */; };
+		20535D8C2D60FD7C00E4904E /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20535D542D60C08400E4904E /* Pretendard-ExtraLight.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +93,12 @@
 		20535D682D60C80300E4904E /* ButtonSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSize.swift; sourceTree = "<group>"; };
 		20535D6A2D60D5C700E4904E /* PartnerRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerRegistrationViewController.swift; sourceTree = "<group>"; };
 		20535D722D60DDE700E4904E /* BaseContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseContent.swift; sourceTree = "<group>"; };
+		20535D782D60ED7700E4904E /* CheckProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckProfileViewController.swift; sourceTree = "<group>"; };
+		20535D7A2D60EDBC00E4904E /* EmployeeStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeStatusViewController.swift; sourceTree = "<group>"; };
+		20535D7C2D60EEDE00E4904E /* JobInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoViewController.swift; sourceTree = "<group>"; };
+		20535D7E2D60EEEA00E4904E /* ChatScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScheduleViewController.swift; sourceTree = "<group>"; };
+		20535D802D60EEF900E4904E /* SelfIntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfIntroductionViewController.swift; sourceTree = "<group>"; };
+		20535D822D60EF8A00E4904E /* PartnerRegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerRegistrationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +256,12 @@
 			isa = PBXGroup;
 			children = (
 				20535D6A2D60D5C700E4904E /* PartnerRegistrationViewController.swift */,
+				20535D822D60EF8A00E4904E /* PartnerRegistrationViewModel.swift */,
+				20535D782D60ED7700E4904E /* CheckProfileViewController.swift */,
+				20535D7A2D60EDBC00E4904E /* EmployeeStatusViewController.swift */,
+				20535D7C2D60EEDE00E4904E /* JobInfoViewController.swift */,
+				20535D7E2D60EEEA00E4904E /* ChatScheduleViewController.swift */,
+				20535D802D60EEF900E4904E /* SelfIntroductionViewController.swift */,
 			);
 			path = PartnerRegistration;
 			sourceTree = "<group>";
@@ -351,8 +378,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20535D852D60FD7C00E4904E /* Pretendard-ExtraBold.otf in Resources */,
+				20535D862D60FD7C00E4904E /* Pretendard-Thin.otf in Resources */,
+				20535D872D60FD7C00E4904E /* Pretendard-SemiBold.otf in Resources */,
+				20535D882D60FD7C00E4904E /* Pretendard-Bold.otf in Resources */,
+				20535D892D60FD7C00E4904E /* Pretendard-Medium.otf in Resources */,
+				20535D8A2D60FD7C00E4904E /* Pretendard-Light.otf in Resources */,
+				20535D8B2D60FD7C00E4904E /* Pretendard-Regular.otf in Resources */,
+				20535D8C2D60FD7C00E4904E /* Pretendard-ExtraLight.otf in Resources */,
 				20535D1C2D5B916600E4904E /* Assets.xcassets in Resources */,
 				20535D1F2D5B916600E4904E /* Base in Resources */,
+				20535D842D60FD7800E4904E /* Pretendard-Black.otf in Resources */,
 				20535D1A2D5B916400E4904E /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,16 +414,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20535D792D60ED7700E4904E /* CheckProfileViewController.swift in Sources */,
 				20535D4E2D60AED400E4904E /* HomeViewController.swift in Sources */,
+				20535D7F2D60EEEA00E4904E /* ChatScheduleViewController.swift in Sources */,
 				20535D172D5B916400E4904E /* BaseViewController.swift in Sources */,
 				20535D502D60B55A00E4904E /* UIFont+DesignSystem.swift in Sources */,
 				20535D132D5B916400E4904E /* AppDelegate.swift in Sources */,
+				20535D812D60EEF900E4904E /* SelfIntroductionViewController.swift in Sources */,
 				20535D6B2D60D5C700E4904E /* PartnerRegistrationViewController.swift in Sources */,
 				20535D4B2D5B926000E4904E /* BasicButton.swift in Sources */,
+				20535D832D60EF8A00E4904E /* PartnerRegistrationViewModel.swift in Sources */,
 				20535D612D60C40800E4904E /* UIButton+DesignSystem.swift in Sources */,
 				20535D5E2D60C32B00E4904E /* UILabel+DesignSystem.swift in Sources */,
+				20535D7B2D60EDBC00E4904E /* EmployeeStatusViewController.swift in Sources */,
 				20535D692D60C80300E4904E /* ButtonSize.swift in Sources */,
 				20535D672D60C7A200E4904E /* Spacing.swift in Sources */,
+				20535D7D2D60EEDE00E4904E /* JobInfoViewController.swift in Sources */,
 				20535D152D5B916400E4904E /* SceneDelegate.swift in Sources */,
 				20535D732D60DDE700E4904E /* BaseContent.swift in Sources */,
 				20535D652D60C77500E4904E /* CornerRadius.swift in Sources */,
