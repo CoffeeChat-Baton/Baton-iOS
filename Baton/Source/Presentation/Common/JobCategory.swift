@@ -1,0 +1,26 @@
+enum JobCategory: String, CaseIterable {
+    case business = "경영·비즈니스"
+    case servicePlanning = "서비스기획·운영"
+    case development = "개발"
+    case dataAI = "데이터·AI·ML"
+    case marketing = "마케팅·광고·홍보"
+    case design = "디자인"
+    case media = "미디어·커뮤니케이션"
+    case eCommerce = "이커머스·리테일"
+    case finance = "금융·컨설팅·VC"
+    case accounting = "회계·재무"
+    case hr = "인사·채용·노무"
+    case sales = "고객·영업"
+    case gameDev = "게임 기획·개발"
+    case logistics = "물류·구매"
+    case medical = "의료·제약·바이오"
+    case research = "연구·R&D"
+    case engineering = "엔지니어링·설계"
+    case manufacturing = "생산·품질"
+    case education = "교육"
+    case law = "법률·특허"
+    case publicSector = "공공·복지·환경"
+    case etc = "기타"
+
+    static let all: [String] = JobCategory.allCases.map { $0.rawValue }
+}
