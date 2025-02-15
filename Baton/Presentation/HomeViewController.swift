@@ -10,7 +10,7 @@ final class HomeViewController: UIViewController {
     
     private let centerButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("중앙 버튼", for: .normal)
+        button.setTitle("파트너 등록하기", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         button.addTarget(self, action: #selector(centerButtonTapped), for: .touchUpInside)
         return button
@@ -37,6 +37,9 @@ final class HomeViewController: UIViewController {
     }
     
     @objc private func centerButtonTapped() {
-        print("중앙 버튼이 눌렸습니다.")
+        // 파트너 등록 버튼 추가
+        let registerPartnerVC = ViewController(titleString: "큰 제목", subTitleString: "작은 제목")
+        navigationController?.pushViewController(registerPartnerVC, animated: true)
+        registerPartnerVC.navigationItem.title = "파트너 등록" // TODO: 추후 뷰컨트롤러 안으로 옮길 것.
     }
 }
