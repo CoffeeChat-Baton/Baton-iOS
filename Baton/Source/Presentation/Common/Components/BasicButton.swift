@@ -6,43 +6,41 @@ enum BasicButtonStatus {
 }
 
 final class BasicButton: UIButton {
-    var staus: BasicButtonStatus = .enabled {
-        didSet{
-            self.backgroundColor = getBackgroundColor(type: staus)
+
+    // 상태 저장 및 UI 업데이트
+    var status: BasicButtonStatus = .enabled {
+        didSet {
+            updateUI()
         }
     }
-    
-    // 버튼 구성시 필요한 색상
-    let disabledColor: UIColor = UIColor(resource: .gray3)
-    let enabledColor: UIColor = UIColor(resource: .main)
-    
+
+    // 버튼 색상 설정
+    private let disabledColor: UIColor = UIColor(resource: .gray3)
+    private let enabledColor: UIColor = UIColor(resource: .main)
+
     init(title: String, status: BasicButtonStatus) {
         super.init(frame: .zero)
-        self.staus = status
+        self.status = status
         configureButton(title: title)
-        
     }
-    
-    required init(coder: NSCoder) {
+
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+    // 버튼 UI 초기 설정
     private func configureButton(title: String) {
         setTitle(title, for: .normal)
-        backgroundColor = getBackgroundColor(type: self.staus)
-        titleLabel?.textColor = .white
+        setTitleColor(.white, for: .normal)
         layer.cornerRadius = 12
-        translatesAutoresizingMaskIntoConstraints = true
-        isEnabled = true // 터치 가능
+        translatesAutoresizingMaskIntoConstraints = false
+        updateUI()
     }
-    
-    private func getBackgroundColor(type: BasicButtonStatus) -> UIColor {
-        switch type {
-        case .disabled:
-            return disabledColor
-        case .enabled:
-            return enabledColor
-        }
+
+    // 버튼 상태 변경 시 UI 업데이트
+    private func updateUI() {
+        backgroundColor = (status == .enabled) ? enabledColor : disabledColor
+        isEnabled = (status == .enabled)
+        alpha = (status == .enabled) ? 1.0 : 0.5
     }
-    
 }

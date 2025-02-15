@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		20535D132D5B916400E4904E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D122D5B916400E4904E /* AppDelegate.swift */; };
 		20535D152D5B916400E4904E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D142D5B916400E4904E /* SceneDelegate.swift */; };
-		20535D172D5B916400E4904E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D162D5B916400E4904E /* ViewController.swift */; };
+		20535D172D5B916400E4904E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D162D5B916400E4904E /* BaseViewController.swift */; };
 		20535D1A2D5B916400E4904E /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 20535D192D5B916400E4904E /* Base */; };
 		20535D1C2D5B916600E4904E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20535D1B2D5B916600E4904E /* Assets.xcassets */; };
 		20535D1F2D5B916600E4904E /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 20535D1E2D5B916600E4904E /* Base */; };
@@ -21,6 +21,11 @@
 		20535D502D60B55A00E4904E /* UIFont+DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D4F2D60B55A00E4904E /* UIFont+DesignSystem.swift */; };
 		20535D5E2D60C32B00E4904E /* UILabel+DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D5D2D60C32B00E4904E /* UILabel+DesignSystem.swift */; };
 		20535D612D60C40800E4904E /* UIButton+DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D602D60C40800E4904E /* UIButton+DesignSystem.swift */; };
+		20535D652D60C77500E4904E /* CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D642D60C77500E4904E /* CornerRadius.swift */; };
+		20535D672D60C7A200E4904E /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D662D60C7A200E4904E /* Spacing.swift */; };
+		20535D692D60C80300E4904E /* ButtonSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D682D60C80300E4904E /* ButtonSize.swift */; };
+		20535D6B2D60D5C700E4904E /* PartnerRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D6A2D60D5C700E4904E /* PartnerRegistrationViewController.swift */; };
+		20535D732D60DDE700E4904E /* BaseContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D722D60DDE700E4904E /* BaseContent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +49,7 @@
 		20535D0F2D5B916400E4904E /* Baton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20535D122D5B916400E4904E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20535D142D5B916400E4904E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		20535D162D5B916400E4904E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		20535D162D5B916400E4904E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		20535D192D5B916400E4904E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		20535D1B2D5B916600E4904E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20535D1E2D5B916600E4904E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -68,6 +73,11 @@
 		20535D5B2D60C14F00E4904E /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
 		20535D5D2D60C32B00E4904E /* UILabel+DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+DesignSystem.swift"; sourceTree = "<group>"; };
 		20535D602D60C40800E4904E /* UIButton+DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+DesignSystem.swift"; sourceTree = "<group>"; };
+		20535D642D60C77500E4904E /* CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRadius.swift; sourceTree = "<group>"; };
+		20535D662D60C7A200E4904E /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
+		20535D682D60C80300E4904E /* ButtonSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSize.swift; sourceTree = "<group>"; };
+		20535D6A2D60D5C700E4904E /* PartnerRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerRegistrationViewController.swift; sourceTree = "<group>"; };
+		20535D722D60DDE700E4904E /* BaseContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseContent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,8 +157,9 @@
 		20535D442D5B91CA00E4904E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				20535D6D2D60D8B100E4904E /* Home */,
+				20535D6C2D60D89F00E4904E /* PartnerRegistration */,
 				20535D472D5B922D00E4904E /* Common */,
-				20535D4D2D60AED400E4904E /* HomeViewController.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -156,6 +167,8 @@
 		20535D472D5B922D00E4904E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				20535D162D5B916400E4904E /* BaseViewController.swift */,
+				20535D722D60DDE700E4904E /* BaseContent.swift */,
 				20535D5F2D60C34300E4904E /* DesignSystem */,
 				20535D4C2D5B926900E4904E /* Components */,
 			);
@@ -198,7 +211,6 @@
 		20535D5C2D60C17000E4904E /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				20535D162D5B916400E4904E /* ViewController.swift */,
 				20535D122D5B916400E4904E /* AppDelegate.swift */,
 				20535D142D5B916400E4904E /* SceneDelegate.swift */,
 				20535D442D5B91CA00E4904E /* Presentation */,
@@ -209,11 +221,30 @@
 		20535D5F2D60C34300E4904E /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				20535D642D60C77500E4904E /* CornerRadius.swift */,
+				20535D662D60C7A200E4904E /* Spacing.swift */,
+				20535D682D60C80300E4904E /* ButtonSize.swift */,
 				20535D4F2D60B55A00E4904E /* UIFont+DesignSystem.swift */,
 				20535D5D2D60C32B00E4904E /* UILabel+DesignSystem.swift */,
 				20535D602D60C40800E4904E /* UIButton+DesignSystem.swift */,
 			);
 			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		20535D6C2D60D89F00E4904E /* PartnerRegistration */ = {
+			isa = PBXGroup;
+			children = (
+				20535D6A2D60D5C700E4904E /* PartnerRegistrationViewController.swift */,
+			);
+			path = PartnerRegistration;
+			sourceTree = "<group>";
+		};
+		20535D6D2D60D8B100E4904E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				20535D4D2D60AED400E4904E /* HomeViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,13 +379,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				20535D4E2D60AED400E4904E /* HomeViewController.swift in Sources */,
-				20535D172D5B916400E4904E /* ViewController.swift in Sources */,
+				20535D172D5B916400E4904E /* BaseViewController.swift in Sources */,
 				20535D502D60B55A00E4904E /* UIFont+DesignSystem.swift in Sources */,
 				20535D132D5B916400E4904E /* AppDelegate.swift in Sources */,
+				20535D6B2D60D5C700E4904E /* PartnerRegistrationViewController.swift in Sources */,
 				20535D4B2D5B926000E4904E /* BasicButton.swift in Sources */,
 				20535D612D60C40800E4904E /* UIButton+DesignSystem.swift in Sources */,
 				20535D5E2D60C32B00E4904E /* UILabel+DesignSystem.swift in Sources */,
+				20535D692D60C80300E4904E /* ButtonSize.swift in Sources */,
+				20535D672D60C7A200E4904E /* Spacing.swift in Sources */,
 				20535D152D5B916400E4904E /* SceneDelegate.swift in Sources */,
+				20535D732D60DDE700E4904E /* BaseContent.swift in Sources */,
+				20535D652D60C77500E4904E /* CornerRadius.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

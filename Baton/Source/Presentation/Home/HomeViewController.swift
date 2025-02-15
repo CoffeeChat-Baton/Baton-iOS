@@ -39,8 +39,7 @@ final class HomeViewController: UIViewController {
     
     @objc private func centerButtonTapped() {
         // 파트너 등록 버튼 추가
-        let registerPartnerVC = ViewController(titleString: "큰 제목", subTitleString: "작은 제목")
+        let registerPartnerVC = PartnerRegistrationViewController()
         navigationController?.pushViewController(registerPartnerVC, animated: true)
-        registerPartnerVC.navigationItem.title = "파트너 등록" // TODO: 추후 뷰컨트롤러 안으로 옮길 것.
     }
 }
