@@ -18,6 +18,9 @@
 		20535D362D5B916600E4904E /* BatonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D352D5B916600E4904E /* BatonUITestsLaunchTests.swift */; };
 		20535D4B2D5B926000E4904E /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D4A2D5B926000E4904E /* BasicButton.swift */; };
 		20535D4E2D60AED400E4904E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D4D2D60AED400E4904E /* HomeViewController.swift */; };
+		20535D502D60B55A00E4904E /* UIFont+DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D4F2D60B55A00E4904E /* UIFont+DesignSystem.swift */; };
+		20535D5E2D60C32B00E4904E /* UILabel+DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D5D2D60C32B00E4904E /* UILabel+DesignSystem.swift */; };
+		20535D612D60C40800E4904E /* UIButton+DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D602D60C40800E4904E /* UIButton+DesignSystem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,18 @@
 		20535D352D5B916600E4904E /* BatonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		20535D4A2D5B926000E4904E /* BasicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
 		20535D4D2D60AED400E4904E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		20535D4F2D60B55A00E4904E /* UIFont+DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+DesignSystem.swift"; sourceTree = "<group>"; };
+		20535D532D60C08400E4904E /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		20535D542D60C08400E4904E /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
+		20535D552D60C08400E4904E /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
+		20535D562D60C08400E4904E /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
+		20535D572D60C08400E4904E /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		20535D582D60C08400E4904E /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
+		20535D592D60C08400E4904E /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		20535D5A2D60C08500E4904E /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		20535D5B2D60C14F00E4904E /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
+		20535D5D2D60C32B00E4904E /* UILabel+DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+DesignSystem.swift"; sourceTree = "<group>"; };
+		20535D602D60C40800E4904E /* UIButton+DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+DesignSystem.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,14 +118,11 @@
 		20535D112D5B916400E4904E /* Baton */ = {
 			isa = PBXGroup;
 			children = (
-				20535D442D5B91CA00E4904E /* Presentation */,
-				20535D162D5B916400E4904E /* ViewController.swift */,
-				20535D122D5B916400E4904E /* AppDelegate.swift */,
-				20535D142D5B916400E4904E /* SceneDelegate.swift */,
-				20535D182D5B916400E4904E /* Main.storyboard */,
-				20535D1B2D5B916600E4904E /* Assets.xcassets */,
-				20535D1D2D5B916600E4904E /* LaunchScreen.storyboard */,
 				20535D202D5B916600E4904E /* Info.plist */,
+				20535D5C2D60C17000E4904E /* Source */,
+				20535D512D60C02D00E4904E /* Resource */,
+				20535D182D5B916400E4904E /* Main.storyboard */,
+				20535D1D2D5B916600E4904E /* LaunchScreen.storyboard */,
 			);
 			path = Baton;
 			sourceTree = "<group>";
@@ -144,6 +156,7 @@
 		20535D472D5B922D00E4904E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				20535D5F2D60C34300E4904E /* DesignSystem */,
 				20535D4C2D5B926900E4904E /* Components */,
 			);
 			path = Common;
@@ -155,6 +168,52 @@
 				20535D4A2D5B926000E4904E /* BasicButton.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		20535D512D60C02D00E4904E /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				20535D1B2D5B916600E4904E /* Assets.xcassets */,
+				20535D522D60C06000E4904E /* Fonts */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		20535D522D60C06000E4904E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				20535D562D60C08400E4904E /* Pretendard-Black.otf */,
+				20535D582D60C08400E4904E /* Pretendard-ExtraBold.otf */,
+				20535D592D60C08400E4904E /* Pretendard-Bold.otf */,
+				20535D5A2D60C08500E4904E /* Pretendard-SemiBold.otf */,
+				20535D532D60C08400E4904E /* Pretendard-Medium.otf */,
+				20535D572D60C08400E4904E /* Pretendard-Regular.otf */,
+				20535D552D60C08400E4904E /* Pretendard-Light.otf */,
+				20535D542D60C08400E4904E /* Pretendard-ExtraLight.otf */,
+				20535D5B2D60C14F00E4904E /* Pretendard-Thin.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		20535D5C2D60C17000E4904E /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				20535D162D5B916400E4904E /* ViewController.swift */,
+				20535D122D5B916400E4904E /* AppDelegate.swift */,
+				20535D142D5B916400E4904E /* SceneDelegate.swift */,
+				20535D442D5B91CA00E4904E /* Presentation */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		20535D5F2D60C34300E4904E /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				20535D4F2D60B55A00E4904E /* UIFont+DesignSystem.swift */,
+				20535D5D2D60C32B00E4904E /* UILabel+DesignSystem.swift */,
+				20535D602D60C40800E4904E /* UIButton+DesignSystem.swift */,
+			);
+			path = DesignSystem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,8 +349,11 @@
 			files = (
 				20535D4E2D60AED400E4904E /* HomeViewController.swift in Sources */,
 				20535D172D5B916400E4904E /* ViewController.swift in Sources */,
+				20535D502D60B55A00E4904E /* UIFont+DesignSystem.swift in Sources */,
 				20535D132D5B916400E4904E /* AppDelegate.swift in Sources */,
 				20535D4B2D5B926000E4904E /* BasicButton.swift in Sources */,
+				20535D612D60C40800E4904E /* UIButton+DesignSystem.swift in Sources */,
+				20535D5E2D60C32B00E4904E /* UILabel+DesignSystem.swift in Sources */,
 				20535D152D5B916400E4904E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
