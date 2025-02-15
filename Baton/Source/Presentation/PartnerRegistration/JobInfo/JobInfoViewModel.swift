@@ -1,16 +1,17 @@
 import UIKit
 import Combine
 
-class CheckProfileViewModel {
+class JobInfoViewModel {
     
     // ✅ 선택된 값 (UI가 업데이트됨)
     @Published var selectedJob: String = "직무 선택"
     @Published var selectedSubJob: String = "세부 직무 선택"
+    @Published var companyName: String = ""
     @Published var selectedExperience: String = "경력 선택"
     // ✅ 각 버튼에 대한 선택 옵션 데이터
-    let jobOptions = ["iOS 개발", "Android 개발", "웹 개발"]
+    let jobOptions = JobCategory.all
     let subJobOptions = ["프론트엔드", "백엔드", "풀스택"]
-    let experienceOptions = ["1년 이하", "1~3년", "3~5년", "5년 이상"]
+    let experienceOptions = ExperienceYears.all
     
     // ✅ 선택된 옵션 업데이트
     func updateSelection(for type: SelectionType, with value: String) {
@@ -18,7 +19,7 @@ class CheckProfileViewModel {
         case .job:
             selectedJob = value
         case .subJob:
-            selectedSubJob = value
+            selectedSubJob = value           
         case .experience:
             selectedExperience = value
         }
@@ -41,7 +42,7 @@ class CheckProfileViewModel {
         }
     }
     
-    func getTitle(for type: CheckProfileViewModel.SelectionType) -> String {
+    func getTitle(for type: JobInfoViewModel.SelectionType) -> String {
         switch type {
         case .job: return "직무 선택"
         case .subJob: return "세부 직무 선택"

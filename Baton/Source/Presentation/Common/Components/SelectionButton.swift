@@ -27,7 +27,6 @@ class SelectionButton: UIButton {
         setTitleColor(.black, for: .normal)
         titleLabel?.pretendardStyle = .body5
         titleEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
-        showsTouchWhenHighlighted = true
         let arrowImageView = UIImageView(image: UIImage(systemName: "chevron.right"))
         arrowImageView.tintColor = .gray
         arrowImageView.translatesAutoresizingMaskIntoConstraints = false

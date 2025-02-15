@@ -28,9 +28,9 @@
 		20535D732D60DDE700E4904E /* BaseContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D722D60DDE700E4904E /* BaseContent.swift */; };
 		20535D792D60ED7700E4904E /* CheckProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D782D60ED7700E4904E /* CheckProfileView.swift */; };
 		20535D7B2D60EDBC00E4904E /* EmployeeStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D7A2D60EDBC00E4904E /* EmployeeStatusViewController.swift */; };
-		20535D7D2D60EEDE00E4904E /* JobInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D7C2D60EEDE00E4904E /* JobInfoViewController.swift */; };
+		20535D7D2D60EEDE00E4904E /* JobInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D7C2D60EEDE00E4904E /* JobInfoView.swift */; };
 		20535D7F2D60EEEA00E4904E /* ChatScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D7E2D60EEEA00E4904E /* ChatScheduleViewController.swift */; };
-		20535D812D60EEF900E4904E /* SelfIntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D802D60EEF900E4904E /* SelfIntroductionViewController.swift */; };
+		20535D812D60EEF900E4904E /* SelfIntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D802D60EEF900E4904E /* SelfIntroductionView.swift */; };
 		20535D832D60EF8A00E4904E /* PartnerRegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D822D60EF8A00E4904E /* PartnerRegistrationViewModel.swift */; };
 		20535D842D60FD7800E4904E /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20535D562D60C08400E4904E /* Pretendard-Black.otf */; };
 		20535D852D60FD7C00E4904E /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 20535D582D60C08400E4904E /* Pretendard-ExtraBold.otf */; };
@@ -46,6 +46,11 @@
 		20535D922D6104C700E4904E /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D912D6104C700E4904E /* UIView+Extensions.swift */; };
 		20535D962D610DE600E4904E /* CheckProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D952D610DE600E4904E /* CheckProfileViewModel.swift */; };
 		20BCD0DC2D611EE4000213AF /* SelectionTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0DB2D611EE4000213AF /* SelectionTitleLabel.swift */; };
+		20BCD0E02D6125DD000213AF /* JobInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0DF2D6125DD000213AF /* JobInfoViewModel.swift */; };
+		20BCD0E22D6126FA000213AF /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0E12D6126FA000213AF /* BasicTextField.swift */; };
+		20BCD0E42D612B5E000213AF /* JobCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0E32D612B5E000213AF /* JobCategory.swift */; };
+		20BCD0E62D612BEF000213AF /* ExperienceYears.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0E52D612BEF000213AF /* ExperienceYears.swift */; };
+		20BCD0E92D612DC9000213AF /* SelfIntroductionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0E82D612DC9000213AF /* SelfIntroductionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,15 +105,20 @@
 		20535D722D60DDE700E4904E /* BaseContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseContent.swift; sourceTree = "<group>"; };
 		20535D782D60ED7700E4904E /* CheckProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckProfileView.swift; sourceTree = "<group>"; };
 		20535D7A2D60EDBC00E4904E /* EmployeeStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeStatusViewController.swift; sourceTree = "<group>"; };
-		20535D7C2D60EEDE00E4904E /* JobInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoViewController.swift; sourceTree = "<group>"; };
+		20535D7C2D60EEDE00E4904E /* JobInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoView.swift; sourceTree = "<group>"; };
 		20535D7E2D60EEEA00E4904E /* ChatScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScheduleViewController.swift; sourceTree = "<group>"; };
-		20535D802D60EEF900E4904E /* SelfIntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfIntroductionViewController.swift; sourceTree = "<group>"; };
+		20535D802D60EEF900E4904E /* SelfIntroductionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfIntroductionView.swift; sourceTree = "<group>"; };
 		20535D822D60EF8A00E4904E /* PartnerRegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerRegistrationViewModel.swift; sourceTree = "<group>"; };
 		20535D8D2D61040F00E4904E /* SelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionButton.swift; sourceTree = "<group>"; };
 		20535D8F2D61042F00E4904E /* SelectionModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionModal.swift; sourceTree = "<group>"; };
 		20535D912D6104C700E4904E /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		20535D952D610DE600E4904E /* CheckProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckProfileViewModel.swift; sourceTree = "<group>"; };
 		20BCD0DB2D611EE4000213AF /* SelectionTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTitleLabel.swift; sourceTree = "<group>"; };
+		20BCD0DF2D6125DD000213AF /* JobInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoViewModel.swift; sourceTree = "<group>"; };
+		20BCD0E12D6126FA000213AF /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
+		20BCD0E32D612B5E000213AF /* JobCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCategory.swift; sourceTree = "<group>"; };
+		20BCD0E52D612BEF000213AF /* ExperienceYears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceYears.swift; sourceTree = "<group>"; };
+		20BCD0E82D612DC9000213AF /* SelfIntroductionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfIntroductionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,7 +201,6 @@
 				20535D6D2D60D8B100E4904E /* Home */,
 				20535D6C2D60D89F00E4904E /* PartnerRegistration */,
 				20535D472D5B922D00E4904E /* Common */,
-				20535D912D6104C700E4904E /* UIView+Extensions.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -199,8 +208,9 @@
 		20535D472D5B922D00E4904E /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				20535D162D5B916400E4904E /* BaseViewController.swift */,
-				20535D722D60DDE700E4904E /* BaseContent.swift */,
+				20BCD0E32D612B5E000213AF /* JobCategory.swift */,
+				20BCD0E52D612BEF000213AF /* ExperienceYears.swift */,
+				20535D912D6104C700E4904E /* UIView+Extensions.swift */,
 				20535D5F2D60C34300E4904E /* DesignSystem */,
 				20535D4C2D5B926900E4904E /* Components */,
 			);
@@ -210,10 +220,13 @@
 		20535D4C2D5B926900E4904E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				20535D162D5B916400E4904E /* BaseViewController.swift */,
+				20535D722D60DDE700E4904E /* BaseContent.swift */,
 				20535D4A2D5B926000E4904E /* BasicButton.swift */,
 				20535D8D2D61040F00E4904E /* SelectionButton.swift */,
 				20535D8F2D61042F00E4904E /* SelectionModal.swift */,
 				20BCD0DB2D611EE4000213AF /* SelectionTitleLabel.swift */,
+				20BCD0E12D6126FA000213AF /* BasicTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -269,7 +282,11 @@
 		20535D6C2D60D89F00E4904E /* PartnerRegistration */ = {
 			isa = PBXGroup;
 			children = (
-				20535D942D610DCE00E4904E /* ViewModel */,
+				20535D6A2D60D5C700E4904E /* PartnerRegistrationViewController.swift */,
+				20535D822D60EF8A00E4904E /* PartnerRegistrationViewModel.swift */,
+				20BCD0DD2D6124B1000213AF /* CheckProfile */,
+				20BCD0DE2D6124E6000213AF /* JobInfo */,
+				20BCD0E72D612D0B000213AF /* SelfIntroduction */,
 				20535D932D610DB700E4904E /* View */,
 			);
 			path = PartnerRegistration;
@@ -286,23 +303,37 @@
 		20535D932D610DB700E4904E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				20535D6A2D60D5C700E4904E /* PartnerRegistrationViewController.swift */,
-				20535D782D60ED7700E4904E /* CheckProfileView.swift */,
 				20535D7A2D60EDBC00E4904E /* EmployeeStatusViewController.swift */,
-				20535D7C2D60EEDE00E4904E /* JobInfoViewController.swift */,
 				20535D7E2D60EEEA00E4904E /* ChatScheduleViewController.swift */,
-				20535D802D60EEF900E4904E /* SelfIntroductionViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		20535D942D610DCE00E4904E /* ViewModel */ = {
+		20BCD0DD2D6124B1000213AF /* CheckProfile */ = {
 			isa = PBXGroup;
 			children = (
-				20535D822D60EF8A00E4904E /* PartnerRegistrationViewModel.swift */,
+				20535D782D60ED7700E4904E /* CheckProfileView.swift */,
 				20535D952D610DE600E4904E /* CheckProfileViewModel.swift */,
 			);
-			path = ViewModel;
+			path = CheckProfile;
+			sourceTree = "<group>";
+		};
+		20BCD0DE2D6124E6000213AF /* JobInfo */ = {
+			isa = PBXGroup;
+			children = (
+				20535D7C2D60EEDE00E4904E /* JobInfoView.swift */,
+				20BCD0DF2D6125DD000213AF /* JobInfoViewModel.swift */,
+			);
+			path = JobInfo;
+			sourceTree = "<group>";
+		};
+		20BCD0E72D612D0B000213AF /* SelfIntroduction */ = {
+			isa = PBXGroup;
+			children = (
+				20535D802D60EEF900E4904E /* SelfIntroductionView.swift */,
+				20BCD0E82D612DC9000213AF /* SelfIntroductionViewModel.swift */,
+			);
+			path = SelfIntroduction;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -445,29 +476,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20BCD0E62D612BEF000213AF /* ExperienceYears.swift in Sources */,
 				20535D792D60ED7700E4904E /* CheckProfileView.swift in Sources */,
 				20535D4E2D60AED400E4904E /* HomeViewController.swift in Sources */,
+				20BCD0E42D612B5E000213AF /* JobCategory.swift in Sources */,
 				20535D7F2D60EEEA00E4904E /* ChatScheduleViewController.swift in Sources */,
 				20535D172D5B916400E4904E /* BaseViewController.swift in Sources */,
 				20535D502D60B55A00E4904E /* UIFont+DesignSystem.swift in Sources */,
 				20535D132D5B916400E4904E /* AppDelegate.swift in Sources */,
 				20535D8E2D61040F00E4904E /* SelectionButton.swift in Sources */,
-				20535D812D60EEF900E4904E /* SelfIntroductionViewController.swift in Sources */,
+				20535D812D60EEF900E4904E /* SelfIntroductionView.swift in Sources */,
 				20535D6B2D60D5C700E4904E /* PartnerRegistrationViewController.swift in Sources */,
 				20535D4B2D5B926000E4904E /* BasicButton.swift in Sources */,
+				20BCD0E02D6125DD000213AF /* JobInfoViewModel.swift in Sources */,
 				20535D922D6104C700E4904E /* UIView+Extensions.swift in Sources */,
 				20535D832D60EF8A00E4904E /* PartnerRegistrationViewModel.swift in Sources */,
 				20BCD0DC2D611EE4000213AF /* SelectionTitleLabel.swift in Sources */,
 				20535D612D60C40800E4904E /* UIButton+DesignSystem.swift in Sources */,
 				20535D5E2D60C32B00E4904E /* UILabel+DesignSystem.swift in Sources */,
+				20BCD0E22D6126FA000213AF /* BasicTextField.swift in Sources */,
 				20535D7B2D60EDBC00E4904E /* EmployeeStatusViewController.swift in Sources */,
 				20535D692D60C80300E4904E /* ButtonSize.swift in Sources */,
 				20535D902D61042F00E4904E /* SelectionModal.swift in Sources */,
 				20535D672D60C7A200E4904E /* Spacing.swift in Sources */,
-				20535D7D2D60EEDE00E4904E /* JobInfoViewController.swift in Sources */,
+				20535D7D2D60EEDE00E4904E /* JobInfoView.swift in Sources */,
 				20535D962D610DE600E4904E /* CheckProfileViewModel.swift in Sources */,
 				20535D152D5B916400E4904E /* SceneDelegate.swift in Sources */,
 				20535D732D60DDE700E4904E /* BaseContent.swift in Sources */,
+				20BCD0E92D612DC9000213AF /* SelfIntroductionViewModel.swift in Sources */,
 				20535D652D60C77500E4904E /* CornerRadius.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

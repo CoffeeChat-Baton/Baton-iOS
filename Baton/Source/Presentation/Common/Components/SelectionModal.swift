@@ -50,57 +50,51 @@ class SelectionModal: UIViewController {
         view.addSubview(modalView)
         
         // ✅ 닫기 버튼 (X)
-        let configuration = UIImage.SymbolConfiguration(pointSize: 16, weight: .bold)
+        let configuration = UIImage.SymbolConfiguration(pointSize: 18, weight: .bold)
         let closeImage = UIImage(systemName: "xmark", withConfiguration: configuration)
         closeButton.setImage(closeImage, for: .normal)
         closeButton.tintColor = .black
         closeButton.addTarget(self, action: #selector(dismissModal), for: .touchUpInside)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
         
         // ✅ 타이틀 설정
         titleLabel.text = viewModel.getTitle(for: selectionType)
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.Pretendard.title1.font
         titleLabel.textColor = .black
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         // ✅ 옵션 리스트 (버튼들) 스택 뷰 설정
         optionsStackView.axis = .vertical
         optionsStackView.spacing = 8
         optionsStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        // ✅ 닫기 버튼 + 타이틀을 포함한 헤더 뷰
-        let spacerView = UIView()
-        spacerView.setContentHuggingPriority(.defaultLow, for: .horizontal) // 중앙 정렬을 위해 우선순위 낮춤
-        let headerStackView = UIStackView(arrangedSubviews: [closeButton, spacerView, titleLabel, spacerView])
-        headerStackView.axis = .horizontal
-        headerStackView.alignment = .center
-        headerStackView.spacing = 15
-        headerStackView.translatesAutoresizingMaskIntoConstraints = false
-
-        modalView.addSubview(headerStackView)
+        // ✅ 모달 내부 요소 추가
+        modalView.addSubview(closeButton)
+        modalView.addSubview(titleLabel)
         modalView.addSubview(optionsStackView)
         
-        // ✅ 레이아웃 설정
-        modalHeightConstraint = modalView.heightAnchor.constraint(equalToConstant: 200) // 초기값
+        // ✅ 모달 높이 동적 조절을 위한 초기화
+        modalHeightConstraint = modalView.heightAnchor.constraint(equalToConstant: 200) // 초기 높이 (수정될 값)
+        modalHeightConstraint?.isActive = true
         
+        // ✅ 레이아웃 설정
         NSLayoutConstraint.activate([
             modalView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             modalView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             modalView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            modalHeightConstraint!, // ✅ 높이 조절 가능
             
-            headerStackView.heightAnchor.constraint(equalToConstant: 52),
-            headerStackView.topAnchor.constraint(equalTo: modalView.topAnchor, constant: 5),
-            headerStackView.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: Spacing.large.value),
-            headerStackView.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -Spacing.large.value),
-            
-            titleLabel.centerXAnchor.constraint(equalTo: modalView.centerXAnchor),
-            
+            closeButton.topAnchor.constraint(equalTo: modalView.topAnchor, constant: 16),
+            closeButton.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: 16),
             closeButton.widthAnchor.constraint(equalToConstant: 24),
             closeButton.heightAnchor.constraint(equalToConstant: 24),
             
-            optionsStackView.topAnchor.constraint(equalTo: headerStackView.bottomAnchor, constant: 15),
-            optionsStackView.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: Spacing.large.value),
-            optionsStackView.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -Spacing.large.value),
+            titleLabel.centerXAnchor.constraint(equalTo: modalView.centerXAnchor),
+            titleLabel.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor),
+            
+            optionsStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15),
+            optionsStackView.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: 20),
+            optionsStackView.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -20),
             optionsStackView.bottomAnchor.constraint(equalTo: modalView.bottomAnchor, constant: -15)
         ])
     }
@@ -126,7 +120,7 @@ class SelectionModal: UIViewController {
         
         // ✅ 옵션 개수에 따라 모달 높이 동적 조절
         let estimatedHeight = CGFloat(80 + (options.count * (48 + 8))) // 헤더(80) + 버튼(48*옵션 수)
-        let maxHeight = view.frame.height * 0.9 // ✅ 최대 높이: 화면의 60%
+        let maxHeight = view.frame.height * 0.9 // ✅ 최대 높이: 화면의 90%
         modalHeightConstraint?.constant = min(estimatedHeight, maxHeight)
     }
     

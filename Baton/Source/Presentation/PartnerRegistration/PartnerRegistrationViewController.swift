@@ -102,12 +102,15 @@ class StepViewController: BaseViewController {
     
     static func createContentView(for stepIndex: Int) -> StepContentView {
         switch stepIndex {
-        case 0:
+        case 0: // 프로필 정보 확인
             let viewModel = CheckProfileViewModel()
             return CheckProfileView(viewModel: viewModel)
+        case 2: // 회사 정보 입력
+            let viewModel = CheckProfileViewModel()
+            return JobInfoView(viewModel: viewModel)
         default:
             let viewModel = CheckProfileViewModel()
-            return CheckProfileView(viewModel: viewModel)
+            return JobInfoView(viewModel: viewModel)
         }
     }
 }
