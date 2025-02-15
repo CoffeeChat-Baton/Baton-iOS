@@ -46,12 +46,6 @@ extension UIFont {
             if let customFont = UIFont(name: self.name, size: self.size) {
                 return customFont
             } else {
-                print("⚠️ Warning: '\(self.name)' 폰트를 찾을 수 없음. 시스템 폰트로 대체됨.")
-                if let testFont = UIFont(name: "Pretendard-SemiBold", size: 18) {
-                    print("✅ Pretendard-SemiBold 로드 성공: \(testFont)")
-                } else {
-                    print("❌ Pretendard-SemiBold 로드 실패! Info.plist 확인 필요")
-                }
                 return UIFont.systemFont(ofSize: self.size, weight: .regular)
             }
         }

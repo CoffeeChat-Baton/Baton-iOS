@@ -13,17 +13,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let homeVC = HomeViewController()
         let navigationController = UINavigationController(rootViewController: homeVC)
+        setupGlobalNavigationBarAppearance()
         
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = navigationController //ViewController(titleString: "큰 제목", subTitleString: "부제목")
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+    }
+    
+    func setupGlobalNavigationBarAppearance() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.white
+        appearance.titleTextAttributes = [
+            .foregroundColor: UIColor.black,
+            .font : UIFont.Pretendard.body1.font
+        ]
+
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

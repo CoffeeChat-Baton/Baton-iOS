@@ -32,6 +32,7 @@ final class BasicButton: UIButton {
     private func configureButton(title: String) {
         setTitle(title, for: .normal)
         setTitleColor(.white, for: .normal)
+        titleLabel?.pretendardStyle = .body1
         layer.cornerRadius = 12
         translatesAutoresizingMaskIntoConstraints = false
         updateUI()

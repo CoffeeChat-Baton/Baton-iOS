@@ -52,7 +52,7 @@ class BaseViewController: UIViewController {
         addSubViews()
         setupLayout()
         bindViewModel()
-
+        
     }
     
     init(viewModel: PartnerRegistrationViewModel, contentView: UIView = UIView(), onNext: (() -> Void)?) {
@@ -91,27 +91,32 @@ class BaseViewController: UIViewController {
             contentView.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: -16),
             
             actionButton.heightAnchor.constraint(equalToConstant: ButtonSize.large.height),
-            actionButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -52),
+            actionButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -20),
             actionButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor , constant: Spacing.large.value),
             actionButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -Spacing.large.value),
         ])
     }
     
     private func bindViewModel() {
-            viewModel.$currentStepIndex
-                .receive(on: DispatchQueue.main)
-                .sink { [weak self] _ in
-                    guard let self = self else { return }
-                    self.mainTitleLabel.text = self.viewModel.currentStep.mainTitle
-                    self.subTitleLabel.text = self.viewModel.currentStep.subTitle
-                    self.actionButton.setTitle(self.viewModel.currentStep.actionButtonTitle, for: .normal)
-                }
-                .store(in: &viewModel.cancellables)
-        }
-
-        @objc private func nextStep() {
-            onNext?()
-        }
+        viewModel.$currentStepIndex
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.mainTitleLabel.text = self.viewModel.currentStep.mainTitle
+                self.subTitleLabel.text = self.viewModel.currentStep.subTitle
+                self.actionButton.setTitle(self.viewModel.currentStep.actionButtonTitle, for: .normal)
+            }
+            .store(in: &viewModel.cancellables)
+    }
+    
+    @objc private func nextStep() {
+        onNext?()
+    }
+    
+    private func updateActionButtonState(_ isEnabled: Bool) {
+        actionButton.isEnabled = isEnabled
+        actionButton.status = isEnabled ? .enabled : .enabled
+    }
 }
 
 

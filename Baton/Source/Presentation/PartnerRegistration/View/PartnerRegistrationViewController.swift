@@ -48,7 +48,8 @@ class PartnerRegistrationViewController: UIPageViewController, UIPageViewControl
     private func setupNavigationBar() {
         let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backButtonTapped))
         navigationItem.leftBarButtonItem = backButton
-        navigationItem.title = navigationBarTitle
+        navigationItem.title = "파트너 등록"
+        navigationItem.titleView?.tintColor = .black
     }
     
     private func bindViewModel() {
@@ -72,13 +73,18 @@ class PartnerRegistrationViewController: UIPageViewController, UIPageViewControl
     }
 }
 
+protocol StepContentView: UIView {
+    var onContentStateChanged: ((Bool) -> Void)? { get set }
+}
+
 class StepViewController: BaseViewController {
     
     private let stepIndex: Int
     
     init(viewModel: PartnerRegistrationViewModel, stepIndex: Int) {
         self.stepIndex = stepIndex
-        super.init(viewModel: viewModel, contentView: UIView(), onNext: {
+        let contentView = StepViewController.createContentView(for: stepIndex)
+        super.init(viewModel: viewModel, contentView: contentView, onNext: {
             viewModel.goToNextStep()
         })
     }
@@ -92,5 +98,16 @@ class StepViewController: BaseViewController {
         
         let step = viewModel.steps[stepIndex]
         actionButton.setTitle(step.actionButtonTitle, for: .normal)
+    }
+    
+    static func createContentView(for stepIndex: Int) -> StepContentView {
+        switch stepIndex {
+        case 0:
+            let viewModel = CheckProfileViewModel()
+            return CheckProfileView(viewModel: viewModel)
+        default:
+            let viewModel = CheckProfileViewModel()
+            return CheckProfileView(viewModel: viewModel)
+        }
     }
 }
