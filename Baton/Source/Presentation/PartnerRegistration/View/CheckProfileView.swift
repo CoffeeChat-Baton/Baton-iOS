@@ -33,9 +33,9 @@ class CheckProfileView: BaseViewController<PartnerRegistrationViewModel> {
     }
     
     private func setupView() {
-        jobButton.setTitle("직무 선택", for: .normal)
-        subJobButton.setTitle("세부 직무 선택", for: .normal)
-        experienceButton.setTitle("경력 선택", for: .normal)
+        jobButton.setTitle("직무 선택")
+        subJobButton.setTitle("세부 직무 선택")
+        experienceButton.setTitle("경력 선택")
         
         jobButton.addTarget(self, action: #selector(jobButtonTapped), for: .touchUpInside)
         subJobButton.addTarget(self, action: #selector(subJobButtonTapped), for: .touchUpInside)
@@ -73,21 +73,21 @@ class CheckProfileView: BaseViewController<PartnerRegistrationViewModel> {
         viewModel.$selectedJob
             .receive(on: RunLoop.main)
             .sink { [weak self] newValue in
-                self?.jobButton.setTitle(newValue, for: .normal)
+                self?.jobButton.setTitle(newValue)
             }
             .store(in: &cancellables)
         
         viewModel.$selectedSubJob
             .receive(on: RunLoop.main)
             .sink { [weak self] newValue in
-                self?.subJobButton.setTitle(newValue, for: .normal)
+                self?.subJobButton.setTitle(newValue)
             }
             .store(in: &cancellables)
         
         viewModel.$selectedExperience
             .receive(on: RunLoop.main)
             .sink { [weak self] newValue in
-                self?.experienceButton.setTitle(newValue, for: .normal)
+                self?.experienceButton.setTitle(newValue)
             }
             .store(in: &cancellables)
     }

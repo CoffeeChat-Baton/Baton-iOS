@@ -6,7 +6,7 @@ class ChatScheduleView: BaseViewController<PartnerRegistrationViewModel> {
     private var cancellables = Set<AnyCancellable>()
     
     /// ✅ 버튼 배열 (각 버튼이 일정 선택을 위한 버튼)
-    private let scheduleButtons: [UIButton] = [
+    private let scheduleButtons: [SelectionButton] = [
         SelectionButton(),
         SelectionButton(),
         SelectionButton()
@@ -63,7 +63,7 @@ class ChatScheduleView: BaseViewController<PartnerRegistrationViewModel> {
                 
                 for (index, schedule) in newSchedules.enumerated() {
                     if index < self.scheduleButtons.count {
-                        self.scheduleButtons[index].setTitle(schedule, for: .normal)
+                        self.scheduleButtons[index].setTitle(schedule)
                     }
                 }
             }

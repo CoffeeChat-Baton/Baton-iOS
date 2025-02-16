@@ -133,6 +133,7 @@ class BaseViewController<ViewModel: BaseViewModelType>: UIViewController {
         stackView.spacing = 8
         stackView.alignment = .fill
         stackView.distribution = .fill
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }
     
