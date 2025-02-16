@@ -23,7 +23,7 @@ class CheckProfileView: BaseViewController<PartnerRegistrationViewModel> {
     var onContentStateChanged: ((Bool) -> Void)?
     
     init(viewModel: PartnerRegistrationViewModel) {
-        super.init(viewModel: viewModel, contentView: UIView(), onNext: nil)
+        super.init(viewModel: viewModel, contentView: UIView(), onNext: {viewModel.goToNextStep()})
         setupView()
         setupStackView()
         bindViewModel()

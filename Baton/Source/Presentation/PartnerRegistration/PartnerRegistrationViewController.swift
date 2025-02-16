@@ -35,8 +35,8 @@ class PartnerRegistrationViewController: UIPageViewController, UIPageViewControl
     }
     private func setupPages() {
         let step1 = CheckProfileView(viewModel: viewModel)
-        
-        pages = [step1]
+        let step3 = JobInfoView(viewModel: viewModel)
+        pages = [step1, step3]
         
         // 첫 번째 페이지를 초기화하여 UIPageViewController에 설정
         if let firstPage = pages.first {
@@ -71,29 +71,3 @@ class PartnerRegistrationViewController: UIPageViewController, UIPageViewControl
         }
     }
 }
-
-
-
-//class StepViewController: BaseViewController {
-//    
-//    private let stepIndex: Int
-//    
-//    init(viewModel: PartnerRegistrationViewModel, stepIndex: Int) {
-//        self.stepIndex = stepIndex
-//        let contentView = StepViewController.createContentView(for: stepIndex)
-//        super.init(viewModel: viewModel, contentView: contentView, onNext: {
-//            viewModel.goToNextStep()
-//        })
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        let step = viewModel.steps[stepIndex]
-//        actionButton.setTitle(step.actionButtonTitle, for: .normal)
-//    }
-//}

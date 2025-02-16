@@ -12,6 +12,7 @@ class PartnerRegistrationViewModel: BaseViewModelType {
     @Published var selectedJob: String = "직무 선택"
     @Published var selectedSubJob: String = "세부 직무 선택"
     @Published var selectedExperience: String = "경력 선택"
+    @Published var companyName: String = ""
     
     // ✅ 각 버튼에 대한 선택 옵션 데이터
     let jobOptions = JobCategory.all
