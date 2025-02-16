@@ -5,6 +5,9 @@ class SelfIntroductionView: BaseViewController<PartnerRegistrationViewModel> {
     // MARK: - Properties
     private var cancellables = Set<AnyCancellable>()
     
+    private let scrollView = UIScrollView()
+    private let contentStackView = UIStackView()
+    
     private let shortIntroLabel = SelectionTitleLabel(title: "한 줄 소개")
     private let shortIntroTextField = BasicTextField(placeholder: "한 줄 소개를 작성해주세요")
     
@@ -15,7 +18,7 @@ class SelfIntroductionView: BaseViewController<PartnerRegistrationViewModel> {
     init(viewModel: PartnerRegistrationViewModel) {
         super.init(viewModel: viewModel, contentView: UIView(), onNext: {viewModel.goToNextStep()})
         setupView()
-        setupStackView()
+        setupLayout()
         bindViewModel()
         view.addTapToDismissKeyboard()
     }
@@ -25,30 +28,41 @@ class SelfIntroductionView: BaseViewController<PartnerRegistrationViewModel> {
     }
     
     // MARK: - UI Setup
-    private func setupView() {}
-    private func setupStackView() {
-        let stackView = UIStackView(arrangedSubviews: [
-            SubStackView(label: shortIntroLabel, view: shortIntroTextField),
-            SubStackView(label: detailedBioTitleLabel, view: detailedBioTextField),
-        ])
+    private func setupView() {
+
+        contentStackView.axis = .vertical
+        contentStackView.spacing = 16
+        contentStackView.alignment = .fill
+        contentStackView.distribution = .fill
+
+        contentStackView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         
-        stackView.axis = .vertical
-        stackView.spacing = 16
-        stackView.alignment = .fill
-        stackView.distribution = .fill
-                
-        contentView.addSubview(stackView)
+        contentView.addSubview(scrollView)
+        scrollView.addSubview(contentStackView)
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        contentStackView.addArrangedSubview(SubStackView(label: shortIntroLabel, view: shortIntroTextField))
+        contentStackView.addArrangedSubview(SubStackView(label: detailedBioTitleLabel, view: detailedBioTextField))
+    }
+    
+    private func setupLayout() {
         NSLayoutConstraint.activate([
-           stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-           
+            scrollView.topAnchor.constraint(equalTo:contentView.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            
+            contentStackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+
             shortIntroTextField.heightAnchor.constraint(equalToConstant: 48),
-            detailedBioTextField.topAnchor.constraint(equalTo: detailedBioTitleLabel.bottomAnchor),
-            detailedBioTextField.bottomAnchor.constraint(equalTo: stackView.bottomAnchor),
+            
+            detailedBioTextField.topAnchor.constraint(equalTo: detailedBioTitleLabel.bottomAnchor, constant: 6),
+//            detailedBioTextField.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            detailedBioTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: 150),
         ])
     }
     

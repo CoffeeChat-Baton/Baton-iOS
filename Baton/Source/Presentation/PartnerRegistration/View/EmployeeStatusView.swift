@@ -7,7 +7,7 @@ class EmployeeStatusView: BaseViewController<PartnerRegistrationViewModel> {
     
     // MARK: - Init
     init(viewModel: PartnerRegistrationViewModel) {
-        super.init(viewModel: viewModel, contentView: UIView(), onNext: {viewModel.goToNextStep()})
+        super.init(viewModel: viewModel, onNext: {viewModel.goToNextStep()})
         setupView()
         setupStackView()
         bindViewModel()

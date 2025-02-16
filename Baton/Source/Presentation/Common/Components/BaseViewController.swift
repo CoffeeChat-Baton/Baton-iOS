@@ -24,12 +24,10 @@ class BaseViewController<ViewModel: BaseViewModelType>: UIViewController {
     // 1. 제목
     lazy var mainTitleLabel: UILabel  = {
         let label = UILabel()
-        label.text = mainTitle
-        label.pretendardStyle = .head1
-        label.textColor = .black
-        label.textAlignment = .left
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
+            label.textColor = UIColor(resource: .bblack)
+            label.textAlignment = .left
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.numberOfLines = 0
         return label
     }()
     
@@ -40,7 +38,6 @@ class BaseViewController<ViewModel: BaseViewModelType>: UIViewController {
         label.pretendardStyle = .body5
         label.textColor = UIColor(resource: .subtitle)
         label.textAlignment = .left
-        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -58,7 +55,7 @@ class BaseViewController<ViewModel: BaseViewModelType>: UIViewController {
         return button
     }()
     
-    private let mainTitle: String = ""
+    private var mainTitle: String = ""
     private let subTitle: String = ""
     private let actionButtonTitle: String = ""
     
@@ -68,7 +65,6 @@ class BaseViewController<ViewModel: BaseViewModelType>: UIViewController {
         addSubViews()
         setupLayout()
         bindViewModel()
-        
     }
     
     init(viewModel: ViewModel, contentView: UIView = UIView(), onNext: (() -> Void)?) {
@@ -126,15 +122,15 @@ class BaseViewController<ViewModel: BaseViewModelType>: UIViewController {
     // MARK: - Update UI
     private func updateUI() {
         let step = viewModel.currentStep
-        mainTitleLabel.text = step.mainTitle
-        subTitleLabel.text = step.subTitle
+        mainTitleLabel.setTextWithLineSpacing(step.mainTitle, style: .head1, lineHeightMultiple: 1.6)
+        subTitleLabel.setTextWithLineSpacing(step.subTitle, style: .body5, lineHeightMultiple: 1.6)
         actionButton.setTitle(step.actionButtonTitle, for: .normal)
     }
     
     func SubStackView(label: UILabel, view: UIView) -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: [label, view])
         stackView.axis = .vertical
-        stackView.spacing = 6
+        stackView.spacing = 8
         stackView.alignment = .fill
         stackView.distribution = .fill
         return stackView
