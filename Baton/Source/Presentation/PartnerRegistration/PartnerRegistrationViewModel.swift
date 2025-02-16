@@ -13,6 +13,9 @@ class PartnerRegistrationViewModel: BaseViewModelType {
     @Published var selectedSubJob: String = "세부 직무 선택"
     @Published var selectedExperience: String = "경력 선택"
     @Published var companyName: String = ""
+    @Published var selectedFileName: String = ""
+    
+    var selectedFileURL: URL? // 파일 URL 저장
     
     @Published var schedules: [String] = [
         "첫 번째 일정을 선택해주세요",
@@ -38,22 +41,21 @@ class PartnerRegistrationViewModel: BaseViewModelType {
             BaseContent(mainTitle: "프로필 정보를 확인해주세요",
                         subTitle: "파트너 프로필에 보여지는 정보입니다.\n아래 정보가 정확한지 다시 한 번 확인해주세요!",
                         actionButtonTitle: "다음"),
-
             BaseContent(mainTitle: "재직 사실을 인증해주세요",
                         subTitle: "재직을 증명할 수 있는 서류(재직증명서, 사원증 등)를 업로드해주세요.",
                         actionButtonTitle: "다음"),
-            
             BaseContent(mainTitle: "직무 정보를 확인해주세요",
                         subTitle: "파트너 프로필에 보여지는 정보입니다.\n아래 정보가 정확한지 다시 한 번 확인해주세요!",
                         actionButtonTitle: "다음"),
-
             BaseContent(mainTitle: "커피챗이 가능한 시간대를\n등록해주세요",
                         subTitle: "희망하는 커피챗 시간을 선택해주세요.",
                         actionButtonTitle: "다음"),
-
             BaseContent(mainTitle: "자신을 소개하는 글을\n작성해주세요",
                         subTitle: "",
-                        actionButtonTitle: "완료")
+                        actionButtonTitle: "완료"),
+            BaseContent(mainTitle: "멘토 등록이 완료되었어요",
+                        subTitle: "마이페이지에서 나의 멘토 정보를\n확인하고 수정할 수 있어요",
+                        actionButtonTitle: "확인")
         ]
     
     var totalSteps: Int {

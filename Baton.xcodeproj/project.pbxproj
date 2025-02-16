@@ -49,6 +49,7 @@
 		20BCD0E42D612B5E000213AF /* JobCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0E32D612B5E000213AF /* JobCategory.swift */; };
 		20BCD0E62D612BEF000213AF /* ExperienceYears.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0E52D612BEF000213AF /* ExperienceYears.swift */; };
 		20BCD0ED2D61DEE4000213AF /* BaseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0EC2D61DEE4000213AF /* BaseTextView.swift */; };
+		20BCD0EF2D6240FB000213AF /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0EE2D6240FB000213AF /* SuccessViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 		20BCD0E32D612B5E000213AF /* JobCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCategory.swift; sourceTree = "<group>"; };
 		20BCD0E52D612BEF000213AF /* ExperienceYears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceYears.swift; sourceTree = "<group>"; };
 		20BCD0EC2D61DEE4000213AF /* BaseTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextView.swift; sourceTree = "<group>"; };
+		20BCD0EE2D6240FB000213AF /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 		20535D4C2D5B926900E4904E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				20BCD0EE2D6240FB000213AF /* SuccessViewController.swift */,
 				20535D162D5B916400E4904E /* BaseViewController.swift */,
 				20535D722D60DDE700E4904E /* BaseContent.swift */,
 				20535D4A2D5B926000E4904E /* BasicButton.swift */,
@@ -466,6 +469,7 @@
 				20535D5E2D60C32B00E4904E /* UILabel+DesignSystem.swift in Sources */,
 				20BCD0E22D6126FA000213AF /* BasicTextField.swift in Sources */,
 				20535D7B2D60EDBC00E4904E /* EmployeeStatusView.swift in Sources */,
+				20BCD0EF2D6240FB000213AF /* SuccessViewController.swift in Sources */,
 				20535D692D60C80300E4904E /* ButtonSize.swift in Sources */,
 				20535D902D61042F00E4904E /* SelectionModal.swift in Sources */,
 				20535D672D60C7A200E4904E /* Spacing.swift in Sources */,

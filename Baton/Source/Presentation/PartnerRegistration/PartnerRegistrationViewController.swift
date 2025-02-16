@@ -39,8 +39,20 @@ class PartnerRegistrationViewController: UIPageViewController, UIPageViewControl
         let step3 = JobInfoView(viewModel: viewModel)
         let step4 = ChatScheduleView(viewModel: viewModel)
         let step5 = SelfIntroductionView(viewModel: viewModel)
+        let success = SuccessViewController(
+            title: "멘토 등록이 완료되었어요",
+            subtitle: "마이페이지에서 나의 멘토 정보를\n확인하고 수정할 수 있어요",
+            primaryButtonText: "멘토 정보 확인하기",
+            secondaryButtonText: "확인",
+            primaryAction: {
+                print("멘토 정보 확인하기 버튼 클릭") //TODO: 추후 수정하기
+            },
+            secondaryAction: {
+                self.viewModel.goToNextStep()
+            }
+        )
         
-        pages = [step1, step2, step3, step4, step5]
+        pages = [step1, step2, step3, step4, step5, success]
         
         // 첫 번째 페이지를 초기화하여 UIPageViewController에 설정
         if let firstPage = pages.first {

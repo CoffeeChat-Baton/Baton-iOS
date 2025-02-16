@@ -67,7 +67,7 @@ class SelectionButton: UIButton {
         titleLabelCustom.translatesAutoresizingMaskIntoConstraints = false
         titleLabelCustom.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         titleLabelCustom.textColor = mode.titleColor
-        
+        titleLabelCustom.lineBreakMode = .byTruncatingTail
         // 아이콘 설정
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
         iconImageView.tintColor = .gray4
@@ -91,9 +91,11 @@ class SelectionButton: UIButton {
             NSLayoutConstraint.activate([
                 // 텍스트는 왼쪽 정렬
                 titleLabelCustom.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+                titleLabelCustom.trailingAnchor.constraint(equalTo: iconImageView.leadingAnchor, constant: 0),
                 titleLabelCustom.centerYAnchor.constraint(equalTo: centerYAnchor),
                 
                 // 화살표는 오른쪽 정렬
+                iconImageView.widthAnchor.constraint(equalToConstant: 24),
                 iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
                 iconImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
             ])
@@ -106,8 +108,9 @@ class SelectionButton: UIButton {
                 // 아이콘과 텍스트 모두 왼쪽 정렬
                 iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
                 iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-                
+                iconImageView.widthAnchor.constraint(equalToConstant: 24),
                 titleLabelCustom.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 8),
+                titleLabelCustom.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
                 titleLabelCustom.centerYAnchor.constraint(equalTo: centerYAnchor)
             ])
         }

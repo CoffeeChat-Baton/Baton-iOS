@@ -1,4 +1,5 @@
 import UIKit
+import UniformTypeIdentifiers
 import Combine
 
 class EmployeeStatusView: BaseViewController<PartnerRegistrationViewModel> {
@@ -32,7 +33,7 @@ class EmployeeStatusView: BaseViewController<PartnerRegistrationViewModel> {
     
     private func setupLayout() {
         contentView.addSubview(stackView)
-
+        
         NSLayoutConstraint.activate([
             uploadFileButton.heightAnchor.constraint(equalToConstant: 48),
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -43,14 +44,45 @@ class EmployeeStatusView: BaseViewController<PartnerRegistrationViewModel> {
     }
     
     // MARK: - Load Options
-    private func bindViewModel() {}
+    private func bindViewModel() {
+        viewModel.$selectedFileName
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] fileName in
+                self?.uploadFileButton.setTitle(fileName.isEmpty ? "파일 형식: JPG, PNG, PDF" : fileName)
+            }
+            .store(in: &cancellables)
+    }
     
     // MARK: - Button Actions
     @objc private func uploadFileButtonTapped() {
-        showCustomModal()
+        showDocumentPicker()
     }
     
-    private func showCustomModal() {
+    private func showDocumentPicker() {
+        let supportedTypes: [UTType] = [
+            .pdf,
+            .png,
+            .jpeg
+        ]
         
+        let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: supportedTypes)
+        documentPicker.delegate = self
+        documentPicker.allowsMultipleSelection = false
+        present(documentPicker, animated: true)
+    }
+}
+
+// MARK: - UIDocumentPicker Delegate
+extension EmployeeStatusView: UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let selectedFileURL = urls.first else { return }
+        let fileName = selectedFileURL.lastPathComponent
+                
+        viewModel.selectedFileName = fileName
+        viewModel.selectedFileURL = selectedFileURL
+    }
+    
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        print("파일 선택이 취소됨")
     }
 }
