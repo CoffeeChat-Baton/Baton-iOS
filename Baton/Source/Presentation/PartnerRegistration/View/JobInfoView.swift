@@ -2,11 +2,12 @@ import UIKit
 import Combine
 
 extension JobInfoView: SelectionModalDelegate {
-    func didSelectOption(_ option: String, type: CheckProfileViewModel.SelectionType) {
+    func didSelectOption(_ option: String, type: PartnerRegistrationViewModel.SelectionType) {
         viewModel.updateSelection(for: type, with: option)
     }
 }
-class JobInfoView: UIView, StepContentView {
+
+class JobInfoView: BaseViewController<PartnerRegistrationViewModel> {
     
     private let jobTitleLabel = SelectionTitleLabel(title: "직무")
     private let jobButton = SelectionButton()
@@ -15,23 +16,21 @@ class JobInfoView: UIView, StepContentView {
     private let subJobButton = SelectionButton()
     
     private let companyTitleLabel = SelectionTitleLabel(title: "회사")
-    private let companyTextField = BasicTextField()
+    private let companyTextField = BasicTextField(placeholder: "회사명을 입력해주세요.")
     
     private let experienceTitleLabel = SelectionTitleLabel(title: "총 경력")
     private let experienceButton = SelectionButton()
     
-    private var viewModel: CheckProfileViewModel
     private var cancellables = Set<AnyCancellable>() // ✅ Combine 구독
     
     var onContentStateChanged: ((Bool) -> Void)?
     
-    init(viewModel: CheckProfileViewModel) {
-        self.viewModel = viewModel
-        super.init(frame: .zero)
+    init(viewModel: PartnerRegistrationViewModel) {
+        super.init(viewModel: viewModel, contentView: UIView(), onNext: {viewModel.goToNextStep()})
         setupView()
         setupStackView()
         bindViewModel()
-        backgroundColor = .white
+        view.addTapToDismissKeyboard()
     }
     
     required init?(coder: NSCoder) {
@@ -39,10 +38,9 @@ class JobInfoView: UIView, StepContentView {
     }
     
     private func setupView() {
-        jobButton.setTitle("직무 선택", for: .normal)
-        subJobButton.setTitle("세부 직무 선택", for: .normal)
-        experienceButton.setTitle("경력 선택", for: .normal)
-        
+        jobButton.setTitle("직무 선택")
+        subJobButton.setTitle("세부 직무 선택")
+        experienceButton.setTitle("경력 선택")
         
         jobButton.addTarget(self, action: #selector(jobButtonTapped), for: .touchUpInside)
         subJobButton.addTarget(self, action: #selector(subJobButtonTapped), for: .touchUpInside)
@@ -51,10 +49,10 @@ class JobInfoView: UIView, StepContentView {
     
     private func setupStackView() {
         let stackView = UIStackView(arrangedSubviews: [
-            SubStackView(label: jobTitleLabel, button: jobButton),
-            SubStackView(label: subJobTitleLabel, button: subJobButton),
-            SubStackView(label: companyTitleLabel, button: companyTextField),
-            SubStackView(label: experienceTitleLabel, button: experienceButton),
+            SubStackView(label: jobTitleLabel, view: jobButton),
+            SubStackView(label: subJobTitleLabel, view: subJobButton),
+            SubStackView(label: companyTitleLabel, view: companyTextField),
+            SubStackView(label: experienceTitleLabel, view: experienceButton),
         ])
         
         stackView.axis = .vertical
@@ -62,18 +60,19 @@ class JobInfoView: UIView, StepContentView {
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
         
-        addSubview(stackView)
+        contentView.addSubview(stackView)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             jobButton.heightAnchor.constraint(equalToConstant: 48),
             subJobButton.heightAnchor.constraint(equalToConstant: 48),
+            companyTextField.heightAnchor.constraint(equalToConstant: 48),
             experienceButton.heightAnchor.constraint(equalToConstant: 48),
             
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor)
         ])
     }
     
@@ -81,40 +80,27 @@ class JobInfoView: UIView, StepContentView {
         viewModel.$selectedJob
             .receive(on: RunLoop.main)
             .sink { [weak self] newValue in
-                self?.jobButton.setTitle(newValue, for: .normal)
+                self?.jobButton.setTitle(newValue)
             }
             .store(in: &cancellables)
         
         viewModel.$selectedSubJob
             .receive(on: RunLoop.main)
             .sink { [weak self] newValue in
-                self?.subJobButton.setTitle(newValue, for: .normal)
+                self?.subJobButton.setTitle(newValue)
             }
             .store(in: &cancellables)
+        
+        companyTextField.onTextChanged = { [weak self] text in
+            self?.viewModel.companyName = text
+        }
         
         viewModel.$selectedExperience
             .receive(on: RunLoop.main)
             .sink { [weak self] newValue in
-                self?.experienceButton.setTitle(newValue, for: .normal)
+                self?.experienceButton.setTitle(newValue)
             }
             .store(in: &cancellables)
-    }
-    
-    private func SubStackView(label: UILabel, button: UIView) -> UIStackView {
-        let stackView = UIStackView(arrangedSubviews: [label, button])
-        stackView.axis = .vertical
-        stackView.spacing = 4 // ✅ 라벨과 버튼 간격 (4px)
-        stackView.alignment = .fill
-        stackView.distribution = .fill
-        return stackView
-    }
-    
-    private func createTitleLabel(title: String) -> UILabel {
-        let label = UILabel()
-        label.text = title
-        label.pretendardStyle = .caption1
-        label.textColor = .black
-        return label
     }
     
     @objc private func jobButtonTapped() {
@@ -124,15 +110,18 @@ class JobInfoView: UIView, StepContentView {
     @objc private func subJobButtonTapped() {
         showCustomModal(selectionType: .subJob)
     }
-
+    
     @objc private func experienceButtonTapped() {
         showCustomModal(selectionType: .experience)
     }
     
-    private func showCustomModal(selectionType: CheckProfileViewModel.SelectionType) {
-        guard let parentVC = findViewController() else { return }
-        let modal = SelectionModal(viewModel: viewModel, selectionType: selectionType)
-        modal.delegate = self
+    private func showCustomModal(selectionType: PartnerRegistrationViewModel.SelectionType) {
+        guard let parentVC = view.findViewController() else { return }
+        
+        let headerTitle = viewModel.getTitle(for: selectionType)
+        let options = viewModel.getOptions(for: selectionType)
+        let modal = SelectionModal(headerTitle: headerTitle, options: options, selectionType: selectionType, delegate: self)
+        
         parentVC.present(modal, animated: true)
     }
 }

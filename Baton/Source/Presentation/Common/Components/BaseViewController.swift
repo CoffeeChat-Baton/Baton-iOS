@@ -1,19 +1,33 @@
 import UIKit
+import Combine
 
-class BaseViewController: UIViewController {
+protocol BaseViewModelType: AnyObject {
+    var currentStepIndex: Int { get set }
+    var steps: [BaseContent] { get }
     
-    let viewModel: PartnerRegistrationViewModel
+    var currentStepIndexPublisher: Published<Int>.Publisher { get }
+    var cancellables: Set<AnyCancellable> { get set }
+}
+
+// 기본 구현 추가 (선택 사항)
+extension BaseViewModelType {
+    var currentStep: BaseContent {
+        return steps[currentStepIndex]
+    }
+}
+
+class BaseViewController<ViewModel: BaseViewModelType>: UIViewController {
+    
+    let viewModel: ViewModel
     private var onNext: (() -> Void)?
     
     // 1. 제목
     lazy var mainTitleLabel: UILabel  = {
         let label = UILabel()
-        label.text = mainTitle
-        label.pretendardStyle = .head1
-        label.textColor = .black
-        label.textAlignment = .left
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
+            label.textColor = UIColor(resource: .bblack)
+            label.textAlignment = .left
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.numberOfLines = 0
         return label
     }()
     
@@ -24,7 +38,6 @@ class BaseViewController: UIViewController {
         label.pretendardStyle = .body5
         label.textColor = UIColor(resource: .subtitle)
         label.textAlignment = .left
-        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -42,7 +55,7 @@ class BaseViewController: UIViewController {
         return button
     }()
     
-    private let mainTitle: String = ""
+    private var mainTitle: String = ""
     private let subTitle: String = ""
     private let actionButtonTitle: String = ""
     
@@ -52,10 +65,9 @@ class BaseViewController: UIViewController {
         addSubViews()
         setupLayout()
         bindViewModel()
-        
     }
     
-    init(viewModel: PartnerRegistrationViewModel, contentView: UIView = UIView(), onNext: (() -> Void)?) {
+    init(viewModel: ViewModel, contentView: UIView = UIView(), onNext: (() -> Void)?) {
         self.viewModel = viewModel
         self.contentView = contentView
         self.onNext = onNext
@@ -98,15 +110,31 @@ class BaseViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        viewModel.$currentStepIndex
+        viewModel.currentStepIndexPublisher
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
+            .sink { [weak self] newIndex in
                 guard let self = self else { return }
-                self.mainTitleLabel.text = self.viewModel.currentStep.mainTitle
-                self.subTitleLabel.text = self.viewModel.currentStep.subTitle
-                self.actionButton.setTitle(self.viewModel.currentStep.actionButtonTitle, for: .normal)
+                self.updateUI()
             }
             .store(in: &viewModel.cancellables)
+    }
+    
+    // MARK: - Update UI
+    private func updateUI() {
+        let step = viewModel.currentStep
+        mainTitleLabel.setTextWithLineSpacing(step.mainTitle, style: .head1, lineHeightMultiple: 1.6)
+        subTitleLabel.setTextWithLineSpacing(step.subTitle, style: .body5, lineHeightMultiple: 1.6)
+        actionButton.setTitle(step.actionButtonTitle, for: .normal)
+    }
+    
+    func SubStackView(label: UILabel, view: UIView) -> UIStackView {
+        let stackView = UIStackView(arrangedSubviews: [label, view])
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
     }
     
     @objc private func nextStep() {

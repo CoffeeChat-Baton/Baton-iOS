@@ -2,8 +2,8 @@ import UIKit
 import Combine
 
 class PartnerRegistrationViewController: UIPageViewController, UIPageViewControllerDelegate{
-    private var navigationBarTitle = "파트너 등록"
-    private var pages: [StepViewController] = []
+    private var navigationBarTitle = "멘토 등록"
+    private var pages: [UIViewController] = []
     private let viewModel: PartnerRegistrationViewModel
     private var cancellables = Set<AnyCancellable>()
     
@@ -34,10 +34,25 @@ class PartnerRegistrationViewController: UIPageViewController, UIPageViewControl
         bindViewModel()
     }
     private func setupPages() {
-        // `viewModel.steps`를 기반으로 `StepViewController` 리스트 생성
-        pages = viewModel.steps.enumerated().map { index, _ in
-            StepViewController(viewModel: viewModel, stepIndex: index)
-        }
+        let step1 = CheckProfileView(viewModel: viewModel)
+        let step2 = EmployeeStatusView(viewModel: viewModel)
+        let step3 = JobInfoView(viewModel: viewModel)
+        let step4 = ChatScheduleView(viewModel: viewModel)
+        let step5 = SelfIntroductionView(viewModel: viewModel)
+        let success = SuccessViewController(
+            title: "멘토 등록이 완료되었어요",
+            subtitle: "마이페이지에서 나의 멘토 정보를\n확인하고 수정할 수 있어요",
+            primaryButtonText: "멘토 정보 확인하기",
+            secondaryButtonText: "확인",
+            primaryAction: {
+                print("멘토 정보 확인하기 버튼 클릭") //TODO: 추후 수정하기
+            },
+            secondaryAction: {
+                self.viewModel.goToNextStep()
+            }
+        )
+        
+        pages = [step1, step2, step3, step4, step5, success]
         
         // 첫 번째 페이지를 초기화하여 UIPageViewController에 설정
         if let firstPage = pages.first {
@@ -69,48 +84,6 @@ class PartnerRegistrationViewController: UIPageViewController, UIPageViewControl
             setViewControllers([pages[viewModel.currentStepIndex]], direction: .reverse, animated: true, completion: nil)
         } else {
             navigationController?.popViewController(animated: true)
-        }
-    }
-}
-
-protocol StepContentView: UIView {
-    var onContentStateChanged: ((Bool) -> Void)? { get set }
-}
-
-class StepViewController: BaseViewController {
-    
-    private let stepIndex: Int
-    
-    init(viewModel: PartnerRegistrationViewModel, stepIndex: Int) {
-        self.stepIndex = stepIndex
-        let contentView = StepViewController.createContentView(for: stepIndex)
-        super.init(viewModel: viewModel, contentView: contentView, onNext: {
-            viewModel.goToNextStep()
-        })
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let step = viewModel.steps[stepIndex]
-        actionButton.setTitle(step.actionButtonTitle, for: .normal)
-    }
-    
-    static func createContentView(for stepIndex: Int) -> StepContentView {
-        switch stepIndex {
-        case 0: // 프로필 정보 확인
-            let viewModel = CheckProfileViewModel()
-            return CheckProfileView(viewModel: viewModel)
-        case 2: // 회사 정보 입력
-            let viewModel = CheckProfileViewModel()
-            return JobInfoView(viewModel: viewModel)
-        default:
-            let viewModel = CheckProfileViewModel()
-            return JobInfoView(viewModel: viewModel)
         }
     }
 }

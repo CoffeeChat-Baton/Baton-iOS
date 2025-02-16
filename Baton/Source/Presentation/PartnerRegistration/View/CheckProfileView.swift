@@ -2,33 +2,30 @@ import UIKit
 import Combine
 
 extension CheckProfileView: SelectionModalDelegate {
-    func didSelectOption(_ option: String, type: CheckProfileViewModel.SelectionType) {
+    func didSelectOption(_ option: String, type: PartnerRegistrationViewModel.SelectionType) {
         viewModel.updateSelection(for: type, with: option)
     }
 }
-class CheckProfileView: UIView, StepContentView {
+
+class CheckProfileView: BaseViewController<PartnerRegistrationViewModel> {
     
     private let jobTitleLabel = SelectionTitleLabel(title: "직무")
-    private let jobButton = SelectionButton()
-    
     private let subJobTitleLabel = SelectionTitleLabel(title: "세부 직무")
-    private let subJobButton = SelectionButton()
-    
     private let experienceTitleLabel = SelectionTitleLabel(title: "총 경력")
+
+    private let jobButton = SelectionButton()
+    private let subJobButton = SelectionButton()
     private let experienceButton = SelectionButton()
     
-    private var viewModel: CheckProfileViewModel
     private var cancellables = Set<AnyCancellable>() // ✅ Combine 구독
     
     var onContentStateChanged: ((Bool) -> Void)?
     
-    init(viewModel: CheckProfileViewModel) {
-        self.viewModel = viewModel
-        super.init(frame: .zero)
+    init(viewModel: PartnerRegistrationViewModel) {
+        super.init(viewModel: viewModel, contentView: UIView(), onNext: {viewModel.goToNextStep()})
         setupView()
         setupStackView()
         bindViewModel()
-        backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {
@@ -36,9 +33,9 @@ class CheckProfileView: UIView, StepContentView {
     }
     
     private func setupView() {
-        jobButton.setTitle("직무 선택", for: .normal)
-        subJobButton.setTitle("세부 직무 선택", for: .normal)
-        experienceButton.setTitle("경력 선택", for: .normal)
+        jobButton.setTitle("직무 선택")
+        subJobButton.setTitle("세부 직무 선택")
+        experienceButton.setTitle("경력 선택")
         
         jobButton.addTarget(self, action: #selector(jobButtonTapped), for: .touchUpInside)
         subJobButton.addTarget(self, action: #selector(subJobButtonTapped), for: .touchUpInside)
@@ -57,7 +54,7 @@ class CheckProfileView: UIView, StepContentView {
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
         
-        addSubview(stackView)
+        contentView.addSubview(stackView)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -65,10 +62,10 @@ class CheckProfileView: UIView, StepContentView {
             subJobButton.heightAnchor.constraint(equalToConstant: 48),
             experienceButton.heightAnchor.constraint(equalToConstant: 48),
             
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor)
         ])
     }
     
@@ -76,21 +73,21 @@ class CheckProfileView: UIView, StepContentView {
         viewModel.$selectedJob
             .receive(on: RunLoop.main)
             .sink { [weak self] newValue in
-                self?.jobButton.setTitle(newValue, for: .normal)
+                self?.jobButton.setTitle(newValue)
             }
             .store(in: &cancellables)
         
         viewModel.$selectedSubJob
             .receive(on: RunLoop.main)
             .sink { [weak self] newValue in
-                self?.subJobButton.setTitle(newValue, for: .normal)
+                self?.subJobButton.setTitle(newValue)
             }
             .store(in: &cancellables)
         
         viewModel.$selectedExperience
             .receive(on: RunLoop.main)
             .sink { [weak self] newValue in
-                self?.experienceButton.setTitle(newValue, for: .normal)
+                self?.experienceButton.setTitle(newValue)
             }
             .store(in: &cancellables)
     }
@@ -124,10 +121,13 @@ class CheckProfileView: UIView, StepContentView {
         showCustomModal(selectionType: .experience)
     }
     
-    private func showCustomModal(selectionType: CheckProfileViewModel.SelectionType) {
-        guard let parentVC = findViewController() else { return }
-        let modal = SelectionModal(viewModel: viewModel, selectionType: selectionType)
-        modal.delegate = self
+    private func showCustomModal(selectionType: PartnerRegistrationViewModel.SelectionType) {
+        guard let parentVC = view.findViewController() else { return }
+        
+        let headerTitle = viewModel.getTitle(for: selectionType)
+        let options = viewModel.getOptions(for: selectionType)
+        let modal = SelectionModal(headerTitle: headerTitle, options: options, selectionType: selectionType, delegate: self)
+        
         parentVC.present(modal, animated: true)
-    }    
+    }
 }
