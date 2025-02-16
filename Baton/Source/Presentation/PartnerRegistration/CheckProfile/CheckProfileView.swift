@@ -2,11 +2,12 @@ import UIKit
 import Combine
 
 extension CheckProfileView: SelectionModalDelegate {
-    func didSelectOption(_ option: String, type: CheckProfileViewModel.SelectionType) {
+    func didSelectOption(_ option: String, type: PartnerRegistrationViewModel.SelectionType) {
         viewModel.updateSelection(for: type, with: option)
     }
 }
-class CheckProfileView: UIView, StepContentView {
+
+class CheckProfileView: BaseViewController<PartnerRegistrationViewModel> {
     
     private let jobTitleLabel = SelectionTitleLabel(title: "직무")
     private let jobButton = SelectionButton()
@@ -17,18 +18,15 @@ class CheckProfileView: UIView, StepContentView {
     private let experienceTitleLabel = SelectionTitleLabel(title: "총 경력")
     private let experienceButton = SelectionButton()
     
-    private var viewModel: CheckProfileViewModel
     private var cancellables = Set<AnyCancellable>() // ✅ Combine 구독
     
     var onContentStateChanged: ((Bool) -> Void)?
     
-    init(viewModel: CheckProfileViewModel) {
-        self.viewModel = viewModel
-        super.init(frame: .zero)
+    init(viewModel: PartnerRegistrationViewModel) {
+        super.init(viewModel: viewModel, contentView: UIView(), onNext: nil)
         setupView()
         setupStackView()
         bindViewModel()
-        backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {
@@ -57,7 +55,7 @@ class CheckProfileView: UIView, StepContentView {
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
         
-        addSubview(stackView)
+        contentView.addSubview(stackView)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -65,10 +63,10 @@ class CheckProfileView: UIView, StepContentView {
             subJobButton.heightAnchor.constraint(equalToConstant: 48),
             experienceButton.heightAnchor.constraint(equalToConstant: 48),
             
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor)
         ])
     }
     
@@ -124,10 +122,13 @@ class CheckProfileView: UIView, StepContentView {
         showCustomModal(selectionType: .experience)
     }
     
-    private func showCustomModal(selectionType: CheckProfileViewModel.SelectionType) {
-        guard let parentVC = findViewController() else { return }
-        let modal = SelectionModal(viewModel: viewModel, selectionType: selectionType)
-        modal.delegate = self
+    private func showCustomModal(selectionType: PartnerRegistrationViewModel.SelectionType) {
+        guard let parentVC = view.findViewController() else { return }
+        
+        let headerTitle = viewModel.getTitle(for: selectionType)
+        let options = viewModel.getOptions(for: selectionType)
+        let modal = SelectionModal(headerTitle: headerTitle, options: options, selectionType: selectionType, delegate: self)
+        
         parentVC.present(modal, animated: true)
-    }    
+    }
 }
