@@ -10,12 +10,11 @@ extension CheckProfileView: SelectionModalDelegate {
 class CheckProfileView: BaseViewController<PartnerRegistrationViewModel> {
     
     private let jobTitleLabel = SelectionTitleLabel(title: "직무")
-    private let jobButton = SelectionButton()
-    
     private let subJobTitleLabel = SelectionTitleLabel(title: "세부 직무")
-    private let subJobButton = SelectionButton()
-    
     private let experienceTitleLabel = SelectionTitleLabel(title: "총 경력")
+
+    private let jobButton = SelectionButton()
+    private let subJobButton = SelectionButton()
     private let experienceButton = SelectionButton()
     
     private var cancellables = Set<AnyCancellable>() // ✅ Combine 구독

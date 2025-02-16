@@ -5,6 +5,7 @@ class EmployeeStatusView: BaseViewController<PartnerRegistrationViewModel> {
     // MARK: - Properties
     private var cancellables = Set<AnyCancellable>()
     
+    private let uploadedFile = SelectionTitleLabel(title: "첨부파일")
     // MARK: - Init
     init(viewModel: PartnerRegistrationViewModel) {
         super.init(viewModel: viewModel, onNext: {viewModel.goToNextStep()})

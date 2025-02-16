@@ -114,10 +114,10 @@ class SelectionModal<T, D: SelectionModalDelegate>: UIViewController where D.Sel
         options.forEach { option in
             let button = UIButton(type: .system)
             button.setTitle(option, for: .normal)
-            button.setTitleColor(.black, for: .normal)
+            button.contentHorizontalAlignment = .left
+            button.setTitleColor(.bblack, for: .normal)
             button.translatesAutoresizingMaskIntoConstraints = false
             button.heightAnchor.constraint(equalToConstant: 48).isActive = true
-            
             button.addTarget(self, action: #selector(optionSelected(_:)), for: .touchUpInside)
             optionsStackView.addArrangedSubview(button)
         }
