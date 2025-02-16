@@ -12,6 +12,7 @@ class SelectionModal<T, D: SelectionModalDelegate>: UIViewController where D.Sel
     private let modalView = UIView()
     private let titleLabel = UILabel()
     private let closeButton = UIButton(type: .system)
+    private let optionsScrollView = UIScrollView()
     private let optionsStackView = UIStackView()
     private var modalHeightConstraint: NSLayoutConstraint?
     
@@ -64,14 +65,18 @@ class SelectionModal<T, D: SelectionModalDelegate>: UIViewController where D.Sel
         titleLabel.textColor = .black
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
+        optionsScrollView.translatesAutoresizingMaskIntoConstraints = false
+        optionsScrollView.alwaysBounceVertical = true
+        
         optionsStackView.axis = .vertical
         optionsStackView.spacing = 8
         optionsStackView.translatesAutoresizingMaskIntoConstraints = false
         
         modalView.addSubview(closeButton)
         modalView.addSubview(titleLabel)
-        modalView.addSubview(optionsStackView)
-        
+        modalView.addSubview(optionsScrollView)
+        optionsScrollView.addSubview(optionsStackView)
+
         modalHeightConstraint = modalView.heightAnchor.constraint(equalToConstant: 200)
         modalHeightConstraint?.isActive = true
         
@@ -88,10 +93,16 @@ class SelectionModal<T, D: SelectionModalDelegate>: UIViewController where D.Sel
             titleLabel.centerXAnchor.constraint(equalTo: modalView.centerXAnchor),
             titleLabel.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor),
             
-            optionsStackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15),
-            optionsStackView.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: 20),
-            optionsStackView.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -20),
-            optionsStackView.bottomAnchor.constraint(equalTo: modalView.bottomAnchor, constant: -15)
+            optionsScrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15),
+            optionsScrollView.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: 20),
+            optionsScrollView.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -20),
+            optionsScrollView.bottomAnchor.constraint(equalTo: modalView.bottomAnchor, constant: -15),
+            
+            optionsStackView.widthAnchor.constraint(equalTo: optionsScrollView.frameLayoutGuide.widthAnchor),
+            optionsStackView.topAnchor.constraint(equalTo: optionsScrollView.topAnchor),
+            optionsStackView.leadingAnchor.constraint(equalTo: optionsScrollView.leadingAnchor),
+            optionsStackView.trailingAnchor.constraint(equalTo: optionsScrollView.trailingAnchor),
+            optionsStackView.bottomAnchor.constraint(equalTo: optionsScrollView.bottomAnchor)
         ])
     }
     
@@ -104,7 +115,9 @@ class SelectionModal<T, D: SelectionModalDelegate>: UIViewController where D.Sel
             let button = UIButton(type: .system)
             button.setTitle(option, for: .normal)
             button.setTitleColor(.black, for: .normal)
+            button.translatesAutoresizingMaskIntoConstraints = false
             button.heightAnchor.constraint(equalToConstant: 48).isActive = true
+            
             button.addTarget(self, action: #selector(optionSelected(_:)), for: .touchUpInside)
             optionsStackView.addArrangedSubview(button)
         }
