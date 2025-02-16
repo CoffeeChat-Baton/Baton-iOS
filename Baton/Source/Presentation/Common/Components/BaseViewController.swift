@@ -131,6 +131,15 @@ class BaseViewController<ViewModel: BaseViewModelType>: UIViewController {
         actionButton.setTitle(step.actionButtonTitle, for: .normal)
     }
     
+    func SubStackView(label: UILabel, view: UIView) -> UIStackView {
+        let stackView = UIStackView(arrangedSubviews: [label, view])
+        stackView.axis = .vertical
+        stackView.spacing = 6
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+        return stackView
+    }
+    
     @objc private func nextStep() {
         onNext?()
     }

@@ -2,7 +2,7 @@ import UIKit
 import Combine
 
 class PartnerRegistrationViewController: UIPageViewController, UIPageViewControllerDelegate{
-    private var navigationBarTitle = "파트너 등록"
+    private var navigationBarTitle = "멘토 등록"
     private var pages: [UIViewController] = []
     private let viewModel: PartnerRegistrationViewModel
     private var cancellables = Set<AnyCancellable>()
@@ -35,8 +35,12 @@ class PartnerRegistrationViewController: UIPageViewController, UIPageViewControl
     }
     private func setupPages() {
         let step1 = CheckProfileView(viewModel: viewModel)
+        let step2 = EmployeeStatusView(viewModel: viewModel)
         let step3 = JobInfoView(viewModel: viewModel)
-        pages = [step1, step3]
+        let step4 = ChatScheduleView(viewModel: viewModel)
+        let step5 = SelfIntroductionView(viewModel: viewModel)
+        
+        pages = [step1, step2, step3, step4, step5]
         
         // 첫 번째 페이지를 초기화하여 UIPageViewController에 설정
         if let firstPage = pages.first {

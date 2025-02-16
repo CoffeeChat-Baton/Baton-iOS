@@ -48,6 +48,7 @@
 		20BCD0E22D6126FA000213AF /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0E12D6126FA000213AF /* BasicTextField.swift */; };
 		20BCD0E42D612B5E000213AF /* JobCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0E32D612B5E000213AF /* JobCategory.swift */; };
 		20BCD0E62D612BEF000213AF /* ExperienceYears.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0E52D612BEF000213AF /* ExperienceYears.swift */; };
+		20BCD0ED2D61DEE4000213AF /* BaseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0EC2D61DEE4000213AF /* BaseTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		20BCD0E12D6126FA000213AF /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
 		20BCD0E32D612B5E000213AF /* JobCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCategory.swift; sourceTree = "<group>"; };
 		20BCD0E52D612BEF000213AF /* ExperienceYears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceYears.swift; sourceTree = "<group>"; };
+		20BCD0EC2D61DEE4000213AF /* BaseTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 				20535D8F2D61042F00E4904E /* SelectionModal.swift */,
 				20BCD0DB2D611EE4000213AF /* SelectionTitleLabel.swift */,
 				20BCD0E12D6126FA000213AF /* BasicTextField.swift */,
+				20BCD0EC2D61DEE4000213AF /* BaseTextView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -295,8 +298,8 @@
 			isa = PBXGroup;
 			children = (
 				20535D782D60ED7700E4904E /* CheckProfileView.swift */,
-				20535D7C2D60EEDE00E4904E /* JobInfoView.swift */,
 				20535D7A2D60EDBC00E4904E /* EmployeeStatusView.swift */,
+				20535D7C2D60EEDE00E4904E /* JobInfoView.swift */,
 				20535D7E2D60EEEA00E4904E /* ChatScheduleView.swift */,
 				20535D802D60EEF900E4904E /* SelfIntroductionView.swift */,
 			);
@@ -459,6 +462,7 @@
 				20535D832D60EF8A00E4904E /* PartnerRegistrationViewModel.swift in Sources */,
 				20BCD0DC2D611EE4000213AF /* SelectionTitleLabel.swift in Sources */,
 				20535D612D60C40800E4904E /* UIButton+DesignSystem.swift in Sources */,
+				20BCD0ED2D61DEE4000213AF /* BaseTextView.swift in Sources */,
 				20535D5E2D60C32B00E4904E /* UILabel+DesignSystem.swift in Sources */,
 				20BCD0E22D6126FA000213AF /* BasicTextField.swift in Sources */,
 				20535D7B2D60EDBC00E4904E /* EmployeeStatusView.swift in Sources */,

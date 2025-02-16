@@ -25,7 +25,7 @@ class SelectionButton: UIButton {
         layer.borderColor = UIColor(resource: .gray3).cgColor
         contentHorizontalAlignment = .left
         setTitleColor(.black, for: .normal)
-        titleLabel?.pretendardStyle = .body5
+        titleLabel?.pretendardStyle = .body2
         titleEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
         let arrowImageView = UIImageView(image: UIImage(systemName: "chevron.right"))
         arrowImageView.tintColor = .gray

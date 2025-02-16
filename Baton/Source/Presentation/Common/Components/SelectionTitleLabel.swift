@@ -2,7 +2,7 @@ import UIKit
 
 class SelectionTitleLabel: UILabel {
     
-    init(title: String, style: UIFont.Pretendard = .caption1, color: UIColor = .black) {
+    init(title: String, style: UIFont.Pretendard = .body4, color: UIColor = .black) {
         super.init(frame: .zero)
         self.text = title
         self.pretendardStyle = style

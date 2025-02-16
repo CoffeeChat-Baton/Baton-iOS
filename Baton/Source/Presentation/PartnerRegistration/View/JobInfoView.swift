@@ -16,7 +16,7 @@ class JobInfoView: BaseViewController<PartnerRegistrationViewModel> {
     private let subJobButton = SelectionButton()
     
     private let companyTitleLabel = SelectionTitleLabel(title: "회사")
-    private let companyTextField = BasicTextField()
+    private let companyTextField = BasicTextField(placeholder: "회사명을 입력해주세요.")
     
     private let experienceTitleLabel = SelectionTitleLabel(title: "총 경력")
     private let experienceButton = SelectionButton()
@@ -26,7 +26,7 @@ class JobInfoView: BaseViewController<PartnerRegistrationViewModel> {
     var onContentStateChanged: ((Bool) -> Void)?
     
     init(viewModel: PartnerRegistrationViewModel) {
-        super.init(viewModel: viewModel, contentView: UIView(), onNext: nil)
+        super.init(viewModel: viewModel, contentView: UIView(), onNext: {viewModel.goToNextStep()})
         setupView()
         setupStackView()
         bindViewModel()
@@ -101,23 +101,6 @@ class JobInfoView: BaseViewController<PartnerRegistrationViewModel> {
                 self?.experienceButton.setTitle(newValue, for: .normal)
             }
             .store(in: &cancellables)
-    }
-    
-    private func SubStackView(label: UILabel, view: UIView) -> UIStackView {
-        let stackView = UIStackView(arrangedSubviews: [label, view])
-        stackView.axis = .vertical
-        stackView.spacing = 4
-        stackView.alignment = .fill
-        stackView.distribution = .fill
-        return stackView
-    }
-    
-    private func createTitleLabel(title: String) -> UILabel {
-        let label = UILabel()
-        label.text = title
-        label.pretendardStyle = .caption1
-        label.textColor = .black
-        return label
     }
     
     @objc private func jobButtonTapped() {

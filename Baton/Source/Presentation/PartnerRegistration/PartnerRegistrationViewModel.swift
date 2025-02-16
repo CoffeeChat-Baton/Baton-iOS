@@ -14,6 +14,16 @@ class PartnerRegistrationViewModel: BaseViewModelType {
     @Published var selectedExperience: String = "경력 선택"
     @Published var companyName: String = ""
     
+    @Published var schedules: [String] = [
+        "첫 번째 일정을 선택해주세요",
+        "두 번째 일정을 선택해주세요",
+        "세 번째 일정을 선택해주세요"
+    ]
+    
+    @Published var shortIntro: String = ""
+    @Published var detailedBio: String = ""
+
+
     // ✅ 각 버튼에 대한 선택 옵션 데이터
     let jobOptions = JobCategory.all
     let subJobOptions = ["프론트엔드", "백엔드", "풀스택"]
@@ -32,15 +42,20 @@ class PartnerRegistrationViewModel: BaseViewModelType {
             BaseContent(mainTitle: "재직 사실을 인증해주세요",
                         subTitle: "재직을 증명할 수 있는 서류(재직증명서, 사원증 등)를 업로드해주세요.",
                         actionButtonTitle: "다음"),
+            
+            BaseContent(mainTitle: "직무 정보를 확인해주세요",
+                        subTitle: "파트너 프로필에 보여지는 정보입니다.\n아래 정보가 정확한지 다시 한 번 확인해주세요!",
+                        actionButtonTitle: "다음"),
 
-            BaseContent(mainTitle: "커피챗 가능한 시간 등록",
+            BaseContent(mainTitle: "커피챗이 가능한 시간대를\n등록해주세요",
                         subTitle: "희망하는 커피챗 시간을 선택해주세요.",
                         actionButtonTitle: "다음"),
 
-            BaseContent(mainTitle: "자신을 소개하는 글을 작성해주세요",
-                        subTitle: "파트너 프로필에 보여질 소개 글을 입력해주세요.",
+            BaseContent(mainTitle: "자신을 소개하는 글을\n작성해주세요",
+                        subTitle: "",
                         actionButtonTitle: "완료")
         ]
+    
     var totalSteps: Int {
         return steps.count
     }

@@ -13,13 +13,14 @@ final class HomeViewController: UIViewController {
         button.setTitle("파트너 등록하기", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         button.pretendardStyle = .head1
-        button.addTarget(self, action: #selector(centerButtonTapped), for: .touchUpInside)
         return button
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        
+        centerButton.addTarget(self, action: #selector(centerButtonTapped), for: .touchUpInside)
     }
     
     private func setupUI() {
