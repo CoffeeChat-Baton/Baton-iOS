@@ -7,9 +7,9 @@ class ChatScheduleView: BaseViewController<PartnerRegistrationViewModel> {
     
     /// ✅ 버튼 배열 (각 버튼이 일정 선택을 위한 버튼)
     private let scheduleButtons: [SelectionButton] = [
-        SelectionButton(),
-        SelectionButton(),
-        SelectionButton()
+        SelectionButton(placeholder: "첫 번째 일정을 선택해주세요"),
+        SelectionButton(placeholder: "두 번째 일정을 선택해주세요"),
+        SelectionButton(placeholder: "세 번째 일정을 선택해주세요")
     ]
     
     // MARK: - Init
@@ -63,7 +63,7 @@ class ChatScheduleView: BaseViewController<PartnerRegistrationViewModel> {
                 
                 for (index, schedule) in newSchedules.enumerated() {
                     if index < self.scheduleButtons.count {
-                        self.scheduleButtons[index].setTitle(schedule)
+                        self.scheduleButtons[index].updateTitle(schedule)
                     }
                 }
             }

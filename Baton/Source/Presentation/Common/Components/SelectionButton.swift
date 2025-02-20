@@ -13,8 +13,15 @@ class SelectionButton: UIButton {
         
         var titleColor: UIColor {
             switch self {
-            case .selection: return .bblack
+            case .selection: return .gray3
             case .uploadFile: return .gray4
+            }
+        }
+        
+        var updatedTitleColor: UIColor {
+            switch self {
+            case .selection: return .bblack
+            default: return titleColor
             }
         }
         
@@ -32,11 +39,11 @@ class SelectionButton: UIButton {
     
     private let iconImageView = UIImageView()
     private let titleLabelCustom = UILabel()
+    private var title: String = ""
+    private var placeholder: String = ""
 
-    var mode: Mode = .selection {
-        didSet { updateUI() }
-    }
-
+    
+    var mode: Mode = .selection
     override var isHighlighted: Bool {
         didSet {
             UIView.animate(withDuration: 0.1) {
@@ -45,17 +52,21 @@ class SelectionButton: UIButton {
         }
     }
 
-    init(mode: Mode = .selection) {
+    init(mode: Mode = .selection, placeholder: String, title: String = "") {
         super.init(frame: .zero)
         self.mode = mode
+        self.placeholder = placeholder
+        self.title = title
+        
+        updateUI ()
+        setupTitle(title == "" ? placeholder : title )
         setupButton()
-        updateUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func setupButton() {
         // 기본 UI 설정
         backgroundColor = mode.backgroundColor
@@ -65,12 +76,12 @@ class SelectionButton: UIButton {
         
         // 텍스트 설정
         titleLabelCustom.translatesAutoresizingMaskIntoConstraints = false
-        titleLabelCustom.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        titleLabelCustom.textColor = mode.titleColor
+        titleLabelCustom.pretendardStyle = .body4
         titleLabelCustom.lineBreakMode = .byTruncatingTail
+        
         // 아이콘 설정
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
-        iconImageView.tintColor = .gray4
+        iconImageView.tintColor = .bblack
         iconImageView.contentMode = .scaleAspectFit
         
         addSubview(titleLabelCustom)
@@ -118,11 +129,32 @@ class SelectionButton: UIButton {
     
     private func updateUI() {
         backgroundColor = mode.backgroundColor
-        titleLabelCustom.textColor = mode.titleColor
         iconImageView.image = mode.icon
     }
     
-    func setTitle(_ title: String) {
+    private func setupPlaceholder(_ placeholder: String) {
+        titleLabelCustom.text = placeholder
+        titleLabelCustom.textColor = mode.titleColor
+    }
+    
+    func setupTitle(_ title: String) {
+        if self.title == "" { // 입력한 값이 없는 경우 = Placeholder를 보여줘야 하는 경우
+            titleLabelCustom.textColor = mode.titleColor
+        } else {
+            titleLabelCustom.textColor = mode.updatedTitleColor
+        }
         titleLabelCustom.text = title
+    }
+    
+    func updateTitle(_ title: String) {
+        self.title = title
+
+        if title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            titleLabelCustom.text = placeholder
+            titleLabelCustom.textColor = mode.titleColor
+        } else {
+            titleLabelCustom.text = title
+            titleLabelCustom.textColor = mode.updatedTitleColor
+        }
     }
 }
