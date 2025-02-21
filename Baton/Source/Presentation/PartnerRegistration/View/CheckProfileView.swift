@@ -13,9 +13,9 @@ class CheckProfileView: BaseViewController<PartnerRegistrationViewModel> {
     private let subJobTitleLabel = SelectionTitleLabel(title: "세부 직무")
     private let experienceTitleLabel = SelectionTitleLabel(title: "총 경력")
 
-    private let jobButton = SelectionButton()
-    private let subJobButton = SelectionButton()
-    private let experienceButton = SelectionButton()
+    private let jobButton = SelectionButton(placeholder: "직무 선택")
+    private let subJobButton = SelectionButton(placeholder: "세부 직무 선택")
+    private let experienceButton = SelectionButton(placeholder: "경력 선택")
     
     private var cancellables = Set<AnyCancellable>() // ✅ Combine 구독
     
@@ -33,10 +33,6 @@ class CheckProfileView: BaseViewController<PartnerRegistrationViewModel> {
     }
     
     private func setupView() {
-        jobButton.setTitle("직무 선택")
-        subJobButton.setTitle("세부 직무 선택")
-        experienceButton.setTitle("경력 선택")
-        
         jobButton.addTarget(self, action: #selector(jobButtonTapped), for: .touchUpInside)
         subJobButton.addTarget(self, action: #selector(subJobButtonTapped), for: .touchUpInside)
         experienceButton.addTarget(self, action: #selector(experienceButtonTapped), for: .touchUpInside)
@@ -71,23 +67,26 @@ class CheckProfileView: BaseViewController<PartnerRegistrationViewModel> {
     
     private func bindViewModel(){
         viewModel.$selectedJob
+            .removeDuplicates()
             .receive(on: RunLoop.main)
             .sink { [weak self] newValue in
-                self?.jobButton.setTitle(newValue)
+                self?.jobButton.updateTitle(newValue)
             }
             .store(in: &cancellables)
         
         viewModel.$selectedSubJob
+            .removeDuplicates()
             .receive(on: RunLoop.main)
             .sink { [weak self] newValue in
-                self?.subJobButton.setTitle(newValue)
+                self?.subJobButton.updateTitle(newValue)
             }
             .store(in: &cancellables)
         
         viewModel.$selectedExperience
+            .removeDuplicates()
             .receive(on: RunLoop.main)
             .sink { [weak self] newValue in
-                self?.experienceButton.setTitle(newValue)
+                self?.experienceButton.updateTitle(newValue)
             }
             .store(in: &cancellables)
     }
@@ -105,7 +104,7 @@ class CheckProfileView: BaseViewController<PartnerRegistrationViewModel> {
         let label = UILabel()
         label.text = title
         label.pretendardStyle = .caption1
-        label.textColor = .black
+        label.textColor = .bblack
         return label
     }
     

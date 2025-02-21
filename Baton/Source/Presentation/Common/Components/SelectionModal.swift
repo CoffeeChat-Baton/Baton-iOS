@@ -10,25 +10,23 @@ class SelectionModal<T, D: SelectionModalDelegate>: UIViewController where D.Sel
     weak var delegate: D?
     private let selectionType: T
     private let modalView = UIView()
-    private let titleLabel = UILabel()
-    private let closeButton = UIButton(type: .system)
+//    private let titleLabel = UILabel()
+//    private let closeButton = UIButton(type: .system)
     private let optionsScrollView = UIScrollView()
     private let optionsStackView = UIStackView()
     private var modalHeightConstraint: NSLayoutConstraint?
     
-    private let headerTitle: String
+    private let headerView: ModalHeaderView
     private let options: [String]
     
     // MARK: - Init
     init(headerTitle: String, options: [String], selectionType: T, delegate: D) {
-        self.headerTitle = headerTitle
+        self.headerView = ModalHeaderView(title: headerTitle)
         self.options = options
         self.selectionType = selectionType
         self.delegate = delegate
-        
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .overFullScreen
-        modalTransitionStyle = .coverVertical
     }
     
     required init?(coder: NSCoder) {
@@ -39,66 +37,59 @@ class SelectionModal<T, D: SelectionModalDelegate>: UIViewController where D.Sel
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        addSubViews()
+        setupConstraint()
+        setupAction()
         updateData()
         animateModalAppearance()
     }
     
     // MARK: - UI Setup
+    private func addSubViews() {
+        view.addSubview(modalView)
+        modalView.addSubview(headerView)
+        modalView.addSubview(optionsScrollView)
+        optionsScrollView.addSubview(optionsStackView)
+        
+        modalView.translatesAutoresizingMaskIntoConstraints = false
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        optionsScrollView.translatesAutoresizingMaskIntoConstraints = false
+        optionsStackView.translatesAutoresizingMaskIntoConstraints = false
+
+    }
+    
     private func setupUI() {
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         
         modalView.backgroundColor = .white
         modalView.layer.cornerRadius = 16
         modalView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        modalView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(modalView)
         
-        let configuration = UIImage.SymbolConfiguration(pointSize: 18, weight: .bold)
-        let closeImage = UIImage(systemName: "xmark", withConfiguration: configuration)
-        closeButton.setImage(closeImage, for: .normal)
-        closeButton.tintColor = .black
-        closeButton.addTarget(self, action: #selector(dismissModal), for: .touchUpInside)
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        titleLabel.textAlignment = .center
-        titleLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        titleLabel.textColor = .black
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        optionsScrollView.translatesAutoresizingMaskIntoConstraints = false
         optionsScrollView.alwaysBounceVertical = true
         
         optionsStackView.axis = .vertical
         optionsStackView.spacing = 8
-        optionsStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        modalView.addSubview(closeButton)
-        modalView.addSubview(titleLabel)
-        modalView.addSubview(optionsScrollView)
-        optionsScrollView.addSubview(optionsStackView)
-
-        modalHeightConstraint = modalView.heightAnchor.constraint(equalToConstant: 200)
+    }
+    
+    private func setupConstraint() {
+        modalHeightConstraint = modalView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200)
         modalHeightConstraint?.isActive = true
-        
+
         NSLayoutConstraint.activate([
             modalView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             modalView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             modalView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+            headerView.leadingAnchor.constraint(equalTo: modalView.leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: modalView.trailingAnchor),
+            headerView.topAnchor.constraint(equalTo: modalView.topAnchor),
+            headerView.heightAnchor.constraint(equalToConstant: 52),
             
-            closeButton.topAnchor.constraint(equalTo: modalView.topAnchor, constant: 16),
-            closeButton.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: 16),
-            closeButton.widthAnchor.constraint(equalToConstant: 24),
-            closeButton.heightAnchor.constraint(equalToConstant: 24),
-            
-            titleLabel.centerXAnchor.constraint(equalTo: modalView.centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor),
-            
-            optionsScrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15),
+            optionsScrollView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
             optionsScrollView.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: 20),
             optionsScrollView.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -20),
             optionsScrollView.bottomAnchor.constraint(equalTo: modalView.bottomAnchor, constant: -15),
-            
-            optionsStackView.widthAnchor.constraint(equalTo: optionsScrollView.frameLayoutGuide.widthAnchor),
+
             optionsStackView.topAnchor.constraint(equalTo: optionsScrollView.topAnchor),
             optionsStackView.leadingAnchor.constraint(equalTo: optionsScrollView.leadingAnchor),
             optionsStackView.trailingAnchor.constraint(equalTo: optionsScrollView.trailingAnchor),
@@ -106,10 +97,15 @@ class SelectionModal<T, D: SelectionModalDelegate>: UIViewController where D.Sel
         ])
     }
     
+    private func setupAction(){
+        headerView.onCloseTapped = { [weak self] in
+               self?.dismissModal()
+           }
+           
+    }
+    
     // MARK: - Load Options
     private func updateData() {
-        titleLabel.text = headerTitle
-        
         optionsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         options.forEach { option in
             let button = UIButton(type: .system)
@@ -126,6 +122,7 @@ class SelectionModal<T, D: SelectionModalDelegate>: UIViewController where D.Sel
         let maxHeight = view.frame.height * 0.9
         modalHeightConstraint?.constant = min(estimatedHeight, maxHeight)
     }
+    
     
     // MARK: - Button Actions
     @objc private func optionSelected(_ sender: UIButton) {

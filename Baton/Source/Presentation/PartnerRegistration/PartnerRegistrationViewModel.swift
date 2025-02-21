@@ -9,18 +9,18 @@ class PartnerRegistrationViewModel: BaseViewModelType {
     var cancellables = Set<AnyCancellable>()
     
     // ✅ 선택된 값 (UI가 업데이트됨)
-    @Published var selectedJob: String = "직무 선택"
-    @Published var selectedSubJob: String = "세부 직무 선택"
-    @Published var selectedExperience: String = "경력 선택"
+    @Published var selectedJob: String = ""
+    @Published var selectedSubJob: String = ""
+    @Published var selectedExperience: String = ""
     @Published var companyName: String = ""
     @Published var selectedFileName: String = ""
     
     var selectedFileURL: URL? // 파일 URL 저장
     
     @Published var schedules: [String] = [
-        "첫 번째 일정을 선택해주세요",
-        "두 번째 일정을 선택해주세요",
-        "세 번째 일정을 선택해주세요"
+        "",
+        "",
+        ""
     ]
     
     @Published var shortIntro: String = ""
@@ -100,6 +100,9 @@ class PartnerRegistrationViewModel: BaseViewModelType {
         }
     }
     
+    func updateSchedule(index: Int, content: String) {
+        schedules[index] = content
+    }
     // ✅ 선택 타입 정의
     enum SelectionType {
         case job, subJob, experience

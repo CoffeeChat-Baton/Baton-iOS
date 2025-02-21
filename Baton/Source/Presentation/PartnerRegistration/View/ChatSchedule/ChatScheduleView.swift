@@ -1,15 +1,29 @@
 import UIKit
 import Combine
 
-class ChatScheduleView: BaseViewController<PartnerRegistrationViewModel> {
+class ChatScheduleView: BaseViewController<PartnerRegistrationViewModel>, ScheduleSelectionModalDelegate {
+    func didSelectSchedule(index: Int, days: [String],  startTime: String,  endTime: String) {
+        let daysOrder: [String: Int] = ["월": 0, "화": 1, "수": 2, "목": 3, "금": 4, "토": 5, "일": 6]
+        
+        var days = days
+        days.sort{ (day1, day2) -> Bool in
+            guard let day1Order = daysOrder[day1], let day2Order = daysOrder[day2] else { return false }
+            return day1Order < day2Order
+        }
+        
+        let newTitle = days.joined(separator: ",") + " " + startTime + "-" + endTime
+        viewModel.updateSchedule(index: index, content: newTitle)
+    }
+    
     // MARK: - Properties
     private var cancellables = Set<AnyCancellable>()
-    
+    private let transitionDelegate = ModalTransitioningDelegate() 
+
     /// ✅ 버튼 배열 (각 버튼이 일정 선택을 위한 버튼)
     private let scheduleButtons: [SelectionButton] = [
-        SelectionButton(),
-        SelectionButton(),
-        SelectionButton()
+        SelectionButton(placeholder: "첫 번째 일정을 선택해주세요"),
+        SelectionButton(placeholder: "두 번째 일정을 선택해주세요"),
+        SelectionButton(placeholder: "세 번째 일정을 선택해주세요")
     ]
     
     // MARK: - Init
@@ -63,7 +77,7 @@ class ChatScheduleView: BaseViewController<PartnerRegistrationViewModel> {
                 
                 for (index, schedule) in newSchedules.enumerated() {
                     if index < self.scheduleButtons.count {
-                        self.scheduleButtons[index].setTitle(schedule)
+                        self.scheduleButtons[index].updateTitle(schedule)
                     }
                 }
             }
@@ -81,12 +95,11 @@ class ChatScheduleView: BaseViewController<PartnerRegistrationViewModel> {
     // MARK: - Modal Animation
     /// ✅ 특정 일정 선택 버튼을 눌렀을 때 모달을 표시
     private func showCustomModal(for index: Int) {
-        //guard let parentVC = view.findViewController() else { return }
-        
-        print("모달을 보여줘요! 선택한 버튼 인덱스: \(index)")
-
-        // ✅ `SelectionModal`에 선택된 버튼의 인덱스를 전달하여 어떤 일정을 변경할지 식별 가능
-        // let modal = SelectionModal(headerTitle: "일정 선택", options: ["옵션1", "옵션2"], selectionType: index, delegate: self)
-        // parentVC.present(modal, animated: true)
+        guard let parentVC = view.findViewController() else { return }
+        let modal = ScheduleSelectionModal(index: index)
+        modal.delegate = self
+        modal.transitioningDelegate = transitionDelegate
+        modal.modalPresentationStyle = .custom
+        parentVC.present(modal, animated: true)
     }
 }

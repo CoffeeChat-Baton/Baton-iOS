@@ -50,6 +50,12 @@
 		20BCD0E62D612BEF000213AF /* ExperienceYears.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0E52D612BEF000213AF /* ExperienceYears.swift */; };
 		20BCD0ED2D61DEE4000213AF /* BaseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0EC2D61DEE4000213AF /* BaseTextView.swift */; };
 		20BCD0EF2D6240FB000213AF /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0EE2D6240FB000213AF /* SuccessViewController.swift */; };
+		20BCD0F12D67655E000213AF /* ModalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0F02D67655E000213AF /* ModalHeaderView.swift */; };
+		20BCD0F32D67711D000213AF /* ScheduleSelectionModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0F22D67711D000213AF /* ScheduleSelectionModal.swift */; };
+		20BCD0F52D688C52000213AF /* MulitSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0F42D688C52000213AF /* MulitSelectButton.swift */; };
+		20BCD0F72D68906C000213AF /* ScheduleSelectionModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0F62D68906C000213AF /* ScheduleSelectionModalViewModel.swift */; };
+		20BCD0FA2D68BB05000213AF /* CustomTimePickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0F92D68BB05000213AF /* CustomTimePickerButton.swift */; };
+		20CFB60B2D68D0F300614104 /* ModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB60A2D68D0F300614104 /* ModalTransitioningDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +123,12 @@
 		20BCD0E52D612BEF000213AF /* ExperienceYears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceYears.swift; sourceTree = "<group>"; };
 		20BCD0EC2D61DEE4000213AF /* BaseTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextView.swift; sourceTree = "<group>"; };
 		20BCD0EE2D6240FB000213AF /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
+		20BCD0F02D67655E000213AF /* ModalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHeaderView.swift; sourceTree = "<group>"; };
+		20BCD0F22D67711D000213AF /* ScheduleSelectionModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSelectionModal.swift; sourceTree = "<group>"; };
+		20BCD0F42D688C52000213AF /* MulitSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulitSelectButton.swift; sourceTree = "<group>"; };
+		20BCD0F62D68906C000213AF /* ScheduleSelectionModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSelectionModalViewModel.swift; sourceTree = "<group>"; };
+		20BCD0F92D68BB05000213AF /* CustomTimePickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimePickerButton.swift; sourceTree = "<group>"; };
+		20CFB60A2D68D0F300614104 /* ModalTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTransitioningDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,10 +235,12 @@
 				20535D722D60DDE700E4904E /* BaseContent.swift */,
 				20535D4A2D5B926000E4904E /* BasicButton.swift */,
 				20535D8D2D61040F00E4904E /* SelectionButton.swift */,
-				20535D8F2D61042F00E4904E /* SelectionModal.swift */,
 				20BCD0DB2D611EE4000213AF /* SelectionTitleLabel.swift */,
 				20BCD0E12D6126FA000213AF /* BasicTextField.swift */,
 				20BCD0EC2D61DEE4000213AF /* BaseTextView.swift */,
+				20BCD0F02D67655E000213AF /* ModalHeaderView.swift */,
+				20535D8F2D61042F00E4904E /* SelectionModal.swift */,
+				20BCD0F42D688C52000213AF /* MulitSelectButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -275,6 +289,7 @@
 				20535D4F2D60B55A00E4904E /* UIFont+DesignSystem.swift */,
 				20535D5D2D60C32B00E4904E /* UILabel+DesignSystem.swift */,
 				20535D602D60C40800E4904E /* UIButton+DesignSystem.swift */,
+				20CFB60A2D68D0F300614104 /* ModalTransitioningDelegate.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -303,10 +318,21 @@
 				20535D782D60ED7700E4904E /* CheckProfileView.swift */,
 				20535D7A2D60EDBC00E4904E /* EmployeeStatusView.swift */,
 				20535D7C2D60EEDE00E4904E /* JobInfoView.swift */,
-				20535D7E2D60EEEA00E4904E /* ChatScheduleView.swift */,
+				20BCD0F82D68BA30000213AF /* ChatSchedule */,
 				20535D802D60EEF900E4904E /* SelfIntroductionView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		20BCD0F82D68BA30000213AF /* ChatSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				20535D7E2D60EEEA00E4904E /* ChatScheduleView.swift */,
+				20BCD0F22D67711D000213AF /* ScheduleSelectionModal.swift */,
+				20BCD0F62D68906C000213AF /* ScheduleSelectionModalViewModel.swift */,
+				20BCD0F92D68BB05000213AF /* CustomTimePickerButton.swift */,
+			);
+			path = ChatSchedule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,6 +475,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20CFB60B2D68D0F300614104 /* ModalTransitioningDelegate.swift in Sources */,
 				20BCD0E62D612BEF000213AF /* ExperienceYears.swift in Sources */,
 				20535D792D60ED7700E4904E /* CheckProfileView.swift in Sources */,
 				20535D4E2D60AED400E4904E /* HomeViewController.swift in Sources */,
@@ -459,18 +486,23 @@
 				20535D132D5B916400E4904E /* AppDelegate.swift in Sources */,
 				20535D8E2D61040F00E4904E /* SelectionButton.swift in Sources */,
 				20535D812D60EEF900E4904E /* SelfIntroductionView.swift in Sources */,
+				20BCD0FA2D68BB05000213AF /* CustomTimePickerButton.swift in Sources */,
 				20535D6B2D60D5C700E4904E /* PartnerRegistrationViewController.swift in Sources */,
 				20535D4B2D5B926000E4904E /* BasicButton.swift in Sources */,
 				20535D922D6104C700E4904E /* UIView+Extensions.swift in Sources */,
 				20535D832D60EF8A00E4904E /* PartnerRegistrationViewModel.swift in Sources */,
+				20BCD0F12D67655E000213AF /* ModalHeaderView.swift in Sources */,
 				20BCD0DC2D611EE4000213AF /* SelectionTitleLabel.swift in Sources */,
 				20535D612D60C40800E4904E /* UIButton+DesignSystem.swift in Sources */,
+				20BCD0F32D67711D000213AF /* ScheduleSelectionModal.swift in Sources */,
 				20BCD0ED2D61DEE4000213AF /* BaseTextView.swift in Sources */,
 				20535D5E2D60C32B00E4904E /* UILabel+DesignSystem.swift in Sources */,
+				20BCD0F72D68906C000213AF /* ScheduleSelectionModalViewModel.swift in Sources */,
 				20BCD0E22D6126FA000213AF /* BasicTextField.swift in Sources */,
 				20535D7B2D60EDBC00E4904E /* EmployeeStatusView.swift in Sources */,
 				20BCD0EF2D6240FB000213AF /* SuccessViewController.swift in Sources */,
 				20535D692D60C80300E4904E /* ButtonSize.swift in Sources */,
+				20BCD0F52D688C52000213AF /* MulitSelectButton.swift in Sources */,
 				20535D902D61042F00E4904E /* SelectionModal.swift in Sources */,
 				20535D672D60C7A200E4904E /* Spacing.swift in Sources */,
 				20535D7D2D60EEDE00E4904E /* JobInfoView.swift in Sources */,

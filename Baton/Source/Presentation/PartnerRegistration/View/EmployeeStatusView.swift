@@ -7,7 +7,7 @@ class EmployeeStatusView: BaseViewController<PartnerRegistrationViewModel> {
     private var cancellables = Set<AnyCancellable>()
     
     private let uploadFileTitleLabel = SelectionTitleLabel(title: "첨부파일")
-    private let uploadFileButton = SelectionButton(mode: .uploadFile)
+    private let uploadFileButton = SelectionButton(mode: .uploadFile, placeholder: "파일 형식: JPG, PNG, PDF")
     private var stackView = UIStackView()
     
     // MARK: - Init
@@ -24,8 +24,6 @@ class EmployeeStatusView: BaseViewController<PartnerRegistrationViewModel> {
     
     // MARK: - UI Setup
     private func setupView() {
-        uploadFileButton.setTitle("파일 형식: JPG, PNG, PDF")
-        
         uploadFileButton.addTarget(self, action: #selector(uploadFileButtonTapped), for: .touchUpInside)
         
         stackView = SubStackView(label: uploadFileTitleLabel, view: uploadFileButton)
@@ -48,7 +46,7 @@ class EmployeeStatusView: BaseViewController<PartnerRegistrationViewModel> {
         viewModel.$selectedFileName
             .receive(on: DispatchQueue.main)
             .sink { [weak self] fileName in
-                self?.uploadFileButton.setTitle(fileName.isEmpty ? "파일 형식: JPG, PNG, PDF" : fileName)
+                self?.uploadFileButton.updateTitle(fileName.isEmpty ? "파일 형식: JPG, PNG, PDF" : fileName)
             }
             .store(in: &cancellables)
     }

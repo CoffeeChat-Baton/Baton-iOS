@@ -33,6 +33,7 @@ class PartnerRegistrationViewController: UIPageViewController, UIPageViewControl
         setupNavigationBar()
         bindViewModel()
     }
+    
     private func setupPages() {
         let step1 = CheckProfileView(viewModel: viewModel)
         let step2 = EmployeeStatusView(viewModel: viewModel)
@@ -62,9 +63,16 @@ class PartnerRegistrationViewController: UIPageViewController, UIPageViewControl
     
     private func setupNavigationBar() {
         let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backButtonTapped))
+        backButton.tintColor = .bblack
         navigationItem.leftBarButtonItem = backButton
         navigationItem.title = "파트너 등록"
-        navigationItem.titleView?.tintColor = .black
+        navigationItem.titleView?.tintColor = .bblack
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.shadowColor = .clear
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
     private func bindViewModel() {
