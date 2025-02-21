@@ -25,10 +25,8 @@ class SelectionModal<T, D: SelectionModalDelegate>: UIViewController where D.Sel
         self.options = options
         self.selectionType = selectionType
         self.delegate = delegate
-        
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .overFullScreen
-        modalTransitionStyle = .coverVertical
     }
     
     required init?(coder: NSCoder) {

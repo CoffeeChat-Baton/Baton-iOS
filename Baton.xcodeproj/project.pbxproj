@@ -55,6 +55,7 @@
 		20BCD0F52D688C52000213AF /* MulitSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0F42D688C52000213AF /* MulitSelectButton.swift */; };
 		20BCD0F72D68906C000213AF /* ScheduleSelectionModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0F62D68906C000213AF /* ScheduleSelectionModalViewModel.swift */; };
 		20BCD0FA2D68BB05000213AF /* CustomTimePickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0F92D68BB05000213AF /* CustomTimePickerButton.swift */; };
+		20CFB60B2D68D0F300614104 /* ModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB60A2D68D0F300614104 /* ModalTransitioningDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		20BCD0F42D688C52000213AF /* MulitSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulitSelectButton.swift; sourceTree = "<group>"; };
 		20BCD0F62D68906C000213AF /* ScheduleSelectionModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSelectionModalViewModel.swift; sourceTree = "<group>"; };
 		20BCD0F92D68BB05000213AF /* CustomTimePickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimePickerButton.swift; sourceTree = "<group>"; };
+		20CFB60A2D68D0F300614104 /* ModalTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTransitioningDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +289,7 @@
 				20535D4F2D60B55A00E4904E /* UIFont+DesignSystem.swift */,
 				20535D5D2D60C32B00E4904E /* UILabel+DesignSystem.swift */,
 				20535D602D60C40800E4904E /* UIButton+DesignSystem.swift */,
+				20CFB60A2D68D0F300614104 /* ModalTransitioningDelegate.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20CFB60B2D68D0F300614104 /* ModalTransitioningDelegate.swift in Sources */,
 				20BCD0E62D612BEF000213AF /* ExperienceYears.swift in Sources */,
 				20535D792D60ED7700E4904E /* CheckProfileView.swift in Sources */,
 				20535D4E2D60AED400E4904E /* HomeViewController.swift in Sources */,

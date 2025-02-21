@@ -17,7 +17,8 @@ class ChatScheduleView: BaseViewController<PartnerRegistrationViewModel>, Schedu
     
     // MARK: - Properties
     private var cancellables = Set<AnyCancellable>()
-    
+    private let transitionDelegate = ModalTransitioningDelegate() 
+
     /// ✅ 버튼 배열 (각 버튼이 일정 선택을 위한 버튼)
     private let scheduleButtons: [SelectionButton] = [
         SelectionButton(placeholder: "첫 번째 일정을 선택해주세요"),
@@ -97,6 +98,8 @@ class ChatScheduleView: BaseViewController<PartnerRegistrationViewModel>, Schedu
         guard let parentVC = view.findViewController() else { return }
         let modal = ScheduleSelectionModal(index: index)
         modal.delegate = self
+        modal.transitioningDelegate = transitionDelegate
+        modal.modalPresentationStyle = .custom
         parentVC.present(modal, animated: true)
     }
 }

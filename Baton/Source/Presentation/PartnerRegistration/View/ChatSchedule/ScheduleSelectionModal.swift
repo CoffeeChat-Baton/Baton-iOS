@@ -43,7 +43,6 @@ class ScheduleSelectionModal: UIViewController {
     init(index: Int){
         let headerTitle = ordinalNumbers[index] + "번째 일정"
         self.headerView = ModalHeaderView(title: headerTitle)
-        
         viewModel.updateIndex(index)
         super.init(nibName: nil, bundle: nil)
         setupUI()
@@ -52,7 +51,6 @@ class ScheduleSelectionModal: UIViewController {
         setupAction()
         animateModalAppearance()
         bindViewModel()
-        
         modalPresentationStyle = .overFullScreen
         modalTransitionStyle = .coverVertical
     }
@@ -82,8 +80,8 @@ class ScheduleSelectionModal: UIViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        
+        view.backgroundColor = .clear
+
         modalView.backgroundColor = .white
         modalView.layer.cornerRadius = 16
         modalView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]

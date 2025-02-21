@@ -20,7 +20,7 @@ class ModalHeaderView: UIView {
     private func setupUI(title: String){
         titleLabel.text = title
 
-        let configuration = UIImage.SymbolConfiguration(pointSize: 18, weight: .bold)
+        let configuration = UIImage.SymbolConfiguration(pointSize: 14, weight: .bold)
         let closeImage = UIImage(systemName: "xmark", withConfiguration: configuration)
         
         closeButton.setImage(closeImage, for: .normal)
@@ -29,8 +29,8 @@ class ModalHeaderView: UIView {
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         
         titleLabel.textAlignment = .center
-        titleLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        titleLabel.textColor = .black
+        titleLabel.pretendardStyle = .body1
+        titleLabel.textColor = .bblack
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -41,8 +41,8 @@ class ModalHeaderView: UIView {
     
     private func setupConstraint() {
         NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-            closeButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: 14),
+            closeButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 14),
             closeButton.widthAnchor.constraint(equalToConstant: 24),
             closeButton.heightAnchor.constraint(equalToConstant: 24),
             
