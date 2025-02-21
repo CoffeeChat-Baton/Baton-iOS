@@ -100,6 +100,9 @@ class PartnerRegistrationViewModel: BaseViewModelType {
         }
     }
     
+    func updateSchedule(index: Int, content: String) {
+        schedules[index] = content
+    }
     // ✅ 선택 타입 정의
     enum SelectionType {
         case job, subJob, experience

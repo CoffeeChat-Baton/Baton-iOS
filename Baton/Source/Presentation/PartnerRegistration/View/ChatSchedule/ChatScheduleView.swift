@@ -2,8 +2,17 @@ import UIKit
 import Combine
 
 class ChatScheduleView: BaseViewController<PartnerRegistrationViewModel>, ScheduleSelectionModalDelegate {
-    func didSelectSchedule(days: [String], startTime: String, endTime: String) {
-        print("")
+    func didSelectSchedule(index: Int, days: [String],  startTime: String,  endTime: String) {
+        let daysOrder: [String: Int] = ["월": 0, "화": 1, "수": 2, "목": 3, "금": 4, "토": 5, "일": 6]
+        
+        var days = days
+        days.sort{ (day1, day2) -> Bool in
+            guard let day1Order = daysOrder[day1], let day2Order = daysOrder[day2] else { return false }
+            return day1Order < day2Order
+        }
+        
+        let newTitle = days.joined(separator: ",") + " " + startTime + "-" + endTime
+        viewModel.updateSchedule(index: index, content: newTitle)
     }
     
     // MARK: - Properties
@@ -86,8 +95,7 @@ class ChatScheduleView: BaseViewController<PartnerRegistrationViewModel>, Schedu
     /// ✅ 특정 일정 선택 버튼을 눌렀을 때 모달을 표시
     private func showCustomModal(for index: Int) {
         guard let parentVC = view.findViewController() else { return }
-        let ordinalNumbers = ["첫", "두", "셋"]
-        let modal = ScheduleSelectionModal(headerTitle: ordinalNumbers[index] + "번째 일정")
+        let modal = ScheduleSelectionModal(index: index)
         modal.delegate = self
         parentVC.present(modal, animated: true)
     }
