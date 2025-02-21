@@ -50,6 +50,8 @@
 		20BCD0E62D612BEF000213AF /* ExperienceYears.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0E52D612BEF000213AF /* ExperienceYears.swift */; };
 		20BCD0ED2D61DEE4000213AF /* BaseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0EC2D61DEE4000213AF /* BaseTextView.swift */; };
 		20BCD0EF2D6240FB000213AF /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0EE2D6240FB000213AF /* SuccessViewController.swift */; };
+		20BCD0F12D67655E000213AF /* ModalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0F02D67655E000213AF /* ModalHeaderView.swift */; };
+		20BCD0F32D67711D000213AF /* ScheduleSelectionModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0F22D67711D000213AF /* ScheduleSelectionModal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +119,8 @@
 		20BCD0E52D612BEF000213AF /* ExperienceYears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceYears.swift; sourceTree = "<group>"; };
 		20BCD0EC2D61DEE4000213AF /* BaseTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextView.swift; sourceTree = "<group>"; };
 		20BCD0EE2D6240FB000213AF /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
+		20BCD0F02D67655E000213AF /* ModalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHeaderView.swift; sourceTree = "<group>"; };
+		20BCD0F22D67711D000213AF /* ScheduleSelectionModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSelectionModal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,10 +227,12 @@
 				20535D722D60DDE700E4904E /* BaseContent.swift */,
 				20535D4A2D5B926000E4904E /* BasicButton.swift */,
 				20535D8D2D61040F00E4904E /* SelectionButton.swift */,
-				20535D8F2D61042F00E4904E /* SelectionModal.swift */,
 				20BCD0DB2D611EE4000213AF /* SelectionTitleLabel.swift */,
 				20BCD0E12D6126FA000213AF /* BasicTextField.swift */,
 				20BCD0EC2D61DEE4000213AF /* BaseTextView.swift */,
+				20BCD0F02D67655E000213AF /* ModalHeaderView.swift */,
+				20535D8F2D61042F00E4904E /* SelectionModal.swift */,
+				20BCD0F22D67711D000213AF /* ScheduleSelectionModal.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -463,8 +469,10 @@
 				20535D4B2D5B926000E4904E /* BasicButton.swift in Sources */,
 				20535D922D6104C700E4904E /* UIView+Extensions.swift in Sources */,
 				20535D832D60EF8A00E4904E /* PartnerRegistrationViewModel.swift in Sources */,
+				20BCD0F12D67655E000213AF /* ModalHeaderView.swift in Sources */,
 				20BCD0DC2D611EE4000213AF /* SelectionTitleLabel.swift in Sources */,
 				20535D612D60C40800E4904E /* UIButton+DesignSystem.swift in Sources */,
+				20BCD0F32D67711D000213AF /* ScheduleSelectionModal.swift in Sources */,
 				20BCD0ED2D61DEE4000213AF /* BaseTextView.swift in Sources */,
 				20535D5E2D60C32B00E4904E /* UILabel+DesignSystem.swift in Sources */,
 				20BCD0E22D6126FA000213AF /* BasicTextField.swift in Sources */,

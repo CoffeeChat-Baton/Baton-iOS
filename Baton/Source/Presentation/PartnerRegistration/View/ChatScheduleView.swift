@@ -1,7 +1,11 @@
 import UIKit
 import Combine
 
-class ChatScheduleView: BaseViewController<PartnerRegistrationViewModel> {
+class ChatScheduleView: BaseViewController<PartnerRegistrationViewModel>, ScheduleSelectionModalDelegate {
+    func didSelectSchedule(days: [String], startTime: String, endTime: String) {
+        print("")
+    }
+    
     // MARK: - Properties
     private var cancellables = Set<AnyCancellable>()
     
@@ -81,12 +85,10 @@ class ChatScheduleView: BaseViewController<PartnerRegistrationViewModel> {
     // MARK: - Modal Animation
     /// ✅ 특정 일정 선택 버튼을 눌렀을 때 모달을 표시
     private func showCustomModal(for index: Int) {
-        //guard let parentVC = view.findViewController() else { return }
-        
-        print("모달을 보여줘요! 선택한 버튼 인덱스: \(index)")
-
-        // ✅ `SelectionModal`에 선택된 버튼의 인덱스를 전달하여 어떤 일정을 변경할지 식별 가능
-        // let modal = SelectionModal(headerTitle: "일정 선택", options: ["옵션1", "옵션2"], selectionType: index, delegate: self)
-        // parentVC.present(modal, animated: true)
+        guard let parentVC = view.findViewController() else { return }
+        let ordinalNumbers = ["첫", "두", "셋"]
+        let modal = ScheduleSelectionModal(headerTitle: ordinalNumbers[index] + "번째 일정")
+        modal.delegate = self
+        parentVC.present(modal, animated: true)
     }
 }
