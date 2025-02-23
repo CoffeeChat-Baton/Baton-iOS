@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         setupGlobalNavigationBarAppearance()
         
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = navigationController
+        window?.rootViewController = BatonTabBarController()
         window?.makeKeyAndVisible()
     }
     
