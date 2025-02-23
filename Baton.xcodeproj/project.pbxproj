@@ -56,6 +56,8 @@
 		20BCD0F72D68906C000213AF /* ScheduleSelectionModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0F62D68906C000213AF /* ScheduleSelectionModalViewModel.swift */; };
 		20BCD0FA2D68BB05000213AF /* CustomTimePickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0F92D68BB05000213AF /* CustomTimePickerButton.swift */; };
 		20CFB60B2D68D0F300614104 /* ModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB60A2D68D0F300614104 /* ModalTransitioningDelegate.swift */; };
+		20CFB60D2D6B509500614104 /* BatonTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB60C2D6B509500614104 /* BatonTabBarController.swift */; };
+		20CFB60F2D6B50E800614104 /* BatonTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB60E2D6B50E800614104 /* BatonTabBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +131,8 @@
 		20BCD0F62D68906C000213AF /* ScheduleSelectionModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSelectionModalViewModel.swift; sourceTree = "<group>"; };
 		20BCD0F92D68BB05000213AF /* CustomTimePickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimePickerButton.swift; sourceTree = "<group>"; };
 		20CFB60A2D68D0F300614104 /* ModalTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTransitioningDelegate.swift; sourceTree = "<group>"; };
+		20CFB60C2D6B509500614104 /* BatonTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonTabBarController.swift; sourceTree = "<group>"; };
+		20CFB60E2D6B50E800614104 /* BatonTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonTabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,9 +277,11 @@
 		20535D5C2D60C17000E4904E /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				20CFB60C2D6B509500614104 /* BatonTabBarController.swift */,
 				20535D122D5B916400E4904E /* AppDelegate.swift */,
 				20535D142D5B916400E4904E /* SceneDelegate.swift */,
 				20535D442D5B91CA00E4904E /* Presentation */,
+				20CFB60E2D6B50E800614104 /* BatonTabBar.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -484,12 +490,14 @@
 				20535D172D5B916400E4904E /* BaseViewController.swift in Sources */,
 				20535D502D60B55A00E4904E /* UIFont+DesignSystem.swift in Sources */,
 				20535D132D5B916400E4904E /* AppDelegate.swift in Sources */,
+				20CFB60D2D6B509500614104 /* BatonTabBarController.swift in Sources */,
 				20535D8E2D61040F00E4904E /* SelectionButton.swift in Sources */,
 				20535D812D60EEF900E4904E /* SelfIntroductionView.swift in Sources */,
 				20BCD0FA2D68BB05000213AF /* CustomTimePickerButton.swift in Sources */,
 				20535D6B2D60D5C700E4904E /* PartnerRegistrationViewController.swift in Sources */,
 				20535D4B2D5B926000E4904E /* BasicButton.swift in Sources */,
 				20535D922D6104C700E4904E /* UIView+Extensions.swift in Sources */,
+				20CFB60F2D6B50E800614104 /* BatonTabBar.swift in Sources */,
 				20535D832D60EF8A00E4904E /* PartnerRegistrationViewModel.swift in Sources */,
 				20BCD0F12D67655E000213AF /* ModalHeaderView.swift in Sources */,
 				20BCD0DC2D611EE4000213AF /* SelectionTitleLabel.swift in Sources */,
