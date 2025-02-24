@@ -8,11 +8,11 @@ class SelfIntroductionView: BaseViewController<PartnerRegistrationViewModel> {
     private let scrollView = UIScrollView()
     private let contentStackView = UIStackView()
     
-    private let shortIntroLabel = SelectionTitleLabel(title: "한 줄 소개")
-    private let shortIntroTextField = BasicTextField(placeholder: "한 줄 소개를 작성해주세요")
+    private let shortIntroLabel = SelectionTitleLabel(title: "한 줄 소개", style: .body4 , color: .gray5 )
+    private let shortIntroTextField = BaseTextView(placeholder: "한 줄 소개를 작성해주세요", maxLength: 50)
     
-    private let detailedBioTitleLabel = SelectionTitleLabel(title: "상세소개")
-    private let detailedBioTextField = BaseTextView(placeholder: "자신을 소개하는 글을 작성해주세요")
+    private let detailedBioTitleLabel = SelectionTitleLabel(title: "상세 소개", style: .body4 , color: .gray5 )
+    private let detailedBioTextField = BaseTextView(placeholder: "자신을 소개하는 글을 작성해주세요", maxLength: 5000)
     
     // MARK: - Init
     init(viewModel: PartnerRegistrationViewModel) {
@@ -29,7 +29,6 @@ class SelfIntroductionView: BaseViewController<PartnerRegistrationViewModel> {
     
     // MARK: - UI Setup
     private func setupView() {
-
         contentStackView.axis = .vertical
         contentStackView.spacing = 16
         contentStackView.alignment = .fill
@@ -37,6 +36,7 @@ class SelfIntroductionView: BaseViewController<PartnerRegistrationViewModel> {
 
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        detailedBioTextField.translatesAutoresizingMaskIntoConstraints = false
         
         contentView.addSubview(scrollView)
         scrollView.addSubview(contentStackView)
@@ -58,11 +58,11 @@ class SelfIntroductionView: BaseViewController<PartnerRegistrationViewModel> {
             contentStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
-            shortIntroTextField.heightAnchor.constraint(equalToConstant: 48),
+            shortIntroTextField.heightAnchor.constraint(equalToConstant: 104),
             
             detailedBioTextField.topAnchor.constraint(equalTo: detailedBioTitleLabel.bottomAnchor, constant: 6),
-//            detailedBioTextField.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            detailedBioTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: 150),
+            detailedBioTextField.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            detailedBioTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: 200)
         ])
     }
     

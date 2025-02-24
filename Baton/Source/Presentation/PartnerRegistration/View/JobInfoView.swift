@@ -9,16 +9,16 @@ extension JobInfoView: SelectionModalDelegate {
 
 class JobInfoView: BaseViewController<PartnerRegistrationViewModel> {
     
-    private let jobTitleLabel = SelectionTitleLabel(title: "직무")
+    private let jobTitleLabel = SelectionTitleLabel(title: "직무", style: .body4 , color: .gray5 )
     private let jobButton = SelectionButton(placeholder: "직무 선택")
     
-    private let subJobTitleLabel = SelectionTitleLabel(title: "세부 직무")
+    private let subJobTitleLabel = SelectionTitleLabel(title: "세부 직무", style: .body4 , color: .gray5 )
     private let subJobButton = SelectionButton(placeholder: "세부 직무 선택")
     
-    private let companyTitleLabel = SelectionTitleLabel(title: "회사")
+    private let companyTitleLabel = SelectionTitleLabel(title: "회사", style: .body4 , color: .gray5 )
     private let companyTextField = BasicTextField(placeholder: "회사명을 입력해주세요.")
     
-    private let experienceTitleLabel = SelectionTitleLabel(title: "총 경력")
+    private let experienceTitleLabel = SelectionTitleLabel(title: "총 경력", style: .body4 , color: .gray5 )
     private let experienceButton = SelectionButton(placeholder: "경력 선택")
     
     private var cancellables = Set<AnyCancellable>() // ✅ Combine 구독

@@ -6,7 +6,7 @@ class EmployeeStatusView: BaseViewController<PartnerRegistrationViewModel> {
     // MARK: - Properties
     private var cancellables = Set<AnyCancellable>()
     
-    private let uploadFileTitleLabel = SelectionTitleLabel(title: "첨부파일")
+    private let uploadFileTitleLabel = SelectionTitleLabel(title: "첨부파일", style: .body4 , color: .bblack )
     private let uploadFileButton = SelectionButton(mode: .uploadFile, placeholder: "파일 형식: JPG, PNG, PDF")
     private var stackView = UIStackView()
     
