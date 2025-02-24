@@ -60,6 +60,7 @@
 		20CFB60F2D6B50E800614104 /* BatonTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB60E2D6B50E800614104 /* BatonTabBar.swift */; };
 		20CFB6112D6C8AE400614104 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB6102D6C8AE400614104 /* MyPageViewController.swift */; };
 		20CFB6132D6C8B6C00614104 /* MyBatonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB6122D6C8B6C00614104 /* MyBatonViewController.swift */; };
+		20CFB6152D6CA7AD00614104 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB6142D6CA7AD00614104 /* UIViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,7 @@
 		20CFB60E2D6B50E800614104 /* BatonTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonTabBar.swift; sourceTree = "<group>"; };
 		20CFB6102D6C8AE400614104 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		20CFB6122D6C8B6C00614104 /* MyBatonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBatonViewController.swift; sourceTree = "<group>"; };
+		20CFB6142D6CA7AD00614104 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +304,7 @@
 				20535D5D2D60C32B00E4904E /* UILabel+DesignSystem.swift */,
 				20535D602D60C40800E4904E /* UIButton+DesignSystem.swift */,
 				20CFB60A2D68D0F300614104 /* ModalTransitioningDelegate.swift */,
+				20CFB6142D6CA7AD00614104 /* UIViewController.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				20535D832D60EF8A00E4904E /* PartnerRegistrationViewModel.swift in Sources */,
 				20BCD0F12D67655E000213AF /* ModalHeaderView.swift in Sources */,
 				20BCD0DC2D611EE4000213AF /* SelectionTitleLabel.swift in Sources */,
+				20CFB6152D6CA7AD00614104 /* UIViewController.swift in Sources */,
 				20535D612D60C40800E4904E /* UIButton+DesignSystem.swift in Sources */,
 				20BCD0F32D67711D000213AF /* ScheduleSelectionModal.swift in Sources */,
 				20BCD0ED2D61DEE4000213AF /* BaseTextView.swift in Sources */,
