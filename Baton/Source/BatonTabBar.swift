@@ -14,6 +14,7 @@ class BatonTabBar: UIView {
         backgroundColor = .bwhite
         
         layer.cornerRadius = 12
+        layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.04
         layer.shadowOffset = CGSize(width: 0, height: -5)
