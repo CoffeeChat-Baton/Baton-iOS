@@ -34,6 +34,20 @@ class PartnerRegistrationViewController: UIPageViewController, UIPageViewControl
         bindViewModel()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let tabBarController = self.tabBarController as? BatonTabBarController {
+            tabBarController.hideTabBar()
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let tabBarController = self.tabBarController as? BatonTabBarController {
+            tabBarController.showTabBar()
+        }
+    }
+
     private func setupPages() {
         let step1 = CheckProfileView(viewModel: viewModel)
         let step2 = EmployeeStatusView(viewModel: viewModel)
