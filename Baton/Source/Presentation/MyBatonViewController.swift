@@ -61,22 +61,14 @@ class MyBatonViewController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
         view.addSubview(scrollView)
         
-        // 각 페이지(대기, 확정, 완료) 뷰 추가
+        // ✅ ExampleViewController를 각 페이지에 추가
         for i in 0..<segmentTitles.count {
+            let exampleVC = ShowBatonsViewController() // ✅ ExampleViewController 인스턴스 생성
+            addChild(exampleVC) // ✅ 부모 ViewController에 추가
             let pageFrame = CGRect(x: CGFloat(i) * view.frame.width, y: 0, width: view.frame.width, height: scrollView.frame.height)
-            let pageView = UIView(frame: pageFrame)
-            
-            // 배경색은 페이지 식별을 위한 예시로 설정 (원하는 대로 커스터마이징)
-            pageView.backgroundColor = [UIColor.systemGray6, UIColor.systemGray4, UIColor.systemGray2][i]
-            
-            // 중앙에 라벨 추가 (예시)
-            let label = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 50))
-            label.center = CGPoint(x: view.frame.width / 2, y: pageView.frame.height / 2)
-            label.textAlignment = .center
-            label.text = segmentTitles[i]
-            pageView.addSubview(label)
-            
-            scrollView.addSubview(pageView)
+            exampleVC.view.frame = pageFrame // ✅ ExampleViewController의 View 크기 설정
+            scrollView.addSubview(exampleVC.view) // ✅ ScrollView에 추가
+            exampleVC.didMove(toParent: self) // ✅ 부모 ViewController로 이동 완료
         }
     }
     
