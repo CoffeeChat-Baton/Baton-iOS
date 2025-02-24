@@ -141,8 +141,8 @@ class SelectionModal<T, D: SelectionModalDelegate>: UIViewController where D.Sel
 
                 checkImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
                 checkImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor), // ✅ 가장 오른쪽 정렬
-                checkImageView.widthAnchor.constraint(equalToConstant: 24),
-                checkImageView.heightAnchor.constraint(equalToConstant: 24)
+                checkImageView.widthAnchor.constraint(equalToConstant: 20),
+                checkImageView.heightAnchor.constraint(equalToConstant: 20)
             ])
 
             // ✅ 버튼 클릭 시 체크 상태 변경
