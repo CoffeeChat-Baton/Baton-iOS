@@ -1,68 +1,71 @@
 import UIKit
 
-extension BatonTabBarController: BatonTabBarDelegate {
-    func tabBarDidSelect(index: Int) {
-        switchToViewController(index: index)
-    }
-}
-
-class BatonTabBarController: UIViewController {
-    private let tabItems: [(title: String, image: UIImage?)] = [
+class BatonTabBarController: UITabBarController {
+    private let customTabBar = BatonTabBar(items: [
         ("홈", UIImage(named: "home")),
         ("바통", UIImage(named: "baton")),
         ("마이", UIImage(named: "mypage"))
-    ]
-    private lazy var batonTabBar = BatonTabBar(items: tabItems)
-    private let viewControllers: [UIViewController]
+    ])
     
-    private var currentViewController: UIViewController?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupTabs()
+        setupCustomTabBar()
+    }
     
-    init() {
+    private func setupTabs() {
         let homeVC = UINavigationController(rootViewController: HomeViewController())
         let batonVC = UINavigationController(rootViewController: MyBatonViewController())
         let myPageVC = UINavigationController(rootViewController: MyPageViewController())
         
+        homeVC.tabBarItem = UITabBarItem(title: "홈", image: UIImage(named: "home"), tag: 0)
+        batonVC.tabBarItem = UITabBarItem(title: "바통", image: UIImage(named: "baton"), tag: 1)
+        myPageVC.tabBarItem = UITabBarItem(title: "마이", image: UIImage(named: "mypage"), tag: 2)
+        
         self.viewControllers = [homeVC, batonVC, myPageVC]
+    }
+    
+    private func setupCustomTabBar() {
+        // 기본 탭바 숨기기
+        tabBar.isHidden = true
         
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupTabBar()
-        switchToViewController(index: 0)
-    }
-    
-    private func setupTabBar() {
-        view.addSubview(batonTabBar)
-        
-        batonTabBar.translatesAutoresizingMaskIntoConstraints = false
-        batonTabBar.delegate = self
+        // 커스텀 탭바 추가
+        view.addSubview(customTabBar)
+        customTabBar.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            batonTabBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            batonTabBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            batonTabBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            batonTabBar.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1)
+            customTabBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            customTabBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            customTabBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            customTabBar.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.11)
         ])
+        
+        customTabBar.delegate = self
     }
     
-    private func switchToViewController(index: Int) {
-        if let currentVC = currentViewController {
-            currentVC.willMove(toParent: nil)
-            currentVC.view.removeFromSuperview()
-            currentVC.removeFromParent()
+    /// ✅ 커스텀 탭바 델리게이트
+    func switchToTab(index: Int) {
+        selectedIndex = index
+    }
+    
+    /// ✅ 탭바 숨기기
+    func hideTabBar() {
+        UIView.animate(withDuration: 0.3) {
+            self.customTabBar.alpha = 0
         }
-        
-        let newVC = viewControllers[index]
-        addChild(newVC)
-        view.insertSubview(newVC.view, belowSubview: batonTabBar)
-        newVC.didMove(toParent: self)
-        
-        currentViewController = newVC
+    }
+
+    /// ✅ 탭바 보이기
+    func showTabBar() {
+        UIView.animate(withDuration: 0.3) {
+            self.customTabBar.alpha = 1
+        }
+    }
+}
+
+// ✅ 커스텀 탭바 델리게이트 적용
+extension BatonTabBarController: BatonTabBarDelegate {
+    func tabBarDidSelect(index: Int) {
+        switchToTab(index: index)
     }
 }

@@ -122,8 +122,8 @@ class BaseViewController<ViewModel: BaseViewModelType>: UIViewController {
     // MARK: - Update UI
     private func updateUI() {
         let step = viewModel.currentStep
-        mainTitleLabel.setTextWithLineSpacing(step.mainTitle, style: .head1, lineHeightMultiple: 1.6)
-        subTitleLabel.setTextWithLineSpacing(step.subTitle, style: .body5, lineHeightMultiple: 1.6)
+        mainTitleLabel.setTextWithLineSpacing(step.mainTitle, style: .head1, lineHeightMultiple: 1.5)
+        subTitleLabel.setTextWithLineSpacing(step.subTitle, style: .body5, lineHeightMultiple: 1.3)
         actionButton.setTitle(step.actionButtonTitle, for: .normal)
     }
     

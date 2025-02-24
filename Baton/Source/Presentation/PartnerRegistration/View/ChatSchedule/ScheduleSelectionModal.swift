@@ -7,7 +7,7 @@ protocol ScheduleSelectionModalDelegate: AnyObject {
 
 class ScheduleSelectionModal: UIViewController {
     weak var delegate: ScheduleSelectionModalDelegate?
-    private let viewModel = ScheduleSelectionViewModel()
+    private let viewModel: ScheduleSelectionViewModel
     private var cancellables = Set<AnyCancellable>()
     
     private let ordinalNumbers = ["첫", "두", "세"]
@@ -24,7 +24,6 @@ class ScheduleSelectionModal: UIViewController {
     private let timeTitleLabel = SelectionTitleLabel(title: "시간", style: .body4, color: .bblack)
     
     private let daySelectionStackView = UIStackView()
-    
     private let timeSelectionStackView = UIStackView()
     private let timeRangeLabel = SelectionTitleLabel(title: "~", style: .head1, color: .gray3)
     private let startTimePicker = CustomTimePickerButton()
@@ -40,17 +39,19 @@ class ScheduleSelectionModal: UIViewController {
         return button
     }()
     
-    init(index: Int){
+    init(index: Int, selectedDays: Set<String>, startTime: String, endTime: String ){
+        self.viewModel = ScheduleSelectionViewModel(index: index, selectedDays: selectedDays, startTime: startTime, endTime: endTime)
         let headerTitle = ordinalNumbers[index] + "번째 일정"
         self.headerView = ModalHeaderView(title: headerTitle)
-        viewModel.updateIndex(index)
         super.init(nibName: nil, bundle: nil)
+        
         setupUI()
         addSubViews()
         setupConstraint()
         setupAction()
         animateModalAppearance()
         bindViewModel()
+        
         modalPresentationStyle = .overFullScreen
         modalTransitionStyle = .coverVertical
     }

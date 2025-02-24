@@ -9,9 +9,9 @@ extension CheckProfileView: SelectionModalDelegate {
 
 class CheckProfileView: BaseViewController<PartnerRegistrationViewModel> {
     
-    private let jobTitleLabel = SelectionTitleLabel(title: "직무")
-    private let subJobTitleLabel = SelectionTitleLabel(title: "세부 직무")
-    private let experienceTitleLabel = SelectionTitleLabel(title: "총 경력")
+    private let jobTitleLabel = SelectionTitleLabel(title: "직무", style: .body4 , color: .gray5 )
+    private let subJobTitleLabel = SelectionTitleLabel(title: "세부 직무", style: .body4 , color: .gray5 )
+    private let experienceTitleLabel = SelectionTitleLabel(title: "총 경력", style: .body4 , color: .gray5 )
 
     private let jobButton = SelectionButton(placeholder: "직무 선택")
     private let subJobButton = SelectionButton(placeholder: "세부 직무 선택")
@@ -125,7 +125,8 @@ class CheckProfileView: BaseViewController<PartnerRegistrationViewModel> {
         
         let headerTitle = viewModel.getTitle(for: selectionType)
         let options = viewModel.getOptions(for: selectionType)
-        let modal = SelectionModal(headerTitle: headerTitle, options: options, selectionType: selectionType, delegate: self)
+        let selectedOption = viewModel.getSelection(for: selectionType)
+        let modal = SelectionModal(headerTitle: headerTitle, options: options, selectionType: selectionType, delegate: self, selectedOption: selectedOption)
         
         parentVC.present(modal, animated: true)
     }

@@ -1,7 +1,7 @@
 import UIKit
 import Combine
 
-class ChatScheduleView: BaseViewController<PartnerRegistrationViewModel>, ScheduleSelectionModalDelegate {
+extension ChatScheduleView: ScheduleSelectionModalDelegate {
     func didSelectSchedule(index: Int, days: [String],  startTime: String,  endTime: String) {
         let daysOrder: [String: Int] = ["월": 0, "화": 1, "수": 2, "목": 3, "금": 4, "토": 5, "일": 6]
         
@@ -14,6 +14,9 @@ class ChatScheduleView: BaseViewController<PartnerRegistrationViewModel>, Schedu
         let newTitle = days.joined(separator: ",") + " " + startTime + "-" + endTime
         viewModel.updateSchedule(index: index, content: newTitle)
     }
+}
+
+class ChatScheduleView: BaseViewController<PartnerRegistrationViewModel>{
     
     // MARK: - Properties
     private var cancellables = Set<AnyCancellable>()
@@ -85,7 +88,7 @@ class ChatScheduleView: BaseViewController<PartnerRegistrationViewModel>, Schedu
     }
     
     // MARK: - Button Actions
-    /// ✅ 버튼 클릭 시 호출됨 (어떤 버튼이 눌렸는지 `sender.tag`로 구분 가능)
+    /// ✅  버튼 클릭 시 호출됨 (어떤 버튼이 눌렸는지 `sender.tag`로 구분 가능)
     @objc private func scheduleButtonTapped(_ sender: UIButton) {
         let selectedIndex = sender.tag
         sender.setTitleColor(.black, for: .normal)
@@ -96,7 +99,7 @@ class ChatScheduleView: BaseViewController<PartnerRegistrationViewModel>, Schedu
     /// ✅ 특정 일정 선택 버튼을 눌렀을 때 모달을 표시
     private func showCustomModal(for index: Int) {
         guard let parentVC = view.findViewController() else { return }
-        let modal = ScheduleSelectionModal(index: index)
+        let modal = ScheduleSelectionModal(index: index, selectedDays: [], startTime: "시간 선택", endTime: "시간 선택")
         modal.delegate = self
         modal.transitioningDelegate = transitionDelegate
         modal.modalPresentationStyle = .custom
