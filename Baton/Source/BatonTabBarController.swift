@@ -19,8 +19,8 @@ class BatonTabBarController: UIViewController {
     
     init() {
         let homeVC = UINavigationController(rootViewController: HomeViewController())
-        let batonVC = UINavigationController(rootViewController: HomeViewController())
-        let myPageVC = UINavigationController(rootViewController: HomeViewController())
+        let batonVC = UINavigationController(rootViewController: MyBatonViewController())
+        let myPageVC = UINavigationController(rootViewController: MyPageViewController())
         
         self.viewControllers = [homeVC, batonVC, myPageVC]
         
@@ -41,6 +41,7 @@ class BatonTabBarController: UIViewController {
         view.addSubview(batonTabBar)
         
         batonTabBar.translatesAutoresizingMaskIntoConstraints = false
+        batonTabBar.delegate = self
         
         NSLayoutConstraint.activate([
             batonTabBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
