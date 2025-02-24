@@ -6,6 +6,13 @@ class ScheduleSelectionViewModel: ObservableObject {
     @Published var startTime: String = ""
     @Published var endTime: String = ""
     
+    init(index: Int, selectedDays: Set<String>, startTime: String, endTime: String) {
+        self.index = index
+        self.selectedDays = selectedDays
+        self.startTime = startTime
+        self.endTime = endTime
+    }
+    
     func updateIndex(_ index: Int) {
         self.index = index
     }

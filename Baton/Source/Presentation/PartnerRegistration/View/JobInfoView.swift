@@ -117,7 +117,8 @@ class JobInfoView: BaseViewController<PartnerRegistrationViewModel> {
         
         let headerTitle = viewModel.getTitle(for: selectionType)
         let options = viewModel.getOptions(for: selectionType)
-        let modal = SelectionModal(headerTitle: headerTitle, options: options, selectionType: selectionType, delegate: self)
+        let selectedOption = viewModel.getSelection(for: selectionType)
+        let modal = SelectionModal(headerTitle: headerTitle, options: options, selectionType: selectionType, delegate: self, selectedOption: selectedOption)
         
         parentVC.present(modal, animated: true)
     }
