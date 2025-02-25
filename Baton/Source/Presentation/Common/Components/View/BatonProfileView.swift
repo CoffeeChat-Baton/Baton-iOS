@@ -52,15 +52,7 @@ class BatonProfileView: UIView {
     }()
     
     // 🔹 하단 버튼
-    private let actionButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.titleLabel?.pretendardStyle = .body3
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .main
-        button.layer.cornerRadius = 12
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    private let actionButton: BasicButton
     
     // 🔹 텍스트 StackView (이름, 회사, 설명 포함)
     private let textContainerView: UIStackView = {
@@ -79,15 +71,23 @@ class BatonProfileView: UIView {
         return stackView
     }()
     
-    init(image: UIImage?, name: String, company: String, category: String, description: String, buttonTitle: String) {
+    init(image: UIImage?, name: String, company: String, category: String, description: String, buttonTitle: String?, status: Bool = true) {
         self.category = category
+        
+        // ✅ 버튼이 존재할 경우에만 생성
+        if let title = buttonTitle {
+            self.actionButton = BasicButton(title: title, status: status ? .enabled : .disabled)
+        } else {
+            self.actionButton = BasicButton(title: "", status: .disabled)
+            self.actionButton.isHidden = true
+        }
 
         super.init(frame: .zero)
+        
         profileImageView.image = image
         nameLabel.text = name
         companyLabel.text = company
         descriptionLabel.text = description
-        actionButton.setTitle(buttonTitle, for: .normal)
         setupView()
     }
     
@@ -96,7 +96,6 @@ class BatonProfileView: UIView {
     }
     
     private func setupView() {
-        
         backgroundColor = UIColor(resource: .bwhite)
         layer.cornerRadius = 12
         layer.borderWidth = 1
@@ -106,17 +105,17 @@ class BatonProfileView: UIView {
         addSubview(textContainerView)
         addSubview(actionButton)
         addSubview(descriptionContainerView)
-
+        
         // 🔹 텍스트 StackView에 요소 추가
         textContainerView.addArrangedSubview(nameLabel)
         textContainerView.addArrangedSubview(companyLabel)
         textContainerView.addArrangedSubview(descriptionContainerView)
-
+        
         descriptionContainerView.addArrangedSubview(categoryTag)
         descriptionContainerView.addArrangedSubview(descriptionLabel)
         descriptionContainerView.addArrangedSubview(UIView())
-
-                
+        
+        
         textContainerView.distribution = .fillEqually
         // 🔹 Auto Layout 설정
         NSLayoutConstraint.activate([
@@ -130,17 +129,28 @@ class BatonProfileView: UIView {
             textContainerView.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 16),
             textContainerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             textContainerView.topAnchor.constraint(equalTo: profileImageView.topAnchor),
-            textContainerView.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: -16),
-            
-            // 버튼 위치
-            actionButton.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 16),
-            actionButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            actionButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            actionButton.heightAnchor.constraint(equalToConstant: 44),
-            actionButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16) // 하단 여백 추가
         ])
+        
+        
+        if !actionButton.isHidden {
+            NSLayoutConstraint.activate([
+                textContainerView.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: -16),
+                actionButton.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 16),
+                actionButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+                actionButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+                actionButton.heightAnchor.constraint(equalToConstant: 44),
+                actionButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16) // 하단 여백 추가
+            ])
+        } else {
+            NSLayoutConstraint.activate([
+                textContainerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            ])
+        }
     }
     
+    private func setupActiveButton() {
+        
+    }
     override func layoutSubviews() {
         super.layoutSubviews()
         self.layoutIfNeeded() // 🔹 Auto Layout 강제 적용
