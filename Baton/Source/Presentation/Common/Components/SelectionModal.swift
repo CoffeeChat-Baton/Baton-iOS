@@ -61,9 +61,7 @@ class SelectionModal<T, D: SelectionModalDelegate>: UIViewController where D.Sel
         
     }
     
-    private func setupUI() {
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        
+    private func setupUI() {        
         modalView.backgroundColor = .white
         modalView.layer.cornerRadius = 16
         modalView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]

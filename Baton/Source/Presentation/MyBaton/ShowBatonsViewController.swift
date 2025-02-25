@@ -1,12 +1,34 @@
 import UIKit
+import Combine
+
+extension ShowBatonsViewController: BatonFilterButtonDelegate {
+    func didTapFilterButton(_ button: BatonFilterButton) {
+        showCustomModal(selection: viewModel.currfilter)
+    }
+}
+
+extension ShowBatonsViewController: SelectionModalDelegate {
+    typealias SelectionType = ShowBatonsViewModel.FilterType
+    func didSelectOption(_ option: String, type: SelectionType) {
+      // 현재 보여주는 바통들 데이터 업데이트 하기.
+        if let newFilter = ShowBatonsViewModel.FilterType(rawValue: option) {
+             viewModel.updateFilter(newFilter)
+         } else {
+             print("⚠️ 일치하는 필터 타입이 없습니다.")
+         }
+    }
+}
 
 class ShowBatonsViewController: UIViewController {
     
     private let titleContainerView = UIStackView()
+    private let viewModel: ShowBatonsViewModel
+    private var cancellables: Set<AnyCancellable> = []
+    private let transitionDelegate = ModalTransitioningDelegate()
     
     // 🔹 필터 버튼 (화면 최상단 오른쪽)
     private let filterButton: BatonFilterButton = {
-        let button = BatonFilterButton(title: "필터 선택", options: ["전체", "개발", "디자인", "마케팅"])
+        let button = BatonFilterButton(title: "필터 선택")
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -60,14 +82,52 @@ class ShowBatonsViewController: UIViewController {
         return profile
     }()
     
+    init(viewModel: ShowBatonsViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .gray1
         setupFilterButton()
         setupScrollView()
         setupContentStackView()
+        setupActions()
+        bindViewModel()
     }
     
+    private func setupActions() {
+        filterButton.delegate = self
+    }
+    
+    private func bindViewModel() {
+        viewModel.$currfilter
+            .sink { [weak self] newFilter in
+                print("드디어!!!!!!!!!", newFilter)
+                self?.filterButton.updateSelectedOption(newFilter.rawValue)
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func showCustomModal(selection: ShowBatonsViewModel.FilterType){
+        guard let parentVC = view.findViewController() else { return }
+        let options = ["바통", "포트폴리오 리뷰", "이력서 첨삭", "모두 보기"]
+        let modal = SelectionModal(headerTitle: "필터 선택",
+                                   options: options,
+                                   selectionType: selection,
+                                   delegate: self,
+                                   selectedOption: viewModel.currfilter.rawValue)
+        modal.delegate = self
+        modal.transitioningDelegate = transitionDelegate
+        modal.modalPresentationStyle = .custom
+        
+        parentVC.present(modal, animated: true)
+    }
     private func setupFilterButton() {
         view.addSubview(filterButton)
         NSLayoutConstraint.activate([
@@ -128,7 +188,7 @@ import SwiftUI
 
 struct ShowBatonsViewControllerRepresentable: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> ShowBatonsViewController {
-        return ShowBatonsViewController()
+        return ShowBatonsViewController(viewModel: ShowBatonsViewModel())
     }
     
     func updateUIViewController(_ uiViewController: ShowBatonsViewController, context: Context) {}

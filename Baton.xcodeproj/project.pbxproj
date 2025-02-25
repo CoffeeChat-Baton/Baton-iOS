@@ -66,6 +66,7 @@
 		20CFB61B2D6CBF1000614104 /* BatonTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB61A2D6CBF1000614104 /* BatonTag.swift */; };
 		20CFB61F2D6CC62100614104 /* BatonFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB61E2D6CC62100614104 /* BatonFilterButton.swift */; };
 		20CFB6212D6CC8EE00614104 /* ShowBatonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB6202D6CC8EE00614104 /* ShowBatonsViewController.swift */; };
+		20CFB6242D6DF42700614104 /* ShowBatonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB6232D6DF42700614104 /* ShowBatonsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +150,7 @@
 		20CFB61A2D6CBF1000614104 /* BatonTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonTag.swift; sourceTree = "<group>"; };
 		20CFB61E2D6CC62100614104 /* BatonFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonFilterButton.swift; sourceTree = "<group>"; };
 		20CFB6202D6CC8EE00614104 /* ShowBatonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowBatonsViewController.swift; sourceTree = "<group>"; };
+		20CFB6232D6DF42700614104 /* ShowBatonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowBatonsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,11 +230,11 @@
 		20535D442D5B91CA00E4904E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				20CFB6222D6DF40000614104 /* MyBaton */,
 				20535D6D2D60D8B100E4904E /* Home */,
 				20535D6C2D60D89F00E4904E /* PartnerRegistration */,
 				20535D472D5B922D00E4904E /* Common */,
 				20CFB6102D6C8AE400614104 /* MyPageViewController.swift */,
-				20CFB6122D6C8B6C00614104 /* MyBatonViewController.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -304,7 +306,6 @@
 				20535D122D5B916400E4904E /* AppDelegate.swift */,
 				20535D142D5B916400E4904E /* SceneDelegate.swift */,
 				20535D442D5B91CA00E4904E /* Presentation */,
-				20CFB6202D6CC8EE00614104 /* ShowBatonsViewController.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -363,6 +364,16 @@
 				20BCD0F92D68BB05000213AF /* CustomTimePickerButton.swift */,
 			);
 			path = ChatSchedule;
+			sourceTree = "<group>";
+		};
+		20CFB6222D6DF40000614104 /* MyBaton */ = {
+			isa = PBXGroup;
+			children = (
+				20CFB6202D6CC8EE00614104 /* ShowBatonsViewController.swift */,
+				20CFB6232D6DF42700614104 /* ShowBatonsViewModel.swift */,
+				20CFB6122D6C8B6C00614104 /* MyBatonViewController.swift */,
+			);
+			path = MyBaton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -536,6 +547,7 @@
 				20CFB6212D6CC8EE00614104 /* ShowBatonsViewController.swift in Sources */,
 				20BCD0F72D68906C000213AF /* ScheduleSelectionModalViewModel.swift in Sources */,
 				20CFB6192D6CB94900614104 /* BatonProfileView.swift in Sources */,
+				20CFB6242D6DF42700614104 /* ShowBatonsViewModel.swift in Sources */,
 				20CFB61B2D6CBF1000614104 /* BatonTag.swift in Sources */,
 				20CFB6112D6C8AE400614104 /* MyPageViewController.swift in Sources */,
 				20BCD0E22D6126FA000213AF /* BasicTextField.swift in Sources */,

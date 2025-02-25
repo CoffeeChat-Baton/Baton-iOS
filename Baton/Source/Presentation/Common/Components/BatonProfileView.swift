@@ -97,6 +97,7 @@ class BatonProfileView: UIView {
     
     private func setupView() {
         
+        backgroundColor = UIColor(resource: .bwhite)
         layer.cornerRadius = 12
         layer.borderWidth = 1
         layer.borderColor = UIColor.gray2.cgColor
