@@ -3,7 +3,7 @@ import Combine
 
 class ShowBatonsViewModel {
     
-    @Published var datas = []
+    @Published var datas: [Baton] = []
     @Published var currfilter: FilterType = .all
     
     enum FilterType: String {
@@ -18,4 +18,12 @@ class ShowBatonsViewModel {
         print(currfilter)
     }
     
+}
+
+struct Baton {
+    let imageName: String
+    let name: String
+    let company: String
+    let description: String
+    let canStart: Bool?
 }
