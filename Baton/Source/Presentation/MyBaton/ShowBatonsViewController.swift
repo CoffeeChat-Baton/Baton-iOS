@@ -104,6 +104,7 @@ class ShowBatonsViewController: UIViewController {
         setupContentStackView()
         setupActions()
         bindViewModel()
+        view.bringSubviewToFront(filterButton)
     }
     
     private func setupActions() {
@@ -152,7 +153,7 @@ class ShowBatonsViewController: UIViewController {
         view.addSubview(scrollView)
         
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: filterButton.bottomAnchor, constant: 5),
+            scrollView.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant: 5),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
