@@ -9,7 +9,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RoundImageButtonWithLabelCell.identifier, for: indexPath) as! RoundImageButtonWithLabelCell
-        cell.configure(with: buttonImages[indexPath.item], title: "테스트")
+        cell.configure(with: buttonImages[indexPath.item], title: categories[indexPath.item])
         return cell
     }
     
@@ -25,7 +25,54 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
 
 final class HomeViewController: UIViewController {
     
-    private let buttonImages: [UIImage?] = Array(repeating: UIImage(systemName: "star.fill"), count: 20) // 20개 버튼
+    private let buttonImages: [UIImage?] = [
+        UIImage(resource: .categoryBusins),
+        UIImage(resource: .categoryService),
+        UIImage(resource: .categoryDev),
+        UIImage(resource: .categoryData),
+        UIImage(resource: .categoryMarketing),
+        UIImage(resource: .categoryDesign),
+        UIImage(resource: .categoryMedia),
+        UIImage(resource: .categoryEcommerce),
+        UIImage(resource: .categoryFinance),
+        UIImage(resource: .categoryAccounting),
+        UIImage(resource: .categoryHrCustomersale),
+        UIImage(resource: .categoryHrCustomersale),
+        UIImage(resource: .categoryGame),
+        UIImage(resource: .categoryMarketing),
+        UIImage(resource: .categoryMedical),
+        UIImage(resource: .categoryResearch),
+        UIImage(resource: .categoryEngineering),
+        UIImage(resource: .categoryProduction),
+        UIImage(resource: .categoryEducation),
+        UIImage(resource: .categoryLaw),
+        UIImage(resource: .categoryPublic)
+    ]
+    
+    let categories: [String] = [
+        "경영",
+        "서비스기획",
+        "개발",
+        "데이터·AI·ML",
+        "마케팅",
+        "디자인",
+        "미디어",
+        "이커머스",
+        "금융",
+        "회계",
+        "인사",
+        "고객·영업",
+        "게임",
+        "물류",
+        "의료",
+        "연구",
+        "엔지니어링",
+        "생산",
+        "교육",
+        "법률·특허",
+        "공공",
+        "닫기"
+    ]
     private let scrollView = UIScrollView()
     private let contentStackView = UIStackView()
     
@@ -37,14 +84,9 @@ final class HomeViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
-    private let categoryTitleLabel = {
-        let label = UILabel()
-        label.pretendardStyle = .title1
-        label.textColor = .bblack
-        label.text = "멘토 둘러보기"
-        return label
-    }()
+    private let myBatonsTitleLabel = UILabel.makeLabel(text: "다가오는 나의 바통은?", textColor: .bblack, fontStyle: .title1)
+
+    private let categoryTitleLabel = UILabel.makeLabel(text: "멘토 둘러보기", textColor: .bblack, fontStyle: .title1)
     
     // 🔹 카테고리 리스트
     private let collectionView: UICollectionView = {
@@ -55,19 +97,17 @@ final class HomeViewController: UIViewController {
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.isScrollEnabled = false
         cv.backgroundColor = .clear
         return cv
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupBatonNavigationBar()
         view.backgroundColor = .gray1
+
+        setupBatonNavigationBar()
         setupScrollView()
-        setupLayout()
-        
-        let buttonImage = UIImage(systemName: "plus") // SF Symbol 사용
-        let roundButton = CategoryButton(image: buttonImage, size: 50)
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -80,32 +120,36 @@ final class HomeViewController: UIViewController {
         contentStackView.axis = .vertical
         contentStackView.spacing = 16
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
-        
+        collectionView.backgroundColor = .red
+
         view.addSubview(scrollView)
         scrollView.addSubview(contentStackView)
+        
         contentStackView.addArrangedSubview(spacer)
         contentStackView.addArrangedSubview(adBannerView)
+        contentStackView.addArrangedSubview(myBatonsTitleLabel)
         contentStackView.addArrangedSubview(categoryTitleLabel)
         contentStackView.addArrangedSubview(collectionView)
 
         NSLayoutConstraint.activate([
+            // 🔹 scrollView 설정
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Spacing.large.value),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Spacing.large.value),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
+            // 🔹 contentStackView 설정
             contentStackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            contentStackView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
-            contentStackView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
+            contentStackView.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor, constant: Spacing.large.value),
+            contentStackView.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -Spacing.large.value),
             contentStackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
-            contentStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            
-            adBannerView.heightAnchor.constraint(equalToConstant: 166),
-            collectionView.heightAnchor.constraint(equalToConstant: 500)
-        ])
-    }
 
-    private func setupLayout() {
+            // 🔹 광고 배너 설정
+            adBannerView.heightAnchor.constraint(equalToConstant: 166),
+
+            // 🔹 컬렉션 뷰 높이 설정 (동적으로 계산)
+            collectionView.heightAnchor.constraint(equalToConstant: 600) // ⬅ 필요에 따라 동적 설정 가능
+        ])
     }
 }
 
@@ -113,9 +157,8 @@ final class HomeViewController: UIViewController {
 class AdBannerView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     private let banners: [UIImage] = [
-        UIImage(named: "banner1") ?? UIImage(systemName: "photo")!,
-        UIImage(named: "banner2") ?? UIImage(systemName: "photo")!,
-        UIImage(named: "banner3") ?? UIImage(systemName: "photo")!
+        UIImage(resource: .homeBanner1) ?? UIImage(systemName: "photo")!,
+        UIImage(resource: .homeBanner2) ?? UIImage(systemName: "photo")!,
     ]
     
     private var timer: Timer?
