@@ -33,14 +33,8 @@ class BatonFilterButton: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
-    private var selectedOption: String?
-    private var headerTitle: String
-    private var options: [String]
-    
-    init(title: String, options: [String]) {
-        self.headerTitle = title
-        self.options = options
+        
+    init(title: String) {
         super.init(frame: .zero)
         titleLabel.text = title
         setupView()
@@ -88,7 +82,6 @@ class BatonFilterButton: UIView {
     }
     
     func updateSelectedOption(_ option: String) {
-        selectedOption = option
         titleLabel.text = option
     }
 }
@@ -116,7 +109,7 @@ struct BatonFilterButtonRepresentable: UIViewRepresentable {
     }
     
     func makeUIView(context: Context) -> BatonFilterButton {
-        let button = BatonFilterButton(title: "필터 선택", options: ["전체", "개발", "디자인", "마케팅"])
+        let button = BatonFilterButton(title: "필터 선택")
         button.delegate = context.coordinator
         return button
     }

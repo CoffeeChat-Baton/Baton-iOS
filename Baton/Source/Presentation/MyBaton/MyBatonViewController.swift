@@ -63,7 +63,8 @@ class MyBatonViewController: UIViewController, UIScrollViewDelegate {
         
         // ✅ ExampleViewController를 각 페이지에 추가
         for i in 0..<segmentTitles.count {
-            let exampleVC = ShowBatonsViewController() // ✅ ExampleViewController 인스턴스 생성
+            let viewModel = ShowBatonsViewModel()
+            let exampleVC = ShowBatonsViewController(viewModel: viewModel) // ✅ ExampleViewController 인스턴스 생성
             addChild(exampleVC) // ✅ 부모 ViewController에 추가
             let pageFrame = CGRect(x: CGFloat(i) * view.frame.width, y: 0, width: view.frame.width, height: scrollView.frame.height)
             exampleVC.view.frame = pageFrame // ✅ ExampleViewController의 View 크기 설정

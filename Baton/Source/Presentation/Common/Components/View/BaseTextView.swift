@@ -2,6 +2,10 @@ import UIKit
 
 class BaseTextView: UIView, UITextViewDelegate {
     
+    enum ViewStyle {
+        case outlined, filled
+    }
+    
     private let containerView = UIView() // ✅ 텍스트뷰를 감싸는 뷰 추가
     private let textView = UITextView()
     private let countLabel = UILabel()
@@ -10,32 +14,53 @@ class BaseTextView: UIView, UITextViewDelegate {
     var placeholder: String
     var maxLength: Int
     
-    init(frame: CGRect = .zero, placeholder: String, maxLength: Int = 200) {
+    init(
+        frame: CGRect = .zero,
+        placeholder: String,
+        maxLength: Int = 200,
+        style: ViewStyle = .outlined,
+        isEditable: Bool = true
+    ) {
         self.placeholder = placeholder
         self.maxLength = maxLength
         super.init(frame: frame)
         setupView(placeholder: placeholder)
+        setupStyle(style)
+        self.textView.isEditable = isEditable
+        
+        if !isEditable {
+            countLabel.isHidden = true
+        }
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    private func setupView(placeholder: String) {
-        backgroundColor = .clear // ✅ 전체 뷰 배경 투명
-       
-        // ✅ 텍스트뷰를 감싸는 컨테이너 설정 (테두리 포함)
-        containerView.backgroundColor = .white
+    
+    private func setupStyle(_ style: ViewStyle) {
         containerView.layer.cornerRadius = CornerRadius.button.value
-        containerView.layer.borderWidth = 1
-        containerView.layer.borderColor = UIColor(resource: .gray3).cgColor
-        
+
+        switch style {
+        case .outlined:
+            backgroundColor = .clear // ✅ 전체 뷰 배경 투명
+            containerView.backgroundColor = .white
+            containerView.layer.borderWidth = 1
+            containerView.layer.borderColor = UIColor(resource: .gray3).cgColor
+            textView.textColor = UIColor.gray4
+        case .filled:
+            containerView.backgroundColor = .gray1
+            textView.textColor = UIColor.bblack
+
+        }
+    }
+    
+    private func setupView(placeholder: String) {
         textView.text = placeholder
         textView.textColor = UIColor.gray4
         textView.font = UIFont.Pretendard.body2.font
-        textView.backgroundColor = .clear
         textView.delegate = self
         textView.isScrollEnabled = false // ✅ 자동 크기 확장
+        textView.backgroundColor = .clear
 
         // ✅ 글자 수 카운트 라벨 (텍스트뷰 바깥 아래 배치)
         countLabel.font = UIFont.Pretendard.body5.font

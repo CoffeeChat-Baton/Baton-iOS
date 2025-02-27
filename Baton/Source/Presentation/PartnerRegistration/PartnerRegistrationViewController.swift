@@ -1,6 +1,17 @@
 import UIKit
 import Combine
 
+extension PartnerRegistrationViewController: BatonNavigationConfigurable {
+    
+    @objc func backButtonTapped() {
+        if viewModel.currentStepIndex > 0 {
+            viewModel.goToPreviousStep()
+            setViewControllers([pages[viewModel.currentStepIndex]], direction: .reverse, animated: true, completion: nil)
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
+    }
+}
 class PartnerRegistrationViewController: UIPageViewController, UIPageViewControllerDelegate{
     private var navigationBarTitle = "멘토 등록"
     private var pages: [UIViewController] = []
@@ -30,7 +41,6 @@ class PartnerRegistrationViewController: UIPageViewController, UIPageViewControl
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPages()
-        setupNavigationBar()
         bindViewModel()
     }
     
@@ -39,6 +49,7 @@ class PartnerRegistrationViewController: UIPageViewController, UIPageViewControl
         if let tabBarController = self.tabBarController as? BatonTabBarController {
             tabBarController.hideTabBar()
         }
+        setupNavigationBar()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -47,7 +58,13 @@ class PartnerRegistrationViewController: UIPageViewController, UIPageViewControl
             tabBarController.showTabBar()
         }
     }
+    
+    private func setupNavigationBar() {
+        let backButton = BatonNavigationButton.backButton(target: self, action: #selector(backButtonTapped))
+        setupBatonNavigationBar(title: "파트너 등록", backButton: backButton)
+    }
 
+    
     private func setupPages() {
         let step1 = CheckProfileView(viewModel: viewModel)
         let step2 = EmployeeStatusView(viewModel: viewModel)
@@ -74,21 +91,6 @@ class PartnerRegistrationViewController: UIPageViewController, UIPageViewControl
             setViewControllers([firstPage], direction: .forward, animated: false, completion: nil)
         }
     }
-    
-    private func setupNavigationBar() {
-        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backButtonTapped))
-        backButton.tintColor = .bblack
-        navigationItem.leftBarButtonItem = backButton
-        navigationItem.title = "파트너 등록"
-        navigationItem.titleView?.tintColor = .bblack
-        
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.shadowColor = .clear
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-    }
-    
     private func bindViewModel() {
         viewModel.$currentStepIndex
             .dropFirst() // 첫 번째 값 무시 (초기 상태 방지)
@@ -98,14 +100,5 @@ class PartnerRegistrationViewController: UIPageViewController, UIPageViewControl
                 self.setViewControllers([self.pages[index]], direction: .forward, animated: true, completion: nil)
             }
             .store(in: &cancellables)
-    }
-    
-    @objc private func backButtonTapped() {
-        if viewModel.currentStepIndex > 0 {
-            viewModel.goToPreviousStep()
-            setViewControllers([pages[viewModel.currentStepIndex]], direction: .reverse, animated: true, completion: nil)
-        } else {
-            navigationController?.popViewController(animated: true)
-        }
     }
 }

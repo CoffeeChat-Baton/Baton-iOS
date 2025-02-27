@@ -66,6 +66,12 @@
 		20CFB61B2D6CBF1000614104 /* BatonTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB61A2D6CBF1000614104 /* BatonTag.swift */; };
 		20CFB61F2D6CC62100614104 /* BatonFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB61E2D6CC62100614104 /* BatonFilterButton.swift */; };
 		20CFB6212D6CC8EE00614104 /* ShowBatonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB6202D6CC8EE00614104 /* ShowBatonsViewController.swift */; };
+		20CFB6242D6DF42700614104 /* ShowBatonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB6232D6DF42700614104 /* ShowBatonsViewModel.swift */; };
+		20CFB6312D6F4A3E00614104 /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB6302D6F4A3E00614104 /* CategoryButton.swift */; };
+		20CFB6332D6F4D7100614104 /* BatonApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB6322D6F4D7100614104 /* BatonApplyViewController.swift */; };
+		20CFB6362D6F4E1500614104 /* BatonNavigationConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB6352D6F4E1500614104 /* BatonNavigationConfigurable.swift */; };
+		20CFB63B2D6F585C00614104 /* BatonNavigationBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB63A2D6F585C00614104 /* BatonNavigationBackButton.swift */; };
+		20CFB63E2D6F5CDE00614104 /* BatonApplyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB63D2D6F5CDE00614104 /* BatonApplyViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +155,12 @@
 		20CFB61A2D6CBF1000614104 /* BatonTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonTag.swift; sourceTree = "<group>"; };
 		20CFB61E2D6CC62100614104 /* BatonFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonFilterButton.swift; sourceTree = "<group>"; };
 		20CFB6202D6CC8EE00614104 /* ShowBatonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowBatonsViewController.swift; sourceTree = "<group>"; };
+		20CFB6232D6DF42700614104 /* ShowBatonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowBatonsViewModel.swift; sourceTree = "<group>"; };
+		20CFB6302D6F4A3E00614104 /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
+		20CFB6322D6F4D7100614104 /* BatonApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonApplyViewController.swift; sourceTree = "<group>"; };
+		20CFB6352D6F4E1500614104 /* BatonNavigationConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonNavigationConfigurable.swift; sourceTree = "<group>"; };
+		20CFB63A2D6F585C00614104 /* BatonNavigationBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonNavigationBackButton.swift; sourceTree = "<group>"; };
+		20CFB63D2D6F5CDE00614104 /* BatonApplyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonApplyViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,11 +240,12 @@
 		20535D442D5B91CA00E4904E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				20CFB63C2D6F58F500614104 /* TabBar */,
+				20CFB62A2D6DFDD200614104 /* MyPage */,
+				20CFB6222D6DF40000614104 /* MyBaton */,
 				20535D6D2D60D8B100E4904E /* Home */,
 				20535D6C2D60D89F00E4904E /* PartnerRegistration */,
 				20535D472D5B922D00E4904E /* Common */,
-				20CFB6102D6C8AE400614104 /* MyPageViewController.swift */,
-				20CFB6122D6C8B6C00614104 /* MyBatonViewController.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -244,6 +257,7 @@
 				20BCD0E52D612BEF000213AF /* ExperienceYears.swift */,
 				20535D912D6104C700E4904E /* UIView+Extensions.swift */,
 				20535D5F2D60C34300E4904E /* DesignSystem */,
+				20CFB6392D6F584400614104 /* Navigation */,
 				20535D4C2D5B926900E4904E /* Components */,
 			);
 			path = Common;
@@ -252,21 +266,10 @@
 		20535D4C2D5B926900E4904E /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				20BCD0EE2D6240FB000213AF /* SuccessViewController.swift */,
-				20535D162D5B916400E4904E /* BaseViewController.swift */,
-				20535D722D60DDE700E4904E /* BaseContent.swift */,
-				20535D4A2D5B926000E4904E /* BasicButton.swift */,
-				20535D8D2D61040F00E4904E /* SelectionButton.swift */,
-				20BCD0DB2D611EE4000213AF /* SelectionTitleLabel.swift */,
-				20BCD0E12D6126FA000213AF /* BasicTextField.swift */,
-				20BCD0EC2D61DEE4000213AF /* BaseTextView.swift */,
-				20BCD0F02D67655E000213AF /* ModalHeaderView.swift */,
-				20535D8F2D61042F00E4904E /* SelectionModal.swift */,
-				20BCD0F42D688C52000213AF /* MulitSelectButton.swift */,
-				20CFB61A2D6CBF1000614104 /* BatonTag.swift */,
-				20CFB6162D6CB2DB00614104 /* BatonTimeView.swift */,
-				20CFB6182D6CB94900614104 /* BatonProfileView.swift */,
-				20CFB61E2D6CC62100614104 /* BatonFilterButton.swift */,
+				20CFB6282D6DFD8B00614104 /* View */,
+				20CFB6272D6DFD3200614104 /* Modal */,
+				20CFB6262D6DFD0D00614104 /* Button */,
+				20CFB6252D6DFCF300614104 /* ViewController */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -299,12 +302,10 @@
 		20535D5C2D60C17000E4904E /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				20CFB60C2D6B509500614104 /* BatonTabBarController.swift */,
-				20CFB60E2D6B50E800614104 /* BatonTabBar.swift */,
+				20CFB62D2D6F45CA00614104 /* Test */,
 				20535D122D5B916400E4904E /* AppDelegate.swift */,
 				20535D142D5B916400E4904E /* SceneDelegate.swift */,
 				20535D442D5B91CA00E4904E /* Presentation */,
-				20CFB6202D6CC8EE00614104 /* ShowBatonsViewController.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -363,6 +364,95 @@
 				20BCD0F92D68BB05000213AF /* CustomTimePickerButton.swift */,
 			);
 			path = ChatSchedule;
+			sourceTree = "<group>";
+		};
+		20CFB6222D6DF40000614104 /* MyBaton */ = {
+			isa = PBXGroup;
+			children = (
+				20CFB6122D6C8B6C00614104 /* MyBatonViewController.swift */,
+				20CFB6202D6CC8EE00614104 /* ShowBatonsViewController.swift */,
+				20CFB6232D6DF42700614104 /* ShowBatonsViewModel.swift */,
+				20CFB6322D6F4D7100614104 /* BatonApplyViewController.swift */,
+				20CFB63D2D6F5CDE00614104 /* BatonApplyViewModel.swift */,
+			);
+			path = MyBaton;
+			sourceTree = "<group>";
+		};
+		20CFB6252D6DFCF300614104 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				20BCD0EE2D6240FB000213AF /* SuccessViewController.swift */,
+				20535D162D5B916400E4904E /* BaseViewController.swift */,
+				20535D722D60DDE700E4904E /* BaseContent.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		20CFB6262D6DFD0D00614104 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				20535D8D2D61040F00E4904E /* SelectionButton.swift */,
+				20BCD0F42D688C52000213AF /* MulitSelectButton.swift */,
+				20CFB61E2D6CC62100614104 /* BatonFilterButton.swift */,
+				20535D4A2D5B926000E4904E /* BasicButton.swift */,
+				20CFB6302D6F4A3E00614104 /* CategoryButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		20CFB6272D6DFD3200614104 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				20535D8F2D61042F00E4904E /* SelectionModal.swift */,
+				20BCD0F02D67655E000213AF /* ModalHeaderView.swift */,
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
+		20CFB6282D6DFD8B00614104 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				20BCD0E12D6126FA000213AF /* BasicTextField.swift */,
+				20BCD0EC2D61DEE4000213AF /* BaseTextView.swift */,
+				20BCD0DB2D611EE4000213AF /* SelectionTitleLabel.swift */,
+				20CFB61A2D6CBF1000614104 /* BatonTag.swift */,
+				20CFB6162D6CB2DB00614104 /* BatonTimeView.swift */,
+				20CFB6182D6CB94900614104 /* BatonProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		20CFB62A2D6DFDD200614104 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				20CFB6102D6C8AE400614104 /* MyPageViewController.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		20CFB62D2D6F45CA00614104 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		20CFB6392D6F584400614104 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				20CFB6352D6F4E1500614104 /* BatonNavigationConfigurable.swift */,
+				20CFB63A2D6F585C00614104 /* BatonNavigationBackButton.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		20CFB63C2D6F58F500614104 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				20CFB60C2D6B509500614104 /* BatonTabBarController.swift */,
+				20CFB60E2D6B50E800614104 /* BatonTabBar.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -517,16 +607,20 @@
 				20535D132D5B916400E4904E /* AppDelegate.swift in Sources */,
 				20CFB60D2D6B509500614104 /* BatonTabBarController.swift in Sources */,
 				20535D8E2D61040F00E4904E /* SelectionButton.swift in Sources */,
+				20CFB6312D6F4A3E00614104 /* CategoryButton.swift in Sources */,
 				20535D812D60EEF900E4904E /* SelfIntroductionView.swift in Sources */,
 				20BCD0FA2D68BB05000213AF /* CustomTimePickerButton.swift in Sources */,
 				20535D6B2D60D5C700E4904E /* PartnerRegistrationViewController.swift in Sources */,
 				20535D4B2D5B926000E4904E /* BasicButton.swift in Sources */,
 				20535D922D6104C700E4904E /* UIView+Extensions.swift in Sources */,
 				20CFB60F2D6B50E800614104 /* BatonTabBar.swift in Sources */,
+				20CFB6362D6F4E1500614104 /* BatonNavigationConfigurable.swift in Sources */,
 				20535D832D60EF8A00E4904E /* PartnerRegistrationViewModel.swift in Sources */,
 				20BCD0F12D67655E000213AF /* ModalHeaderView.swift in Sources */,
 				20BCD0DC2D611EE4000213AF /* SelectionTitleLabel.swift in Sources */,
+				20CFB6332D6F4D7100614104 /* BatonApplyViewController.swift in Sources */,
 				20CFB61F2D6CC62100614104 /* BatonFilterButton.swift in Sources */,
+				20CFB63E2D6F5CDE00614104 /* BatonApplyViewModel.swift in Sources */,
 				20CFB6152D6CA7AD00614104 /* UIViewController.swift in Sources */,
 				20535D612D60C40800E4904E /* UIButton+DesignSystem.swift in Sources */,
 				20BCD0F32D67711D000213AF /* ScheduleSelectionModal.swift in Sources */,
@@ -535,7 +629,9 @@
 				20535D5E2D60C32B00E4904E /* UILabel+DesignSystem.swift in Sources */,
 				20CFB6212D6CC8EE00614104 /* ShowBatonsViewController.swift in Sources */,
 				20BCD0F72D68906C000213AF /* ScheduleSelectionModalViewModel.swift in Sources */,
+				20CFB63B2D6F585C00614104 /* BatonNavigationBackButton.swift in Sources */,
 				20CFB6192D6CB94900614104 /* BatonProfileView.swift in Sources */,
+				20CFB6242D6DF42700614104 /* ShowBatonsViewModel.swift in Sources */,
 				20CFB61B2D6CBF1000614104 /* BatonTag.swift in Sources */,
 				20CFB6112D6C8AE400614104 /* MyPageViewController.swift in Sources */,
 				20BCD0E22D6126FA000213AF /* BasicTextField.swift in Sources */,

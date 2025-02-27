@@ -1,6 +1,14 @@
 import UIKit
 
 extension UILabel {
+
+    static func makeLabel(text: String, textColor: UIColor = .bblack, fontStyle: UIFont.Pretendard = .body1) -> UILabel {
+        let label = UILabel()
+        label.textColor = textColor
+        label.setTextWithLineSpacing(text, style: fontStyle)
+        return label
+    }
+
     var pretendardStyle: UIFont.Pretendard? {
         get { return nil }
         set {
