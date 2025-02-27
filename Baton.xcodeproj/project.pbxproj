@@ -71,6 +71,7 @@
 		20CFB6332D6F4D7100614104 /* BatonApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB6322D6F4D7100614104 /* BatonApplyViewController.swift */; };
 		20CFB6362D6F4E1500614104 /* BatonNavigationConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB6352D6F4E1500614104 /* BatonNavigationConfigurable.swift */; };
 		20CFB63B2D6F585C00614104 /* BatonNavigationBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB63A2D6F585C00614104 /* BatonNavigationBackButton.swift */; };
+		20CFB63E2D6F5CDE00614104 /* BatonApplyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB63D2D6F5CDE00614104 /* BatonApplyViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +160,7 @@
 		20CFB6322D6F4D7100614104 /* BatonApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonApplyViewController.swift; sourceTree = "<group>"; };
 		20CFB6352D6F4E1500614104 /* BatonNavigationConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonNavigationConfigurable.swift; sourceTree = "<group>"; };
 		20CFB63A2D6F585C00614104 /* BatonNavigationBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonNavigationBackButton.swift; sourceTree = "<group>"; };
+		20CFB63D2D6F5CDE00614104 /* BatonApplyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonApplyViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -367,10 +369,11 @@
 		20CFB6222D6DF40000614104 /* MyBaton */ = {
 			isa = PBXGroup;
 			children = (
+				20CFB6122D6C8B6C00614104 /* MyBatonViewController.swift */,
 				20CFB6202D6CC8EE00614104 /* ShowBatonsViewController.swift */,
 				20CFB6232D6DF42700614104 /* ShowBatonsViewModel.swift */,
-				20CFB6122D6C8B6C00614104 /* MyBatonViewController.swift */,
 				20CFB6322D6F4D7100614104 /* BatonApplyViewController.swift */,
+				20CFB63D2D6F5CDE00614104 /* BatonApplyViewModel.swift */,
 			);
 			path = MyBaton;
 			sourceTree = "<group>";
@@ -617,6 +620,7 @@
 				20BCD0DC2D611EE4000213AF /* SelectionTitleLabel.swift in Sources */,
 				20CFB6332D6F4D7100614104 /* BatonApplyViewController.swift in Sources */,
 				20CFB61F2D6CC62100614104 /* BatonFilterButton.swift in Sources */,
+				20CFB63E2D6F5CDE00614104 /* BatonApplyViewModel.swift in Sources */,
 				20CFB6152D6CA7AD00614104 /* UIViewController.swift in Sources */,
 				20535D612D60C40800E4904E /* UIButton+DesignSystem.swift in Sources */,
 				20BCD0F32D67711D000213AF /* ScheduleSelectionModal.swift in Sources */,

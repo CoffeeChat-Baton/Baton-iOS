@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "banner1.png",
+      "filename" : "category_production.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "banner1@2x.png",
+      "filename" : "category_production@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "banner1@3x.png",
+      "filename" : "category_production@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
