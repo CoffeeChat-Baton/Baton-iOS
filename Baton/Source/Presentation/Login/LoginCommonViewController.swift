@@ -1,5 +1,5 @@
-import UIKit
 import Combine
+import UIKit
 import Lottie
 
 class LoginCommonViewController: BaseViewController<LoginViewModel> {
@@ -15,10 +15,10 @@ class LoginCommonViewController: BaseViewController<LoginViewModel> {
         return view
     }()
 
-    init(viewModel: LoginViewModel, backgroundView: UIView, fileName: String) {
+    init(viewModel: LoginViewModel, backgroundView: UIView, fileName: String, onNext: @escaping () -> Void)  {
         self.backgroundView = backgroundView
         self.lottieFileName = fileName
-        super.init(viewModel: viewModel, contentView: UIView(), onNext: { viewModel.goToNextStep() })
+        super.init(viewModel: viewModel, contentView: UIView(), onNext: onNext)
     }
     
     required init?(coder: NSCoder) {
@@ -30,17 +30,6 @@ class LoginCommonViewController: BaseViewController<LoginViewModel> {
         setupUI()
         setupAnimationView()
         actionButton.backgroundColor = .bblack
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        // ✅ 배경 제거
-        backgroundView.removeFromSuperview()
-        
-        // ✅ Lottie 애니메이션 제거
-        animationView.stop()
-        animationView.removeFromSuperview()
     }
     
     private func setupUI() {

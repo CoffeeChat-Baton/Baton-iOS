@@ -18,7 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         setupGlobalNavigationBarAppearance()
         
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = LoginViewController(viewModel: LoginViewModel())//BatonTabBarController()
+
+        let loginViewController = LoginViewController(viewModel: LoginViewModel())
+        let navigationController = UINavigationController(rootViewController: loginViewController)
+
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
     

@@ -79,7 +79,6 @@
 		20CFB6502D743FF500614104 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB64F2D743FF500614104 /* HomeViewModel.swift */; };
 		20CFB6522D74412F00614104 /* LoginCommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB6512D74412F00614104 /* LoginCommonViewController.swift */; };
 		20CFB6552D74470100614104 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 20CFB6542D74470100614104 /* Lottie */; };
-		20CFB6592D74482000614104 /* LottieAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB6582D74482000614104 /* LottieAnimationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,7 +187,6 @@
 		20CFB64D2D743FED00614104 /* adBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adBannerView.swift; sourceTree = "<group>"; };
 		20CFB64F2D743FF500614104 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		20CFB6512D74412F00614104 /* LoginCommonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCommonViewController.swift; sourceTree = "<group>"; };
-		20CFB6582D74482000614104 /* LottieAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -494,7 +492,6 @@
 				20CFB6492D743B9900614104 /* LoginViewController.swift */,
 				20CFB64B2D743BA100614104 /* LoginViewModel.swift */,
 				20CFB6512D74412F00614104 /* LoginCommonViewController.swift */,
-				20CFB6582D74482000614104 /* LottieAnimationViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -668,7 +665,6 @@
 				20535D4B2D5B926000E4904E /* BasicButton.swift in Sources */,
 				20535D922D6104C700E4904E /* UIView+Extensions.swift in Sources */,
 				20CFB60F2D6B50E800614104 /* BatonTabBar.swift in Sources */,
-				20CFB6592D74482000614104 /* LottieAnimationViewController.swift in Sources */,
 				20CFB6362D6F4E1500614104 /* BatonNavigationConfigurable.swift in Sources */,
 				20535D832D60EF8A00E4904E /* PartnerRegistrationViewModel.swift in Sources */,
 				20BCD0F12D67655E000213AF /* ModalHeaderView.swift in Sources */,
