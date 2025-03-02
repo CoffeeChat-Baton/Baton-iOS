@@ -21,6 +21,7 @@ class LoginViewController: UIPageViewController, UIPageViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .bwhite
+        setupPages()
     }
 
     // MARK: - LifeCycle
@@ -40,10 +41,10 @@ class LoginViewController: UIPageViewController, UIPageViewControllerDelegate {
     }
     
     private func setupPages() {
-        let step1 = UIViewController()
+        let step1 = LoginCommonViewController(viewModel: LoginViewModel())
         let step2 = UIViewController()
         pages = [step1, step2]
-        
+        step1.view.backgroundColor = .red
         if let firstPage = pages.first {
             setViewControllers([firstPage], direction: .forward, animated: true)
         }

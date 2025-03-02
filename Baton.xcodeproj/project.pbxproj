@@ -76,6 +76,7 @@
 		20CFB64C2D743BA100614104 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB64B2D743BA100614104 /* LoginViewModel.swift */; };
 		20CFB64E2D743FED00614104 /* adBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB64D2D743FED00614104 /* adBannerView.swift */; };
 		20CFB6502D743FF500614104 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB64F2D743FF500614104 /* HomeViewModel.swift */; };
+		20CFB6522D74412F00614104 /* LoginCommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB6512D74412F00614104 /* LoginCommonViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +170,7 @@
 		20CFB64B2D743BA100614104 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		20CFB64D2D743FED00614104 /* adBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adBannerView.swift; sourceTree = "<group>"; };
 		20CFB64F2D743FF500614104 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		20CFB6512D74412F00614104 /* LoginCommonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCommonViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -471,6 +473,7 @@
 			children = (
 				20CFB6492D743B9900614104 /* LoginViewController.swift */,
 				20CFB64B2D743BA100614104 /* LoginViewModel.swift */,
+				20CFB6512D74412F00614104 /* LoginCommonViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 				20CFB64C2D743BA100614104 /* LoginViewModel.swift in Sources */,
 				20535D502D60B55A00E4904E /* UIFont+DesignSystem.swift in Sources */,
 				20CFB64E2D743FED00614104 /* adBannerView.swift in Sources */,
+				20CFB6522D74412F00614104 /* LoginCommonViewController.swift in Sources */,
 				20535D132D5B916400E4904E /* AppDelegate.swift in Sources */,
 				20CFB60D2D6B509500614104 /* BatonTabBarController.swift in Sources */,
 				20535D8E2D61040F00E4904E /* SelectionButton.swift in Sources */,
