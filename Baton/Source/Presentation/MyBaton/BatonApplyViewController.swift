@@ -1,6 +1,6 @@
 import UIKit
 
-class BatonApplyViewController: UIViewController, BatonNavigationConfigurable {
+class BatonApplyViewController: UIViewController {
     
     private var viewModel = BatonApplyViewModel()
     
@@ -44,8 +44,8 @@ class BatonApplyViewController: UIViewController, BatonNavigationConfigurable {
     }
 
     private func setupNavigationBar() {
-        let backButton = BatonNavigationButton.backButton(target: self, action: #selector(backButtonTapped))
-        setupBatonNavigationBar(title: "Apply for Baton", backButton: backButton)
+//        let backButton = BatonNavigationButton.backButton(target: self, action: #selector(backButtonTapped))
+        //setupBatonNavigationBar(title: "Apply for Baton", backButton: backButton)
     }
     
     private func setupUI() {
@@ -99,9 +99,9 @@ class BatonApplyViewController: UIViewController, BatonNavigationConfigurable {
         // TODO: API 연결 및 실제 신청 로직 구현
     }
 
-    @objc func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
-    }
+//    @objc func backButtonTapped() {
+//        navigationController?.popViewController(animated: true)
+//    }
     
     private func makeSpacer() -> UIView {
         let view = UIView()

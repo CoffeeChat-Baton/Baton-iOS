@@ -1,17 +1,17 @@
 import UIKit
 import Combine
 
-extension PartnerRegistrationViewController: BatonNavigationConfigurable {
-    
-    @objc func backButtonTapped() {
-        if viewModel.currentStepIndex > 0 {
-            viewModel.goToPreviousStep()
-            setViewControllers([pages[viewModel.currentStepIndex]], direction: .reverse, animated: true, completion: nil)
-        } else {
-            navigationController?.popViewController(animated: true)
-        }
-    }
-}
+//extension PartnerRegistrationViewController: BatonNavigationConfigurable {
+//    
+//    @objc func backButtonTapped() {
+//        if viewModel.currentStepIndex > 0 {
+//            viewModel.goToPreviousStep()
+//            setViewControllers([pages[viewModel.currentStepIndex]], direction: .reverse, animated: true, completion: nil)
+//        } else {
+//            navigationController?.popViewController(animated: true)
+//        }
+//    }
+//}
 class PartnerRegistrationViewController: UIPageViewController, UIPageViewControllerDelegate{
     private var navigationBarTitle = "멘토 등록"
     private var pages: [UIViewController] = []
@@ -60,8 +60,8 @@ class PartnerRegistrationViewController: UIPageViewController, UIPageViewControl
     }
     
     private func setupNavigationBar() {
-        let backButton = BatonNavigationButton.backButton(target: self, action: #selector(backButtonTapped))
-        setupBatonNavigationBar(title: "파트너 등록", backButton: backButton)
+//        let backButton = BatonNavigationButton.backButton(target: self, action: #selector(backButtonTapped))
+        //setupBatonNavigationBar(title: "파트너 등록", backButton: backButton)
     }
 
     

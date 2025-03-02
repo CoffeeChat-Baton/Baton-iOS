@@ -38,6 +38,8 @@ class RoundImageButtonWithLabelCell: UICollectionViewCell {
         button.clipsToBounds = true
         button.imageView?.contentMode = .scaleAspectFit
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.isEnabled = false
+        button.isUserInteractionEnabled = false
         return button
     }()
     
