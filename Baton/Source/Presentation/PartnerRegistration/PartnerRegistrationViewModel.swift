@@ -116,6 +116,9 @@ class PartnerRegistrationViewModel: BaseViewModelType {
     func goToNextStep() {
         if currentStepIndex < steps.count - 1 {
             currentStepIndex += 1
+            if currentStepIndex == steps.count - 2 { // 파트너 등록 진짜 하는 시기
+                // 멘토 등록하기
+            }
         } else {
             print("🎉 파트너 등록 완료!")
             onCompletion?()
