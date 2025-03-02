@@ -9,13 +9,6 @@ protocol BaseViewModelType: AnyObject {
     var cancellables: Set<AnyCancellable> { get set }
 }
 
-// 기본 구현 추가 (선택 사항)
-extension BaseViewModelType {
-    var currentStep: BaseContent {
-        return steps[currentStepIndex]
-    }
-}
-
 class BaseViewController<ViewModel: BaseViewModelType>: UIViewController {
     
     let viewModel: ViewModel
@@ -114,16 +107,20 @@ class BaseViewController<ViewModel: BaseViewModelType>: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] newIndex in
                 guard let self = self else { return }
-                self.updateUI()
+                self.updateUI(step: viewModel.steps[newIndex])
             }
             .store(in: &viewModel.cancellables)
     }
     
     // MARK: - Update UI
-    private func updateUI() {
-        let step = viewModel.currentStep
+    private func updateUI(step: BaseContent) {
+        mainTitleLabel.isHidden = step.mainTitle.isEmpty
         mainTitleLabel.setTextWithLineSpacing(step.mainTitle, style: .head1, lineHeightMultiple: 1.5)
+        
+        subTitleLabel.isHidden = step.subTitle.isEmpty
         subTitleLabel.setTextWithLineSpacing(step.subTitle, style: .body5, lineHeightMultiple: 1.3)
+       
+        actionButton.isHidden = step.actionButtonTitle.isEmpty
         actionButton.setTitle(step.actionButtonTitle, for: .normal)
     }
     

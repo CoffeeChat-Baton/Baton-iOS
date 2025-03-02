@@ -113,6 +113,6 @@ final class HomeViewController: UIViewController {
     }
     
     private func navigateToCategoryScreen(category: String) {
-        let mentorListVC = MentorListViewController()
-        navigationController?.pushViewController(mentorListVC, animated: true)
+        //let mentorListVC = MentorListViewController()
+        //navigationController?.pushViewController(mentorListVC, animated: true)
     }}
