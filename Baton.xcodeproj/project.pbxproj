@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20473BA22D7453A100F04ED7 /* UIColor+DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20473BA12D7453A100F04ED7 /* UIColor+DesignSystem.swift */; };
 		20535D132D5B916400E4904E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D122D5B916400E4904E /* AppDelegate.swift */; };
 		20535D152D5B916400E4904E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D142D5B916400E4904E /* SceneDelegate.swift */; };
 		20535D172D5B916400E4904E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D162D5B916400E4904E /* BaseViewController.swift */; };
@@ -78,7 +79,7 @@
 		20CFB6502D743FF500614104 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB64F2D743FF500614104 /* HomeViewModel.swift */; };
 		20CFB6522D74412F00614104 /* LoginCommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB6512D74412F00614104 /* LoginCommonViewController.swift */; };
 		20CFB6552D74470100614104 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 20CFB6542D74470100614104 /* Lottie */; };
-		20CFB6572D74470100614104 /* Lottie-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 20CFB6562D74470100614104 /* Lottie-Dynamic */; };
+		20CFB6592D74482000614104 /* LottieAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CFB6582D74482000614104 /* LottieAnimationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,7 +99,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		20473BA02D744CEC00F04ED7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		20473BA12D7453A100F04ED7 /* UIColor+DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+DesignSystem.swift"; sourceTree = "<group>"; };
 		20535D0F2D5B916400E4904E /* Baton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20535D122D5B916400E4904E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20535D142D5B916400E4904E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +188,7 @@
 		20CFB64D2D743FED00614104 /* adBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adBannerView.swift; sourceTree = "<group>"; };
 		20CFB64F2D743FF500614104 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		20CFB6512D74412F00614104 /* LoginCommonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCommonViewController.swift; sourceTree = "<group>"; };
+		20CFB6582D74482000614104 /* LottieAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,7 +197,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				20CFB6552D74470100614104 /* Lottie in Frameworks */,
-				20CFB6572D74470100614104 /* Lottie-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +351,7 @@
 				20535D602D60C40800E4904E /* UIButton+DesignSystem.swift */,
 				20CFB60A2D68D0F300614104 /* ModalTransitioningDelegate.swift */,
 				20CFB6142D6CA7AD00614104 /* UIViewController.swift */,
+				20473BA12D7453A100F04ED7 /* UIColor+DesignSystem.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -478,6 +494,7 @@
 				20CFB6492D743B9900614104 /* LoginViewController.swift */,
 				20CFB64B2D743BA100614104 /* LoginViewModel.swift */,
 				20CFB6512D74412F00614104 /* LoginCommonViewController.swift */,
+				20CFB6582D74482000614104 /* LottieAnimationViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -492,6 +509,7 @@
 				20535D0B2D5B916400E4904E /* Sources */,
 				20535D0C2D5B916400E4904E /* Frameworks */,
 				20535D0D2D5B916400E4904E /* Resources */,
+				20473BA02D744CEC00F04ED7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -500,7 +518,6 @@
 			name = Baton;
 			packageProductDependencies = (
 				20CFB6542D74470100614104 /* Lottie */,
-				20CFB6562D74470100614104 /* Lottie-Dynamic */,
 			);
 			productName = Baton;
 			productReference = 20535D0F2D5B916400E4904E /* Baton.app */;
@@ -651,6 +668,7 @@
 				20535D4B2D5B926000E4904E /* BasicButton.swift in Sources */,
 				20535D922D6104C700E4904E /* UIView+Extensions.swift in Sources */,
 				20CFB60F2D6B50E800614104 /* BatonTabBar.swift in Sources */,
+				20CFB6592D74482000614104 /* LottieAnimationViewController.swift in Sources */,
 				20CFB6362D6F4E1500614104 /* BatonNavigationConfigurable.swift in Sources */,
 				20535D832D60EF8A00E4904E /* PartnerRegistrationViewModel.swift in Sources */,
 				20BCD0F12D67655E000213AF /* ModalHeaderView.swift in Sources */,
@@ -674,6 +692,7 @@
 				20CFB61B2D6CBF1000614104 /* BatonTag.swift in Sources */,
 				20CFB6112D6C8AE400614104 /* MyPageViewController.swift in Sources */,
 				20BCD0E22D6126FA000213AF /* BasicTextField.swift in Sources */,
+				20473BA22D7453A100F04ED7 /* UIColor+DesignSystem.swift in Sources */,
 				20535D7B2D60EDBC00E4904E /* EmployeeStatusView.swift in Sources */,
 				20BCD0EF2D6240FB000213AF /* SuccessViewController.swift in Sources */,
 				20535D692D60C80300E4904E /* ButtonSize.swift in Sources */,
@@ -1047,11 +1066,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 20CFB6532D74470000614104 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
-		};
-		20CFB6562D74470100614104 /* Lottie-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 20CFB6532D74470000614104 /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = "Lottie-Dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
