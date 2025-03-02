@@ -1,7 +1,7 @@
 import UIKit
 import Combine
 
-extension PartnerRegistrationViewController: BatonNavigationConfigurable {
+extension ProfileSettingViewController: BatonNavigationConfigurable {
     
     @objc func baseBackButtonTapped() {
         if viewModel.currentStepIndex > 0 {
@@ -13,13 +13,13 @@ extension PartnerRegistrationViewController: BatonNavigationConfigurable {
     }
 }
 
-class PartnerRegistrationViewController: UIPageViewController, UIPageViewControllerDelegate{
-    private var navigationBarTitle = "멘토 등록"
+class ProfileSettingViewController: UIPageViewController, UIPageViewControllerDelegate{
+    private var navigationBarTitle = "프로필 설정"
     private var pages: [UIViewController] = []
-    private let viewModel: PartnerRegistrationViewModel
+    private let viewModel: ProfileSettingViewModel
     private var cancellables = Set<AnyCancellable>()
     
-    init(viewModel: PartnerRegistrationViewModel) {
+    init(viewModel: ProfileSettingViewModel) {
         self.viewModel = viewModel
         super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         self.delegate = self
@@ -67,16 +67,18 @@ class PartnerRegistrationViewController: UIPageViewController, UIPageViewControl
 
     
     private func setupPages() {
-        let step1 = CheckProfileView(viewModel: viewModel)
-        let step2 = EmployeeStatusView(viewModel: viewModel)
-        let step3 = JobInfoView(viewModel: viewModel)
-        let step4 = ChatScheduleView(viewModel: viewModel)
-        let step5 = SelfIntroductionView(viewModel: viewModel)
+        let step1 = SetNicknameView(viewModel: viewModel)
+        let step2 = SetStatusView(viewModel: viewModel)
+        let step3 = SetProfileView(viewModel: viewModel)
+        let step4 = SetEmailView(viewModel: viewModel)
+        let step5 = SetProfileImageView(viewModel: viewModel)
+        
+        let successPage = viewModel.steps[viewModel.steps.count - 1]
         let success = SuccessViewController(
-            title: "멘토 등록이 완료되었어요",
-            subtitle: "마이페이지에서 나의 멘토 정보를\n확인하고 수정할 수 있어요",
-            primaryButtonText: "멘토 정보 확인하기",
-            secondaryButtonText: "확인",
+            title: successPage.mainTitle,
+            subtitle: successPage.subTitle,
+            primaryButtonText: "",
+            secondaryButtonText: successPage.actionButtonTitle,
             primaryAction: {
                 print("멘토 정보 확인하기 버튼 클릭") //TODO: 추후 수정하기
             },

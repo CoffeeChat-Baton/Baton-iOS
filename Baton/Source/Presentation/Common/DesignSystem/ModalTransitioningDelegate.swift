@@ -1,5 +1,16 @@
 import UIKit
 
+// 사용방법
+
+//let modalVC = MyModalViewController() // 모달로 보여줄 VC
+//let customTransitionDelegate = ModalTransitioningDelegate()
+//
+//modalVC.modalPresentationStyle = .custom
+//modalVC.transitioningDelegate = customTransitionDelegate
+//
+//present(modalVC, animated: true, completion: nil)
+
+
 class ModalTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
     
     func presentationController(forPresented presented: UIViewController,
