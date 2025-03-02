@@ -91,6 +91,7 @@ class PartnerRegistrationViewController: UIPageViewController, UIPageViewControl
             setViewControllers([firstPage], direction: .forward, animated: false, completion: nil)
         }
     }
+    
     private func bindViewModel() {
         viewModel.$currentStepIndex
             .dropFirst() // 첫 번째 값 무시 (초기 상태 방지)
