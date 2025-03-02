@@ -22,6 +22,7 @@ class LoginViewController: UIPageViewController, UIPageViewControllerDelegate {
         super.viewDidLoad()
         view.backgroundColor = .bwhite
         setupPages()
+        bindViewModel()
     }
 
     // MARK: - LifeCycle
@@ -31,6 +32,7 @@ class LoginViewController: UIPageViewController, UIPageViewControllerDelegate {
         if let tabBarController = self.tabBarController as? BatonTabBarController {
             tabBarController.hideTabBar()
         }
+        setupLoginNavigationBar()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -40,11 +42,47 @@ class LoginViewController: UIPageViewController, UIPageViewControllerDelegate {
         }
     }
     
+    private func setupLoginNavigationBar() {
+        let skipButton = UIBarButtonItem(
+            title: "건너뛰기",
+            style: .plain,
+            target: self,
+            action: #selector(skipButtonTapped)
+        )
+        navigationItem.rightBarButtonItem = skipButton
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground() 
+        appearance.shadowColor = UIColor.clear
+
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    }
+    
+    @objc private func skipButtonTapped() {
+        viewModel.goToLogin()
+    }
+    
     private func setupPages() {
-        let step1 = LoginCommonViewController(viewModel: LoginViewModel())
-        let step2 = UIViewController()
-        pages = [step1, step2]
-        step1.view.backgroundColor = .red
+        let blueBackground = UIView()
+        blueBackground.backgroundColor = UIColor(hex: "#CADDFF")
+
+        let whiteBackground = UIView()
+        whiteBackground.backgroundColor = .bwhite
+
+        let imageBackground = UIImageView(image: UIImage(resource: .onboarding2Background))
+        imageBackground.contentMode = .scaleAspectFill
+
+        let loginImageBackground = UIImageView(image: UIImage(resource: .loginBackground))
+        loginImageBackground.contentMode = .scaleAspectFill
+
+        let backgroundViews: [UIView] = [blueBackground, imageBackground, imageBackground, loginImageBackground]
+        let fileNames: [String] = ["onboarding_1", "", "", ""]
+
+        pages = zip(backgroundViews, fileNames).map { background, fileName in
+            LoginCommonViewController(viewModel: viewModel, backgroundView: background, fileName: fileName)
+        }
+
         if let firstPage = pages.first {
             setViewControllers([firstPage], direction: .forward, animated: true)
         }
@@ -52,11 +90,12 @@ class LoginViewController: UIPageViewController, UIPageViewControllerDelegate {
     
     private func bindViewModel() {
         viewModel.$currentStepIndex
-            .dropFirst() // 첫 번째 값 무시 (초기 상태 방지)
+            .dropFirst()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] index in
                 guard let self = self, index < self.pages.count else { return }
                 self.setViewControllers([self.pages[index]], direction: .forward, animated: true, completion: nil)
+                print(index)
             }
             .store(in: &cancellables)
     }
