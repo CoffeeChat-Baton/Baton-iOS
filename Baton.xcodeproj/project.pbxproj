@@ -45,6 +45,15 @@
 		20535D8E2D61040F00E4904E /* SelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D8D2D61040F00E4904E /* SelectionButton.swift */; };
 		20535D902D61042F00E4904E /* SelectionModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D8F2D61042F00E4904E /* SelectionModal.swift */; };
 		20535D922D6104C700E4904E /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20535D912D6104C700E4904E /* UIView+Extensions.swift */; };
+		20B1BE422D749C210051EAA2 /* ProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE412D749C210051EAA2 /* ProfileSettingViewController.swift */; };
+		20B1BE442D749C2E0051EAA2 /* ProfileSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE432D749C2E0051EAA2 /* ProfileSettingViewModel.swift */; };
+		20B1BE462D74A0B60051EAA2 /* SetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE452D74A0B50051EAA2 /* SetProfileView.swift */; };
+		20B1BE482D74A12D0051EAA2 /* SetNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE472D74A12D0051EAA2 /* SetNicknameView.swift */; };
+		20B1BE4A2D74A2E20051EAA2 /* MultiSelectImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE492D74A2E20051EAA2 /* MultiSelectImageButton.swift */; };
+		20B1BE4C2D74AA040051EAA2 /* SetStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE4B2D74AA040051EAA2 /* SetStatusView.swift */; };
+		20B1BE4E2D74ADD40051EAA2 /* SetEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE4D2D74ADD40051EAA2 /* SetEmailView.swift */; };
+		20B1BE502D74B07F0051EAA2 /* RoundProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE4F2D74B07F0051EAA2 /* RoundProfileButton.swift */; };
+		20B1BE522D74B2780051EAA2 /* SetProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE512D74B2780051EAA2 /* SetProfileImageView.swift */; };
 		20BCD0DC2D611EE4000213AF /* SelectionTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0DB2D611EE4000213AF /* SelectionTitleLabel.swift */; };
 		20BCD0E22D6126FA000213AF /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0E12D6126FA000213AF /* BasicTextField.swift */; };
 		20BCD0E42D612B5E000213AF /* JobCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0E32D612B5E000213AF /* JobCategory.swift */; };
@@ -154,6 +163,15 @@
 		20535D8D2D61040F00E4904E /* SelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionButton.swift; sourceTree = "<group>"; };
 		20535D8F2D61042F00E4904E /* SelectionModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionModal.swift; sourceTree = "<group>"; };
 		20535D912D6104C700E4904E /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		20B1BE412D749C210051EAA2 /* ProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewController.swift; sourceTree = "<group>"; };
+		20B1BE432D749C2E0051EAA2 /* ProfileSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewModel.swift; sourceTree = "<group>"; };
+		20B1BE452D74A0B50051EAA2 /* SetProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileView.swift; sourceTree = "<group>"; };
+		20B1BE472D74A12D0051EAA2 /* SetNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameView.swift; sourceTree = "<group>"; };
+		20B1BE492D74A2E20051EAA2 /* MultiSelectImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectImageButton.swift; sourceTree = "<group>"; };
+		20B1BE4B2D74AA040051EAA2 /* SetStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStatusView.swift; sourceTree = "<group>"; };
+		20B1BE4D2D74ADD40051EAA2 /* SetEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetEmailView.swift; sourceTree = "<group>"; };
+		20B1BE4F2D74B07F0051EAA2 /* RoundProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundProfileButton.swift; sourceTree = "<group>"; };
+		20B1BE512D74B2780051EAA2 /* SetProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileImageView.swift; sourceTree = "<group>"; };
 		20BCD0DB2D611EE4000213AF /* SelectionTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTitleLabel.swift; sourceTree = "<group>"; };
 		20BCD0E12D6126FA000213AF /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
 		20BCD0E32D612B5E000213AF /* JobCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCategory.swift; sourceTree = "<group>"; };
@@ -267,6 +285,7 @@
 		20535D442D5B91CA00E4904E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				20B1BE402D749C0F0051EAA2 /* ProfileSetting */,
 				20CFB6482D743B8200614104 /* Login */,
 				20CFB63C2D6F58F500614104 /* TabBar */,
 				20CFB62A2D6DFDD200614104 /* MyPage */,
@@ -386,6 +405,20 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		20B1BE402D749C0F0051EAA2 /* ProfileSetting */ = {
+			isa = PBXGroup;
+			children = (
+				20B1BE412D749C210051EAA2 /* ProfileSettingViewController.swift */,
+				20B1BE432D749C2E0051EAA2 /* ProfileSettingViewModel.swift */,
+				20B1BE472D74A12D0051EAA2 /* SetNicknameView.swift */,
+				20B1BE4B2D74AA040051EAA2 /* SetStatusView.swift */,
+				20B1BE452D74A0B50051EAA2 /* SetProfileView.swift */,
+				20B1BE4D2D74ADD40051EAA2 /* SetEmailView.swift */,
+				20B1BE512D74B2780051EAA2 /* SetProfileImageView.swift */,
+			);
+			path = ProfileSetting;
+			sourceTree = "<group>";
+		};
 		20BCD0F82D68BA30000213AF /* ChatSchedule */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,6 +460,8 @@
 				20CFB61E2D6CC62100614104 /* BatonFilterButton.swift */,
 				20535D4A2D5B926000E4904E /* BasicButton.swift */,
 				20CFB6302D6F4A3E00614104 /* CategoryButton.swift */,
+				20B1BE492D74A2E20051EAA2 /* MultiSelectImageButton.swift */,
+				20B1BE4F2D74B07F0051EAA2 /* RoundProfileButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -651,8 +686,11 @@
 				20BCD0E42D612B5E000213AF /* JobCategory.swift in Sources */,
 				20535D7F2D60EEEA00E4904E /* ChatScheduleView.swift in Sources */,
 				20535D172D5B916400E4904E /* BaseViewController.swift in Sources */,
+				20B1BE502D74B07F0051EAA2 /* RoundProfileButton.swift in Sources */,
 				20CFB64C2D743BA100614104 /* LoginViewModel.swift in Sources */,
 				20535D502D60B55A00E4904E /* UIFont+DesignSystem.swift in Sources */,
+				20B1BE522D74B2780051EAA2 /* SetProfileImageView.swift in Sources */,
+				20B1BE462D74A0B60051EAA2 /* SetProfileView.swift in Sources */,
 				20CFB64E2D743FED00614104 /* adBannerView.swift in Sources */,
 				20CFB6522D74412F00614104 /* LoginCommonViewController.swift in Sources */,
 				20535D132D5B916400E4904E /* AppDelegate.swift in Sources */,
@@ -665,6 +703,7 @@
 				20535D4B2D5B926000E4904E /* BasicButton.swift in Sources */,
 				20535D922D6104C700E4904E /* UIView+Extensions.swift in Sources */,
 				20CFB60F2D6B50E800614104 /* BatonTabBar.swift in Sources */,
+				20B1BE4C2D74AA040051EAA2 /* SetStatusView.swift in Sources */,
 				20CFB6362D6F4E1500614104 /* BatonNavigationConfigurable.swift in Sources */,
 				20535D832D60EF8A00E4904E /* PartnerRegistrationViewModel.swift in Sources */,
 				20BCD0F12D67655E000213AF /* ModalHeaderView.swift in Sources */,
@@ -675,6 +714,7 @@
 				20CFB6152D6CA7AD00614104 /* UIViewController.swift in Sources */,
 				20535D612D60C40800E4904E /* UIButton+DesignSystem.swift in Sources */,
 				20BCD0F32D67711D000213AF /* ScheduleSelectionModal.swift in Sources */,
+				20B1BE482D74A12D0051EAA2 /* SetNicknameView.swift in Sources */,
 				20BCD0ED2D61DEE4000213AF /* BaseTextView.swift in Sources */,
 				20CFB64A2D743B9900614104 /* LoginViewController.swift in Sources */,
 				20CFB6132D6C8B6C00614104 /* MyBatonViewController.swift in Sources */,
@@ -692,10 +732,14 @@
 				20535D7B2D60EDBC00E4904E /* EmployeeStatusView.swift in Sources */,
 				20BCD0EF2D6240FB000213AF /* SuccessViewController.swift in Sources */,
 				20535D692D60C80300E4904E /* ButtonSize.swift in Sources */,
+				20B1BE442D749C2E0051EAA2 /* ProfileSettingViewModel.swift in Sources */,
 				20BCD0F52D688C52000213AF /* MulitSelectButton.swift in Sources */,
 				20535D902D61042F00E4904E /* SelectionModal.swift in Sources */,
 				20535D672D60C7A200E4904E /* Spacing.swift in Sources */,
 				20535D7D2D60EEDE00E4904E /* JobInfoView.swift in Sources */,
+				20B1BE422D749C210051EAA2 /* ProfileSettingViewController.swift in Sources */,
+				20B1BE4E2D74ADD40051EAA2 /* SetEmailView.swift in Sources */,
+				20B1BE4A2D74A2E20051EAA2 /* MultiSelectImageButton.swift in Sources */,
 				20535D152D5B916400E4904E /* SceneDelegate.swift in Sources */,
 				20535D732D60DDE700E4904E /* BaseContent.swift in Sources */,
 				20535D652D60C77500E4904E /* CornerRadius.swift in Sources */,
