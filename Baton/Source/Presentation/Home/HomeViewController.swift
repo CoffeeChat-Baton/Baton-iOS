@@ -113,6 +113,7 @@ final class HomeViewController: UIViewController {
     }
     
     private func navigateToCategoryScreen(category: String) {
-        //let mentorListVC = MentorListViewController()
-        //navigationController?.pushViewController(mentorListVC, animated: true)
+        // TODO: 세그멘탈 타이틀 처리하기
+        let mentorListVC = MentorListViewController(category: category, segmentTitles: ["디자인", "디자인2"])
+        navigationController?.pushViewController(mentorListVC, animated: true)
     }}

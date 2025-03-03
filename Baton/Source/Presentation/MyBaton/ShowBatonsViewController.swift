@@ -25,6 +25,13 @@ class ShowBatonsViewController: UIViewController {
     private let viewModel: ShowBatonsViewModel
     private var cancellables: Set<AnyCancellable> = []
     private let transitionDelegate = ModalTransitioningDelegate()
+    private var type: MyBatonStatus = .waiting
+    
+    enum MyBatonStatus {
+        case waiting    // 대기
+        case approved   // 확정
+        case finished   // 완료
+    }
     
     // 🔹 필터 버튼 (화면 최상단 오른쪽)
     private let filterButton: BatonFilterButton = {
@@ -82,7 +89,8 @@ class ShowBatonsViewController: UIViewController {
         return profile
     }()
     
-    init(viewModel: ShowBatonsViewModel) {
+    init(viewModel: ShowBatonsViewModel, type: MyBatonStatus = .waiting) {
+        self.type = type
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         viewModel.datas = [
@@ -92,6 +100,9 @@ class ShowBatonsViewController: UIViewController {
         ]
     }
     
+    func updateData(datas: [Baton]) {
+        viewModel.datas = datas
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -99,9 +110,12 @@ class ShowBatonsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .gray1
-        setupFilterButton()
         setupScrollView()
         setupContentStackView()
+        setupFilterButton()
+        if type == .waiting {
+            setupWaitingFilterButton()
+        }
         setupActions()
         bindViewModel()
         view.bringSubviewToFront(filterButton)
@@ -139,13 +153,33 @@ class ShowBatonsViewController: UIViewController {
         
         parentVC.present(modal, animated: true)
     }
+    
     private func setupFilterButton() {
         view.addSubview(filterButton)
         NSLayoutConstraint.activate([
             filterButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
             filterButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             filterButton.heightAnchor.constraint(equalToConstant: 40),
-            filterButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 50)
+            filterButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 50),
+        ])
+    }
+    
+    private func setupWaitingFilterButton() {
+        let radioGroup = RadioButtonGroupView(buttonTitles: ["나의 신청", "내가 승인할 신청"])
+        radioGroup.translatesAutoresizingMaskIntoConstraints = false
+        
+        // 선택 변경 시 호출되는 콜백 (예시)
+        radioGroup.selectionChanged = { selectedIndex in
+            print("선택된 버튼 인덱스: \(selectedIndex)")
+        }
+        
+        view.addSubview(radioGroup)
+        
+        NSLayoutConstraint.activate([
+            radioGroup.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            radioGroup.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            radioGroup.heightAnchor.constraint(equalToConstant: 40),
+            radioGroup.widthAnchor.constraint(equalToConstant: 200)
         ])
     }
     
@@ -161,7 +195,7 @@ class ShowBatonsViewController: UIViewController {
         
         scrollView.addSubview(contentStackView)
         NSLayoutConstraint.activate([
-            contentStackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 16),
+            contentStackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 60),
             contentStackView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor, constant: 16),
             contentStackView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor, constant: -16),
             contentStackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -16),
@@ -247,7 +281,7 @@ class ShowBatonsViewController: UIViewController {
             category: baton.description,
             description: baton.description,
             buttonTitle: buttonTitle,
-            status: baton.canStart ?? true
+            buttonStatus: baton.canStart ?? true
         )
         profileView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -282,3 +316,87 @@ struct ShowBatonsViewController_Previews: PreviewProvider {
     }
 }
 #endif
+
+
+
+/// 여러 개의 버튼 중 하나만 선택 가능한 라디오 버튼 그룹 뷰
+/// - 버튼의 너비는 텍스트에 따라 달라지며, 기본 디자인(미선택 상태)과 선택 상태 디자인을 지정합니다.
+class RadioButtonGroupView: UIView {
+    
+    private var buttons: [UIButton] = []
+    private(set) var selectedButton: UIButton?
+    
+    /// 선택 변경 시 콜백 (선택된 버튼의 인덱스를 반환)
+    var selectionChanged: ((Int) -> Void)?
+    
+    /// 내부에 버튼들을 담을 수평 UIStackView
+    private let stackView: UIStackView = {
+        let sv = UIStackView()
+        sv.axis = .horizontal
+        sv.spacing = 8
+        sv.alignment = .fill
+        sv.distribution = .fill // 각 버튼의 intrinsicContentSize에 따라 크기 결정
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        return sv
+    }()
+    
+    init(buttonTitles: [String]) {
+        super.init(frame: .zero)
+        setupStackView(with: buttonTitles)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupStackView(with titles: [String]) {
+        addSubview(stackView)
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: self.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
+        
+        for (index, title) in titles.enumerated() {
+            let button = UIButton(type: .system)
+            button.setTitle(title, for: .normal)
+            button.titleLabel?.font = UIFont.Pretendard.body4.font
+    
+            // 기본 디자인 (미선택 상태)
+            button.backgroundColor = .white
+            button.setTitleColor(.black, for: .normal)
+            button.layer.cornerRadius = 10
+            button.layer.borderWidth = 1
+            button.layer.borderColor = UIColor.gray3.cgColor
+            // 동적 크기를 위해 contentEdgeInsets 추가
+            button.contentEdgeInsets = UIEdgeInsets(top: 6, left: 10, bottom: 6, right: 10)
+            button.tag = index
+            button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+            button.translatesAutoresizingMaskIntoConstraints = false
+            buttons.append(button)
+            stackView.addArrangedSubview(button)
+        }
+    }
+    
+    @objc private func buttonTapped(_ sender: UIButton) {
+        // 이미 선택된 버튼과 다르다면
+        if selectedButton != sender {
+            for button in buttons {
+                if button == sender {
+                    // 선택된 버튼 디자인
+                    button.backgroundColor = .bblack
+                    button.setTitleColor(.white, for: .normal)
+                    button.layer.borderColor = UIColor.black.cgColor
+                } else {
+                    // 미선택 버튼 디자인
+                    button.backgroundColor = .bwhite
+                    button.setTitleColor(.black, for: .normal)
+                    button.layer.borderColor = UIColor.lightGray.cgColor
+                }
+            }
+            selectedButton = sender
+            selectionChanged?(sender.tag)
+        }
+    }
+}

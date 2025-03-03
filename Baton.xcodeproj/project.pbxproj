@@ -54,6 +54,10 @@
 		20B1BE4E2D74ADD40051EAA2 /* SetEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE4D2D74ADD40051EAA2 /* SetEmailView.swift */; };
 		20B1BE502D74B07F0051EAA2 /* RoundProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE4F2D74B07F0051EAA2 /* RoundProfileButton.swift */; };
 		20B1BE522D74B2780051EAA2 /* SetProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE512D74B2780051EAA2 /* SetProfileImageView.swift */; };
+		20B1BE542D7571710051EAA2 /* MentorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE532D7571710051EAA2 /* MentorListViewController.swift */; };
+		20B1BE562D7576CC0051EAA2 /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE552D7576CC0051EAA2 /* SegmentedControlView.swift */; };
+		20B1BE582D7577190051EAA2 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE572D7577190051EAA2 /* PageViewController.swift */; };
+		20B1BE5A2D7585A30051EAA2 /* HomeCategoryBatonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE592D7585A30051EAA2 /* HomeCategoryBatonsViewController.swift */; };
 		20BCD0DC2D611EE4000213AF /* SelectionTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0DB2D611EE4000213AF /* SelectionTitleLabel.swift */; };
 		20BCD0E22D6126FA000213AF /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0E12D6126FA000213AF /* BasicTextField.swift */; };
 		20BCD0E42D612B5E000213AF /* JobCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0E32D612B5E000213AF /* JobCategory.swift */; };
@@ -172,6 +176,10 @@
 		20B1BE4D2D74ADD40051EAA2 /* SetEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetEmailView.swift; sourceTree = "<group>"; };
 		20B1BE4F2D74B07F0051EAA2 /* RoundProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundProfileButton.swift; sourceTree = "<group>"; };
 		20B1BE512D74B2780051EAA2 /* SetProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileImageView.swift; sourceTree = "<group>"; };
+		20B1BE532D7571710051EAA2 /* MentorListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorListViewController.swift; sourceTree = "<group>"; };
+		20B1BE552D7576CC0051EAA2 /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
+		20B1BE572D7577190051EAA2 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		20B1BE592D7585A30051EAA2 /* HomeCategoryBatonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCategoryBatonsViewController.swift; sourceTree = "<group>"; };
 		20BCD0DB2D611EE4000213AF /* SelectionTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTitleLabel.swift; sourceTree = "<group>"; };
 		20BCD0E12D6126FA000213AF /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
 		20BCD0E32D612B5E000213AF /* JobCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCategory.swift; sourceTree = "<group>"; };
@@ -386,9 +394,13 @@
 		20535D6D2D60D8B100E4904E /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				20CFB64F2D743FF500614104 /* HomeViewModel.swift */,
 				20CFB64D2D743FED00614104 /* adBannerView.swift */,
 				20535D4D2D60AED400E4904E /* HomeViewController.swift */,
+				20CFB64F2D743FF500614104 /* HomeViewModel.swift */,
+				20B1BE532D7571710051EAA2 /* MentorListViewController.swift */,
+				20B1BE552D7576CC0051EAA2 /* SegmentedControlView.swift */,
+				20B1BE572D7577190051EAA2 /* PageViewController.swift */,
+				20B1BE592D7585A30051EAA2 /* HomeCategoryBatonsViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -681,6 +693,7 @@
 				20CFB60B2D68D0F300614104 /* ModalTransitioningDelegate.swift in Sources */,
 				20CFB6172D6CB2DB00614104 /* BatonTimeView.swift in Sources */,
 				20BCD0E62D612BEF000213AF /* ExperienceYears.swift in Sources */,
+				20B1BE542D7571710051EAA2 /* MentorListViewController.swift in Sources */,
 				20535D792D60ED7700E4904E /* CheckProfileView.swift in Sources */,
 				20535D4E2D60AED400E4904E /* HomeViewController.swift in Sources */,
 				20BCD0E42D612B5E000213AF /* JobCategory.swift in Sources */,
@@ -718,6 +731,7 @@
 				20BCD0ED2D61DEE4000213AF /* BaseTextView.swift in Sources */,
 				20CFB64A2D743B9900614104 /* LoginViewController.swift in Sources */,
 				20CFB6132D6C8B6C00614104 /* MyBatonViewController.swift in Sources */,
+				20B1BE5A2D7585A30051EAA2 /* HomeCategoryBatonsViewController.swift in Sources */,
 				20535D5E2D60C32B00E4904E /* UILabel+DesignSystem.swift in Sources */,
 				20CFB6212D6CC8EE00614104 /* ShowBatonsViewController.swift in Sources */,
 				20BCD0F72D68906C000213AF /* ScheduleSelectionModalViewModel.swift in Sources */,
@@ -736,6 +750,8 @@
 				20BCD0F52D688C52000213AF /* MulitSelectButton.swift in Sources */,
 				20535D902D61042F00E4904E /* SelectionModal.swift in Sources */,
 				20535D672D60C7A200E4904E /* Spacing.swift in Sources */,
+				20B1BE582D7577190051EAA2 /* PageViewController.swift in Sources */,
+				20B1BE562D7576CC0051EAA2 /* SegmentedControlView.swift in Sources */,
 				20535D7D2D60EEDE00E4904E /* JobInfoView.swift in Sources */,
 				20B1BE422D749C210051EAA2 /* ProfileSettingViewController.swift in Sources */,
 				20B1BE4E2D74ADD40051EAA2 /* SetEmailView.swift in Sources */,

@@ -51,7 +51,12 @@ class BatonProfileView: UIView {
         return label
     }()
     
-    private let shortIntroLabel = UILabel.makeLabel(text: "", textColor: .bblack, fontStyle: .body3)
+    private let shortIntroLabel: UILabel = {
+        let label = UILabel()
+        label.pretendardStyle = .body3
+        label.textColor = .bblack
+        return label
+    }()
     
     // 🔹 하단 버튼
     private let actionButton: BasicButton
@@ -97,17 +102,17 @@ class BatonProfileView: UIView {
         stackView.layer.borderWidth = 1
         stackView.layer.borderColor = UIColor.gray2.cgColor
         stackView.distribution = .equalCentering
-        stackView.spacing = 8 // ✅ 간격 추가
+        stackView.spacing = 8
         stackView.alignment = .center
         return stackView
     }()
     
-    init(image: UIImage?, name: String, company: String, category: String, description: String, buttonTitle: String?, status: Bool = true, shortIntro: String? = nil) {
+    init(image: UIImage?, name: String, company: String, category: String, description: String, buttonTitle: String?, buttonStatus: Bool = true, shortIntro: String? = nil) {
         self.category = category
         
         // ✅ 버튼이 존재할 경우에만 생성
         if let title = buttonTitle {
-            self.actionButton = BasicButton(title: title, status: status ? .enabled : .disabled)
+            self.actionButton = BasicButton(title: title, status: buttonStatus ? .enabled : .disabled)
         } else {
             self.actionButton = BasicButton(title: "", status: .disabled)
             self.actionButton.isHidden = true
@@ -134,8 +139,15 @@ class BatonProfileView: UIView {
     }
     
     private func makeTextView(title: String, content: String) -> UIView {
-        let titleLabel = UILabel.makeLabel(text: title, textColor: .gray5, fontStyle: .caption2)
-        let contentLabel = UILabel.makeLabel(text: content, textColor: .bblack, fontStyle: .caption1)
+        let titleLabel = UILabel()
+        titleLabel.text = title
+        titleLabel.pretendardStyle = .caption2
+        titleLabel.textColor = .gray5
+        
+        let contentLabel = UILabel()
+        contentLabel.text = content
+        contentLabel.pretendardStyle = .caption1
+        contentLabel.textColor = .bblack
         
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -153,7 +165,6 @@ class BatonProfileView: UIView {
         layer.borderWidth = 1
         layer.borderColor = UIColor.gray2.cgColor
         shortIntroLabel.translatesAutoresizingMaskIntoConstraints = false
-        shortIntroLabel.backgroundColor = .red
         addSubview(containerView)
         containerView.addArrangedSubview(basicContainerView)
         containerView.addArrangedSubview(shortIntroLabel)
@@ -174,10 +185,13 @@ class BatonProfileView: UIView {
         let spacer2 = UIView()
         let spacer3 = UIView()
         let spacer4 = UIView()
-        let splitLabel = UILabel.makeLabel(text: "|", textColor: .gray2, fontStyle: .body5)
-        let batonLabel = makeTextView(title: "바통", content: "5회")
+        let splitLabel = UILabel()
+        splitLabel.text = "|"
+        splitLabel.pretendardStyle = .body5
+        splitLabel.textColor = .gray2
+                let batonLabel = makeTextView(title: "바통", content: "5회")
         let reponseRateLabel = makeTextView(title: "응답률", content: "88%")
-
+        
         batonInfoContainerView.addArrangedSubview(spacer1)
         batonInfoContainerView.addArrangedSubview(batonLabel)
 //        batonInfoContainerView.addArrangedSubview(spacer2)
@@ -225,7 +239,7 @@ struct BatonProfileViewRepresentable: UIViewRepresentable {
             company: "네이버", category: "개발",
             description: "iOS 개발 | 4년차",
             buttonTitle: "바통 입장하기",
-            shortIntro: "나를 돋보일 수 있는 포트폴리오 전략"
+            shortIntro: "나를 돋보일 수 있는 포트폴리오 전략입니다"
         )
         view.layoutIfNeeded() // 미리보기에서 올바른 크기 적용
         return view
