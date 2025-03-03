@@ -157,8 +157,6 @@ struct CardReviewView_Previews: PreviewProvider {
 }
 #endif
 
-import UIKit
-
 class TagCollectionView: UIView {
     
     // MARK: - Properties
@@ -173,7 +171,6 @@ class TagCollectionView: UIView {
     // MARK: - UI Components
     private lazy var collectionView: UICollectionView = {
         let layout = LeftAlignedCollectionViewFlowLayout()
-        layout.estimatedItemSize = CGSize(width: 1, height: 1)
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize // 자동 크기 조정
         layout.minimumLineSpacing = 4
         layout.minimumInteritemSpacing = 6
@@ -195,10 +192,9 @@ class TagCollectionView: UIView {
         self.tags = tags
         setupView()
         setupConstraints()
+        
         DispatchQueue.main.async {
-            self.collectionView.reloadData()
-            self.collectionView.layoutIfNeeded()
-            self.invalidateIntrinsicContentSize()
+            self.forceUpdateLayout()
         }
     }
     
@@ -206,11 +202,11 @@ class TagCollectionView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // ✅ `intrinsicContentSize` 활용하여 높이 자동 조정
-     override var intrinsicContentSize: CGSize {
-         collectionView.layoutIfNeeded()
-         return collectionView.contentSize
-     }
+    // ✅ `intrinsicContentSize` 활용하여 높이 자동 조정 (정확한 크기 반영)
+    override var intrinsicContentSize: CGSize {
+        collectionView.layoutIfNeeded()
+        return collectionView.collectionViewLayout.collectionViewContentSize
+    }
     
     // MARK: - Setup Methods
     private func setupView() {
@@ -226,9 +222,19 @@ class TagCollectionView: UIView {
         ])
     }
     
+    // ✅ 태그 추가 후 레이아웃 강제 업데이트 (여백 제거)
+    private func forceUpdateLayout() {
+        collectionView.reloadData()
+        collectionView.layoutIfNeeded()
+        invalidateIntrinsicContentSize()
+    }
+    
     // MARK: - Public Methods
     func updateTags(_ newTags: [String]) {
         self.tags = newTags
+        DispatchQueue.main.async {
+            self.forceUpdateLayout()
+        }
     }
 }
 

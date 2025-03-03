@@ -155,7 +155,7 @@ class MentoDatailViewController: UIViewController {
         stackView.axis = .vertical
         return stackView
     }()
-    private let mentorInfoView = MentoInfomationView(shortInfo: "한 줄 소개 넣습니다한 줄 소개 넣습니다한 줄 소개 넣습니다한 줄 소개 넣습니다한 줄 소개 넣습니다한 줄 소개 넣습니다한 줄 소개 넣습니다한 줄 소개 넣습니다한 줄 소개 넣습니다", detailInfo: "멘토 소개 넣습니다", times: [BatonSuggestTime(days: ["화", "목"], startTime: "1:00", endIime: "2:00")])
+    private let mentorInfoView = MentoInfomationView(shortInfo: "주니어 취준러를 위한 꿀팁을 준비했습니다", detailInfo: "멘토 소개 넣습니다", times: [BatonSuggestTime(days: ["화", "목"], startTime: "1:00", endIime: "2:00")])
     
     private let actionButton = BasicButton(title: "신청하기", status: .enabled)
     private let bookmarkButton = BatonBookmarkButton()
@@ -173,6 +173,20 @@ class MentoDatailViewController: UIViewController {
         nameLabel.text = "박그냥"
         companyLabel.text = "네이버"
         descriptionLabel.text = "iOS 개발 | 2년차"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let tabBarController = self.tabBarController as? BatonTabBarController {
+            tabBarController.hideTabBar()
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let tabBarController = self.tabBarController as? BatonTabBarController {
+            tabBarController.showTabBar()
+        }
     }
     
     // MARK: - NavigationBar
@@ -236,15 +250,15 @@ class MentoDatailViewController: UIViewController {
     private func setupConstraint() {
         NSLayoutConstraint.activate([
             profileContainerView.heightAnchor.constraint(equalToConstant: 84),
-            profileContainerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            profileContainerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            profileContainerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Spacing.large.value),
+            profileContainerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -Spacing.large.value),
             profileContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             
             profileImageView.widthAnchor.constraint(equalToConstant: 84),
             
             infoContainerView.heightAnchor.constraint(equalToConstant: 65),
-            infoContainerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            infoContainerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            infoContainerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Spacing.large.value),
+            infoContainerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -Spacing.large.value),
             infoContainerView.topAnchor.constraint(equalTo: profileContainerView.bottomAnchor, constant: 28),
             
             infoStackView.leadingAnchor.constraint(equalTo: infoContainerView.leadingAnchor),
@@ -271,13 +285,13 @@ class MentoDatailViewController: UIViewController {
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor, multiplier: 1.1), // ✅ 중요
             
-            bookmarkButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            bookmarkButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Spacing.large.value),
             bookmarkButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             bookmarkButton.widthAnchor.constraint(equalToConstant: 52),
             bookmarkButton.heightAnchor.constraint(equalToConstant: 52),
             
             actionButton.leadingAnchor.constraint(equalTo: bookmarkButton.trailingAnchor, constant: 12),
-            actionButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            actionButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -Spacing.large.value),
             actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             actionButton.heightAnchor.constraint(equalToConstant: 52),
             
@@ -421,25 +435,25 @@ class MentoInfomationView: UIView {
         timeContainerView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            shortInfoLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            shortInfoLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            shortInfoLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.large.value),
+            shortInfoLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.large.value),
             shortInfoLabel.topAnchor.constraint(equalTo: topAnchor, constant: 32),
             
-            detailInfoLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            detailInfoLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            detailInfoLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.large.value),
+            detailInfoLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.large.value),
             detailInfoLabel.topAnchor.constraint(equalTo: shortInfoLabel.bottomAnchor, constant: 32),
             
-            detailInfoTextView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            detailInfoTextView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            detailInfoTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.large.value),
+            detailInfoTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.large.value),
             detailInfoTextView.topAnchor.constraint(equalTo: detailInfoLabel.bottomAnchor, constant: 10),
             detailInfoTextView.heightAnchor.constraint(equalToConstant: 100),
             
-            suggestTimeLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            suggestTimeLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            suggestTimeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.large.value),
+            suggestTimeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.large.value),
             suggestTimeLabel.topAnchor.constraint(equalTo: detailInfoTextView.bottomAnchor, constant: 32),
             
-            timeContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            timeContainerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            timeContainerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.large.value),
+            timeContainerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.large.value),
             timeContainerView.topAnchor.constraint(equalTo: suggestTimeLabel.bottomAnchor, constant: 12),
             timeContainerView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
