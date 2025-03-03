@@ -1,13 +1,13 @@
 import UIKit
 import Combine
 
-extension CheckProfileView: SelectionModalDelegate {
-    func didSelectOption(_ option: String, type: PartnerRegistrationViewModel.SelectionType) {
+extension SetProfileView: SelectionModalDelegate {
+    func didSelectOption(_ option: String, type: ProfileSettingViewModel.SelectionType) {
         viewModel.updateSelection(for: type, with: option)
     }
 }
 
-class CheckProfileView: BaseViewController<PartnerRegistrationViewModel> {
+class SetProfileView: BaseViewController<ProfileSettingViewModel> {
     
     private let jobTitleLabel = SelectionTitleLabel(title: "직무", style: .body4 , color: .gray5 )
     private let subJobTitleLabel = SelectionTitleLabel(title: "세부 직무", style: .body4 , color: .gray5 )
@@ -21,7 +21,7 @@ class CheckProfileView: BaseViewController<PartnerRegistrationViewModel> {
     
     var onContentStateChanged: ((Bool) -> Void)?
     
-    init(viewModel: PartnerRegistrationViewModel) {
+    init(viewModel: ProfileSettingViewModel) {
         super.init(viewModel: viewModel, contentView: UIView(), onNext: {viewModel.goToNextStep()})
         setupView()
         setupStackView()
@@ -120,7 +120,7 @@ class CheckProfileView: BaseViewController<PartnerRegistrationViewModel> {
         showCustomModal(selectionType: .experience)
     }
     
-    private func showCustomModal(selectionType: PartnerRegistrationViewModel.SelectionType) {
+    private func showCustomModal(selectionType: ProfileSettingViewModel.SelectionType) {
         guard let parentVC = view.findViewController() else { return }
         
         let headerTitle = viewModel.getTitle(for: selectionType)

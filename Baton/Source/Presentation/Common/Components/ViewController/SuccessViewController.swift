@@ -1,4 +1,5 @@
 import UIKit
+import Lottie
 
 class SuccessViewController: UIViewController {
     
@@ -11,13 +12,14 @@ class SuccessViewController: UIViewController {
     }()
     
     // ✅ 아이콘 이미지
-    private let iconImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "checkmark.circle.fill") // 기본 아이콘
-        imageView.tintColor = UIColor.main
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    private let iconImageView: LottieAnimationView = {
+        let view = LottieAnimationView(name: "check_motion")
+        view.frame = CGRect(x: 0, y: 0, width: 84, height: 84)
+        
+        view.contentMode = .scaleAspectFill
+        view.loopMode = .loop // 무한 반복
+        view.animationSpeed = 1.2 // 애니메이션 속도 조절
+        return view
     }()
     
     // ✅ 타이틀
@@ -101,15 +103,13 @@ class SuccessViewController: UIViewController {
         
         self.primaryAction = primaryAction
         self.secondaryAction = secondaryAction
-        
+        if primaryButtonText.isEmpty {
+            primaryButton.isHidden = true
+        }
         titleLabel.text = title
         subtitleLabel.text = subtitle
         primaryButton.setTitle(primaryButtonText, for: .normal)
         secondaryButton.setTitle(secondaryButtonText, for: .normal)
-        
-        if let icon = icon {
-            iconImageView.image = icon
-        }
         
         // 버튼 클릭 액션 설정
         primaryButton.addTarget(self, action: #selector(primaryButtonTapped), for: .touchUpInside)
@@ -117,13 +117,16 @@ class SuccessViewController: UIViewController {
         
         setupGradientBackground()
         setupLayout()
+        
+        iconImageView.play()
+        iconImageView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true) // 다른 화면에서 다시 보이도록 설정
@@ -151,7 +154,7 @@ class SuccessViewController: UIViewController {
     
     // ✅ 레이아웃 설정
     private func setupLayout() {
-//        view.addSubview(gradientBackgroundView)
+        //        view.addSubview(gradientBackgroundView)
         view.insertSubview(backgroundImageView, at: 0) // 배경을 가장 아래에 삽입
         view.addSubview(contentStackView)
         view.addSubview(buttonStackView)
@@ -163,17 +166,16 @@ class SuccessViewController: UIViewController {
         
         buttonStackView.addArrangedSubview(primaryButton)
         buttonStackView.addArrangedSubview(secondaryButton)
-
+        
         NSLayoutConstraint.activate([
+            
+            iconImageView.widthAnchor.constraint(equalToConstant: 140),
+            iconImageView.heightAnchor.constraint(equalToConstant: 140),
+            
             backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            // ✅ 배경 그라디언트
-//            gradientBackgroundView.topAnchor.constraint(equalTo: view.topAnchor),
-//            gradientBackgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-//            gradientBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            gradientBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
             // ✅ 아이콘 & 라벨을 포함한 스택뷰 (뷰 중앙 정렬)
             contentStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -187,8 +189,6 @@ class SuccessViewController: UIViewController {
             buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             
             // ✅ 버튼 높이
-            iconImageView.heightAnchor.constraint(equalToConstant: 84),
-            iconImageView.widthAnchor.constraint(equalToConstant: 84),
             primaryButton.heightAnchor.constraint(equalToConstant: 50),
             secondaryButton.heightAnchor.constraint(equalToConstant: 50)
         ])
@@ -205,7 +205,7 @@ class SuccessViewController: UIViewController {
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0) // 중앙 위에서 시작
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)   // 중앙 아래로 끝
         gradientLayer.frame = view.bounds
-
+        
         gradientBackgroundView.layer.insertSublayer(gradientLayer, at: 0)
     }
 }
