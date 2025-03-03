@@ -14,9 +14,9 @@ extension UIFont {
             switch self {
             case .head1, .title1, .body1, .body3, .caption1:
                 return PretendardFontName.semibold.rawValue
-            case .title2, .body2, .body4, .caption2:
+            case .title2, .body4, .caption2:
                 return PretendardFontName.medium.rawValue
-            case .body5:
+            case .body2, .body5:
                 return PretendardFontName.regular.rawValue
             }
         }
