@@ -1,8 +1,13 @@
 import UIKit
 import SwiftUI
 
+protocol BatonProfileViewDelegate: AnyObject {
+    func didTapProfileView(_ profileView: BatonProfileView)
+}
+
 class BatonProfileView: UIView {
-    
+    weak var delegate: BatonProfileViewDelegate?
+
     // 🔹 프로필 이미지
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -132,6 +137,8 @@ class BatonProfileView: UIView {
         companyLabel.text = company
         descriptionLabel.text = description
         setupView()
+        
+        setupTapGesture()
     }
     
     required init?(coder: NSCoder) {
@@ -228,6 +235,16 @@ class BatonProfileView: UIView {
         super.layoutSubviews()
         self.layoutIfNeeded() // 🔹 Auto Layout 강제 적용
     }
+    
+    private func setupTapGesture() {
+        self.isUserInteractionEnabled = true // ✅ 사용자 입력 활성화
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        self.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func handleTap() {
+        delegate?.didTapProfileView(self)
+    }
 }
 
 #if DEBUG
@@ -241,6 +258,7 @@ struct BatonProfileViewRepresentable: UIViewRepresentable {
             buttonTitle: "바통 입장하기",
             shortIntro: "나를 돋보일 수 있는 포트폴리오 전략입니다"
         )
+    
         view.layoutIfNeeded() // 미리보기에서 올바른 크기 적용
         return view
     }

@@ -19,6 +19,13 @@ extension HomeCategoryBatonsViewController: SelectionModalDelegate {
     }
 }
 
+extension HomeCategoryBatonsViewController: BatonProfileViewDelegate {
+    func didTapProfileView(_ profileView: BatonProfileView) {
+        let modal = MentoDatailViewController()
+        navigationController?.pushViewController(modal, animated: true)
+    }
+}
+
 class HomeCategoryBatonsViewController: UIViewController {
     
     private let viewModel: ShowBatonsViewModel
@@ -157,11 +164,6 @@ class HomeCategoryBatonsViewController: UIViewController {
             mentoStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             mentoStackView.heightAnchor.constraint(equalToConstant: 40),
             mentoStackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 50),
-//            mentoLabel.widthAnchor.constraint(equalToConstant: 20),
-//            mentoLabel.heightAnchor.constraint(equalToConstant: 20),
-//            mentoSumLabel.widthAnchor.constraint(equalToConstant: 20),
-//            mentoSumLabel.heightAnchor.constraint(equalToConstant: 20),
-       
         ])
     }
     
@@ -231,7 +233,7 @@ class HomeCategoryBatonsViewController: UIViewController {
             shortIntro: baton.shortIntro
         )
         profileView.translatesAutoresizingMaskIntoConstraints = false
-        
+        profileView.delegate = self
         batonContainerView.addArrangedSubview(profileView)
         return batonContainerView
     }
