@@ -59,7 +59,7 @@ class SegmentedControlView: UIView {
             let button = UIButton(type: .system)
             button.setTitle(title, for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-            button.setTitleColor(index == selectedIndex ? .black : .gray2, for: .normal)
+            button.setTitleColor(index == selectedIndex ? .bblack : .gray2, for: .normal)
             button.tag = index
             button.addTarget(self, action: #selector(segmentTapped(_:)), for: .touchUpInside)
             buttonStackView.addArrangedSubview(button)
@@ -80,7 +80,7 @@ class SegmentedControlView: UIView {
         
         // 🔹 검정색 인디케이터 추가
         indicatorView.translatesAutoresizingMaskIntoConstraints = false
-        indicatorView.backgroundColor = .black
+        indicatorView.backgroundColor = .bblack
         addSubview(indicatorView)
         
         indicatorLeadingConstraint = indicatorView.leadingAnchor.constraint(equalTo: leadingAnchor)
@@ -116,7 +116,7 @@ class SegmentedControlView: UIView {
     
     private func updateButtonColors(selectedIndex: Int) {
         for (index, button) in buttons.enumerated() {
-            button.setTitleColor(index == selectedIndex ? .black : .gray2, for: .normal)
+            button.setTitleColor(index == selectedIndex ? .bblack : .gray2, for: .normal)
         }
     }
 }
