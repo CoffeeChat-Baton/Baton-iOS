@@ -173,6 +173,14 @@ class MentoDatailViewController: UIViewController {
         nameLabel.text = "박그냥"
         companyLabel.text = "네이버"
         descriptionLabel.text = "iOS 개발 | 2년차"
+        
+        actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func actionButtonTapped() {
+        let vc = ChooseBatonViewController()
+        navigationController?.pushViewController(vc, animated: true)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
