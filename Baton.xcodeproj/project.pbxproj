@@ -61,6 +61,11 @@
 		20B1BE602D75989A0051EAA2 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE5F2D75989A0051EAA2 /* PageViewController.swift */; };
 		20B1BE622D75C62F0051EAA2 /* BatonReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE612D75C62F0051EAA2 /* BatonReviewView.swift */; };
 		20B1BE642D75E2480051EAA2 /* BatonBookmarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE632D75E2480051EAA2 /* BatonBookmarkButton.swift */; };
+		20B1BE662D7732650051EAA2 /* ChooseBatonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE652D7732640051EAA2 /* ChooseBatonViewController.swift */; };
+		20B1BE692D77351E0051EAA2 /* ChooseBatonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE682D77351E0051EAA2 /* ChooseBatonViewModel.swift */; };
+		20B1BE6B2D7738310051EAA2 /* BatonApplyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE6A2D7738310051EAA2 /* BatonApplyButton.swift */; };
+		20B1BE6D2D7750A10051EAA2 /* ApplyBatonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE6C2D7750A10051EAA2 /* ApplyBatonViewController.swift */; };
+		20B1BE6F2D77599D0051EAA2 /* AttachmentPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE6E2D77599D0051EAA2 /* AttachmentPickerView.swift */; };
 		20BCD0DC2D611EE4000213AF /* SelectionTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0DB2D611EE4000213AF /* SelectionTitleLabel.swift */; };
 		20BCD0E22D6126FA000213AF /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0E12D6126FA000213AF /* BasicTextField.swift */; };
 		20BCD0E42D612B5E000213AF /* JobCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0E32D612B5E000213AF /* JobCategory.swift */; };
@@ -186,6 +191,11 @@
 		20B1BE5F2D75989A0051EAA2 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		20B1BE612D75C62F0051EAA2 /* BatonReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonReviewView.swift; sourceTree = "<group>"; };
 		20B1BE632D75E2480051EAA2 /* BatonBookmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonBookmarkButton.swift; sourceTree = "<group>"; };
+		20B1BE652D7732640051EAA2 /* ChooseBatonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseBatonViewController.swift; sourceTree = "<group>"; };
+		20B1BE682D77351E0051EAA2 /* ChooseBatonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseBatonViewModel.swift; sourceTree = "<group>"; };
+		20B1BE6A2D7738310051EAA2 /* BatonApplyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonApplyButton.swift; sourceTree = "<group>"; };
+		20B1BE6C2D7750A10051EAA2 /* ApplyBatonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyBatonViewController.swift; sourceTree = "<group>"; };
+		20B1BE6E2D77599D0051EAA2 /* AttachmentPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentPickerView.swift; sourceTree = "<group>"; };
 		20BCD0DB2D611EE4000213AF /* SelectionTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTitleLabel.swift; sourceTree = "<group>"; };
 		20BCD0E12D6126FA000213AF /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
 		20BCD0E32D612B5E000213AF /* JobCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCategory.swift; sourceTree = "<group>"; };
@@ -400,6 +410,7 @@
 		20535D6D2D60D8B100E4904E /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				20B1BE672D7734B60051EAA2 /* Apply */,
 				20CFB64D2D743FED00614104 /* adBannerView.swift */,
 				20535D4D2D60AED400E4904E /* HomeViewController.swift */,
 				20CFB64F2D743FF500614104 /* HomeViewModel.swift */,
@@ -437,6 +448,18 @@
 				20B1BE512D74B2780051EAA2 /* SetProfileImageView.swift */,
 			);
 			path = ProfileSetting;
+			sourceTree = "<group>";
+		};
+		20B1BE672D7734B60051EAA2 /* Apply */ = {
+			isa = PBXGroup;
+			children = (
+				20B1BE652D7732640051EAA2 /* ChooseBatonViewController.swift */,
+				20B1BE682D77351E0051EAA2 /* ChooseBatonViewModel.swift */,
+				20B1BE6A2D7738310051EAA2 /* BatonApplyButton.swift */,
+				20B1BE6C2D7750A10051EAA2 /* ApplyBatonViewController.swift */,
+				20B1BE6E2D77599D0051EAA2 /* AttachmentPickerView.swift */,
+			);
+			path = Apply;
 			sourceTree = "<group>";
 		};
 		20BCD0F82D68BA30000213AF /* ChatSchedule */ = {
@@ -717,12 +740,15 @@
 				20B1BE462D74A0B60051EAA2 /* SetProfileView.swift in Sources */,
 				20CFB64E2D743FED00614104 /* adBannerView.swift in Sources */,
 				20CFB6522D74412F00614104 /* LoginCommonViewController.swift in Sources */,
+				20B1BE6F2D77599D0051EAA2 /* AttachmentPickerView.swift in Sources */,
 				20535D132D5B916400E4904E /* AppDelegate.swift in Sources */,
 				20CFB60D2D6B509500614104 /* BatonTabBarController.swift in Sources */,
+				20B1BE662D7732650051EAA2 /* ChooseBatonViewController.swift in Sources */,
 				20535D8E2D61040F00E4904E /* SelectionButton.swift in Sources */,
 				20CFB6312D6F4A3E00614104 /* CategoryButton.swift in Sources */,
 				20535D812D60EEF900E4904E /* SelfIntroductionView.swift in Sources */,
 				20BCD0FA2D68BB05000213AF /* CustomTimePickerButton.swift in Sources */,
+				20B1BE6B2D7738310051EAA2 /* BatonApplyButton.swift in Sources */,
 				20535D6B2D60D5C700E4904E /* PartnerRegistrationViewController.swift in Sources */,
 				20535D4B2D5B926000E4904E /* BasicButton.swift in Sources */,
 				20535D922D6104C700E4904E /* UIView+Extensions.swift in Sources */,
@@ -739,6 +765,7 @@
 				20CFB6152D6CA7AD00614104 /* UIViewController.swift in Sources */,
 				20535D612D60C40800E4904E /* UIButton+DesignSystem.swift in Sources */,
 				20BCD0F32D67711D000213AF /* ScheduleSelectionModal.swift in Sources */,
+				20B1BE6D2D7750A10051EAA2 /* ApplyBatonViewController.swift in Sources */,
 				20B1BE482D74A12D0051EAA2 /* SetNicknameView.swift in Sources */,
 				20BCD0ED2D61DEE4000213AF /* BaseTextView.swift in Sources */,
 				20CFB64A2D743B9900614104 /* LoginViewController.swift in Sources */,
@@ -766,6 +793,7 @@
 				20B1BE562D7576CC0051EAA2 /* SegmentedControlView.swift in Sources */,
 				20535D7D2D60EEDE00E4904E /* JobInfoView.swift in Sources */,
 				20B1BE422D749C210051EAA2 /* ProfileSettingViewController.swift in Sources */,
+				20B1BE692D77351E0051EAA2 /* ChooseBatonViewModel.swift in Sources */,
 				20B1BE4E2D74ADD40051EAA2 /* SetEmailView.swift in Sources */,
 				20B1BE4A2D74A2E20051EAA2 /* MultiSelectImageButton.swift in Sources */,
 				20535D152D5B916400E4904E /* SceneDelegate.swift in Sources */,
