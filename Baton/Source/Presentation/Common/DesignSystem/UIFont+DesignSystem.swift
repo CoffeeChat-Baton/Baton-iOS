@@ -8,13 +8,13 @@ enum PretendardFontName: String {
 
 extension UIFont {
     enum Pretendard {
-        case head1, title1, title2, body1, body2, body3, body4, body5, caption1, caption2
+        case head1, title1, title2, body1, body2, body3, body4, body5, caption1, caption2, navibar
 
         var name: String {
             switch self {
             case .head1, .title1, .body1, .body3, .caption1:
                 return PretendardFontName.semibold.rawValue
-            case .title2, .body4, .caption2:
+            case .title2, .body4, .caption2, .navibar:
                 return PretendardFontName.medium.rawValue
             case .body2, .body5:
                 return PretendardFontName.regular.rawValue
@@ -28,6 +28,7 @@ extension UIFont {
             case .body1, .body2: return 16
             case .body3, .body4, .body5: return 14
             case .caption1, .caption2: return 12
+            case .navibar: return 11
             }
         }
 
