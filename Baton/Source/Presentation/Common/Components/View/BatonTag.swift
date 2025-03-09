@@ -3,11 +3,11 @@ import SwiftUI
 
 class BatonTag: UIView {
     enum TagType {
-        case time, category, nameTag
+        case time, category, nameTag, alertTime
         
         var cornerRadiusValue: CGFloat {
             switch self {
-            case .time:
+            case .time, .alertTime:
                 return 16
             case .nameTag:
                 return 12
@@ -45,6 +45,8 @@ class BatonTag: UIView {
         switch type {
         case .time:
             icon = UIImage(resource: .clock)
+        case .alertTime:
+            icon = UIImage(resource: .clock).withTintColor(.main)
         case .category, .nameTag:
             icon = nil
         }
@@ -62,7 +64,7 @@ class BatonTag: UIView {
     
     private func updateLabel(_ content: String) {
         switch currType {
-        case .time:
+        case .time, .alertTime:
             minuteLabel.text = "\(content)분"
         case .category:
             minuteLabel.text = "\(content)"
@@ -74,6 +76,12 @@ class BatonTag: UIView {
     
     private func setupView() {
         backgroundColor = .blue1
+        if currType == .alertTime {
+            minuteLabel.textColor = .main
+            layer.borderColor = UIColor.main.cgColor
+            layer.borderWidth = 1
+        }
+        
         layer.cornerRadius = currType.cornerRadiusValue
         clipsToBounds = true
         
@@ -98,7 +106,9 @@ class BatonTag: UIView {
                 iconImageView.heightAnchor.constraint(equalToConstant: 16),
                 
                 // 라벨을 아이콘 오른쪽으로 배치
-                minuteLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 4)
+                minuteLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 4),
+                minuteLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4)
+
             ])
         }
         
