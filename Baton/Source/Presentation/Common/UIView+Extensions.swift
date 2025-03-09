@@ -23,4 +23,13 @@ extension UIView {
     @objc private func dismissKeyboard() {
         self.endEditing(true)
     }
+       
+   static func makeContainerView(axis: NSLayoutConstraint.Axis, spacing: CGFloat, distribution: UIStackView.Distribution = .fill) -> UIStackView {
+       let view = UIStackView()
+       view.axis = axis
+       view.spacing = spacing
+       view.distribution = distribution
+       view.translatesAutoresizingMaskIntoConstraints = false
+       return view
+   }
 }
