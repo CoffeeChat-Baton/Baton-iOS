@@ -112,7 +112,7 @@ class BatonProfileView: UIView {
         return stackView
     }()
     
-    init(image: UIImage?, name: String, company: String, category: String, description: String, buttonTitle: String?, buttonStatus: Bool = true, shortIntro: String? = nil) {
+    init(image: UIImage?, name: String, company: String, category: String, description: String, buttonTitle: String?, buttonStatus: Bool = true, shortIntro: String? = nil, info: Bool = true) {
         self.category = category
         
         // ✅ 버튼이 존재할 경우에만 생성
@@ -129,6 +129,8 @@ class BatonProfileView: UIView {
         } else {
             shortIntroLabel.isHidden = true
         }
+        
+        batonInfoContainerView.isHidden = !info
 
         super.init(frame: .zero)
         
@@ -244,6 +246,11 @@ class BatonProfileView: UIView {
     
     @objc private func handleTap() {
         delegate?.didTapProfileView(self)
+    }
+    
+    func updateBackgroundColorFilled() {
+        self.backgroundColor = .gray1
+        self.layer.borderColor = UIColor.clear.cgColor
     }
 }
 
