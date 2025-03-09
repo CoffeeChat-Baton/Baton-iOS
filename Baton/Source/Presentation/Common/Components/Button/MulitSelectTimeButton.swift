@@ -43,6 +43,7 @@ class MultiSelectTimeButton: UIControl {
         if let formattedPrice = formatter.string(from: NSNumber(value: price)) {
             priceLabel.text = "\(formattedPrice)원"
         }
+        priceLabel.text = NumberFormatUtil.formatPrice(price) + "원"
         overlayTimeLabel.text = "\(time)분"
         
         addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)

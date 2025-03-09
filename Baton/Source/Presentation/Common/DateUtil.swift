@@ -1,6 +1,6 @@
 import Foundation
 
-enum DateUtils {
+enum DateUtil {
     static func formatToKoreanDate(_ dateString: String) -> String? {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
