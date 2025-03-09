@@ -12,9 +12,10 @@ class AttachmentPickerView: UIView {
     weak var delegate: AttachmentPickerDelegate? // 파일 선택 결과 전달
     private let fileButton: UIButton
     private var selectedFileURL: URL?
+    var content: Data?
     
     // MARK: - Init
-    init(placeholder: String) {
+    init(placeholder: String, isEditable: Bool = true) {
         self.fileButton = UIButton(type: .system)
         super.init(frame: .zero)
 
@@ -40,6 +41,11 @@ class AttachmentPickerView: UIView {
         fileButton.addTarget(self, action: #selector(uploadFileButtonTapped), for: .touchUpInside)
         
         setupLayout()
+        self.isUserInteractionEnabled = isEditable
+        
+        if !isEditable {
+            updateStyle(title: placeholder)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -74,6 +80,26 @@ class AttachmentPickerView: UIView {
         documentPicker.allowsMultipleSelection = false
         UIApplication.shared.windows.first?.rootViewController?.present(documentPicker, animated: true)
     }
+    
+    private func updateStyle(title: String) {
+        fileButton.configurationUpdateHandler = { button in
+            var updatedConfig = button.configuration
+            
+            // 기존의 attributedTitle을 가져와서 텍스트 색상을 변경
+            let title = button.title(for: .normal) ?? "파일 업로드"
+            let updatedTitle = NSAttributedString(
+                string: title,
+                attributes: [
+                    .font: UIFont.Pretendard.body5.font,
+                    .foregroundColor: UIColor.bblack
+                ]
+            )
+            updatedConfig?.baseForegroundColor = .bblack 
+            updatedConfig?.attributedTitle = AttributedString(updatedTitle)
+            button.configuration = updatedConfig
+        }
+        fileButton.setNeedsUpdateConfiguration()
+    }
 }
 
 // MARK: - UIDocumentPickerViewControllerDelegate
@@ -83,13 +109,40 @@ extension AttachmentPickerView: UIDocumentPickerDelegate {
         let fileName = selectedFileURL.lastPathComponent
         
         self.selectedFileURL = selectedFileURL
-        fileButton.setTitle(fileName, for: .normal)
-        fileButton.setTitleColor(.black, for: .normal)
-        
+        updateStyle(title: fileName)
+
         delegate?.didSelectFile(fileName, fileURL: selectedFileURL)
+        
+        if let fileData = try? Data(contentsOf: selectedFileURL) {
+            content = fileData
+            print("파일 크기: \(fileData.count) 바이트")
+        }
+
     }
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         print("파일 선택이 취소됨")
     }
 }
+
+#if DEBUG
+import SwiftUI
+
+struct AttachmentPickerViewRepresentable: UIViewRepresentable {
+    func makeUIView(context: Context) -> AttachmentPickerView {
+        let attachmentPicker = AttachmentPickerView(placeholder: "파일을 업로드해주세요", isEditable: false)
+        return attachmentPicker
+    }
+    
+    func updateUIView(_ uiView: AttachmentPickerView, context: Context) {}
+}
+
+struct AttachmentPickerView_Previews: PreviewProvider {
+    static var previews: some View {
+        AttachmentPickerViewRepresentable()
+            .frame(height: 48)
+            .padding()
+            .previewLayout(.sizeThatFits)
+    }
+}
+#endif
