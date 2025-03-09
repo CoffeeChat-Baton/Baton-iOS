@@ -26,4 +26,14 @@ struct Baton {
     let company: String
     let description: String
     let canStart: Bool?
+    let shortIntro: String?
+    
+    init(imageName: String, name: String, company: String, description: String, canStart: Bool?, shortIntro: String? = nil) {
+        self.imageName = imageName
+        self.name = name
+        self.company = company
+        self.description = description
+        self.canStart = canStart
+        self.shortIntro = shortIntro
+    }
 }

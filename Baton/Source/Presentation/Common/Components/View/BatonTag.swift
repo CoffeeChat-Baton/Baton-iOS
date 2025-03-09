@@ -3,12 +3,14 @@ import SwiftUI
 
 class BatonTag: UIView {
     enum TagType {
-        case time, category
+        case time, category, nameTag
         
         var cornerRadiusValue: CGFloat {
             switch self {
             case .time:
                 return 16
+            case .nameTag:
+                return 12
             case .category:
                 return 6
             }
@@ -43,7 +45,7 @@ class BatonTag: UIView {
         switch type {
         case .time:
             icon = UIImage(resource: .clock)
-        case .category:
+        case .category, .nameTag:
             icon = nil
         }
         
@@ -64,6 +66,9 @@ class BatonTag: UIView {
             minuteLabel.text = "\(content)분"
         case .category:
             minuteLabel.text = "\(content)"
+        case .nameTag:
+            minuteLabel.text = "\(content)"
+            minuteLabel.pretendardStyle = .caption2
         }
     }
     

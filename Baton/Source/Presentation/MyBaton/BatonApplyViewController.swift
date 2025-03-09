@@ -14,7 +14,7 @@ class BatonApplyViewController: UIViewController {
     let mentorFeedbackLabel = UILabel.makeLabel(text: "피드백 내용을 작성해주세요")
 
     // 내용
-    private let profileView = BatonProfileView(image: UIImage(resource: .profileDefault), name: "", company: "", category: "", description: "", buttonTitle: nil, status: true)
+    private let profileView = BatonProfileView(image: UIImage(resource: .profileDefault), name: "", company: "", category: "", description: "", buttonTitle: nil, buttonStatus: true)
     private let endDateView = BaseTextView(placeholder: "5월 5일 (일)", style: .outlined, isEditable: false)
     private let preQuestionView = BaseTextView(placeholder: "사전 질문 들어갈 곳", style: .filled, isEditable: false)
     private let attachedFileView = BaseTextView(placeholder: "이승현_포트폴리오", style: .filled, isEditable: false)
