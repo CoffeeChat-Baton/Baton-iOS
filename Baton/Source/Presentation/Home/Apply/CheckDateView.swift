@@ -17,7 +17,7 @@ class CheckDateView: UIView {
         return view
     }()
     
-    init(date: String) {
+    init(date: String = "") {
         super.init(frame: .zero)
         setupUI()
         setupConstraint()
@@ -51,6 +51,7 @@ class CheckDateView: UIView {
     }
     
     func updateDateLabel(_ date: String) {
-        dateLabel.text = DateUtils.formatToKoreanDate(date) ?? "날짜 없음"
+        dateLabel.text = DateUtil.formatToKoreanDate(date) ?? "날짜를 선택해주세요"
+        dateLabel.textColor = date.isEmpty ? .gray4 : .bblack
     }
 }
