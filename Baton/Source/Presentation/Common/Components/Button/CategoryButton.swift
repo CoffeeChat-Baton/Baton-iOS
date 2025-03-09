@@ -9,7 +9,7 @@ class CategoryButton: UIButton {
         self.setImage(image, for: .normal)
         
         self.backgroundColor = .white // 필요에 따라 변경
-        self.tintColor = .black // 이미지 색상 설정 (SF Symbol 사용 시)
+//        self.tintColor = .black // 이미지 색상 설정 (SF Symbol 사용 시)
         self.layer.cornerRadius = size / 2
         self.clipsToBounds = true
         self.imageView?.contentMode = .scaleAspectFit
@@ -78,7 +78,33 @@ class RoundImageButtonWithLabelCell: UICollectionViewCell {
     }
     
     func configure(with image: UIImage?, title: String) {
-        categoryButton.setImage(image, for: .normal)
+        let originalImage = image?.withRenderingMode(.alwaysOriginal)
+        categoryButton.setImage(originalImage, for: .normal)
         textLabel.text = title
     }
 }
+
+
+#if DEBUG
+import SwiftUI
+
+struct RoundImageButtonWithLabelCellRepresentable: UIViewRepresentable {
+    func makeUIView(context: Context) -> RoundImageButtonWithLabelCell {
+        let cell = RoundImageButtonWithLabelCell()
+        let sampleImage = UIImage(resource: .categoryDev)
+        cell.configure(with: sampleImage, title: "Sample")
+        return cell
+    }
+
+    func updateUIView(_ uiView: RoundImageButtonWithLabelCell, context: Context) {}
+}
+
+struct RoundImageButtonWithLabelCell_Previews: PreviewProvider {
+    static var previews: some View {
+        RoundImageButtonWithLabelCellRepresentable()
+            .frame(width: 60, height: 80)
+            .previewLayout(.sizeThatFits)
+            .padding()
+    }
+}
+#endif

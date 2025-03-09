@@ -4,8 +4,11 @@ extension UILabel {
 
     static func makeLabel(text: String, textColor: UIColor = .bblack, fontStyle: UIFont.Pretendard = .body1) -> UILabel {
         let label = UILabel()
+        label.text = text
         label.textColor = textColor
-        label.setTextWithLineSpacing(text, style: fontStyle)
+        label.pretendardStyle = fontStyle
+        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.setTextWithLineSpacing(text, style: fontStyle)
         return label
     }
 

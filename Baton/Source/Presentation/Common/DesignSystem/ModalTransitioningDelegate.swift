@@ -50,39 +50,22 @@ class ModalPresentationController: UIPresentationController {
     }
     
     override func containerViewWillLayoutSubviews() {
-        guard let presentedView = presentedView else { return }
+        guard let presentedView = presentedView, let containerView = containerView else { return }
 
-        let finalY = containerView!.bounds.height * 0.4  // 원하는 위치
+        let modalHeight: CGFloat = containerView.bounds.height // 모달의 높이
+
+        // ✅ 처음에는 화면 아래 배치
         presentedView.frame = CGRect(x: 0,
-                                     y: containerView!.bounds.height,  // 💡 처음엔 화면 아래쪽에 배치
-                                     width: containerView!.bounds.width,
-                                     height: containerView!.bounds.height * 0.6)
+                                     y: containerView.bounds.height,
+                                     width: containerView.bounds.width,
+                                     height: modalHeight)
 
-        // 💡 부드러운 스프링 애니메이션으로 자연스럽게 올라오도록 함
-        UIView.animate(withDuration: 0.4,
+        // ✅ SafeArea 무시하고 완전히 하단에 붙이기
+        UIView.animate(withDuration: 0.3,
                        delay: 0,
-                       usingSpringWithDamping: 0.8,
-                       initialSpringVelocity: 0.3,
                        options: .curveEaseOut) {
-            presentedView.frame.origin.y = finalY
+            presentedView.frame.origin.y = containerView.bounds.height - modalHeight
         }
     }
-//
-//    override func dismissalTransitionWillBegin() {
-//        presentedViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
-//            self.dimmingView.alpha = 0
-//        }) { _ in
-//            self.dimmingView.removeFromSuperview()
-//        }
-//    }
-    
-//    override func containerViewWillLayoutSubviews() {
-//        guard let presentedView = presentedView else { return }
-//        presentedView.frame = CGRect(x: 0,
-//                                     y: containerView!.bounds.height * 0.4, // 💡 원하는 위치 조절
-//                                     width: containerView!.bounds.width,
-//                                     height: containerView!.bounds.height * 0.6)
-//        presentedView.layer.cornerRadius = 16
-//        presentedView.clipsToBounds = true
-//    }
+
 }

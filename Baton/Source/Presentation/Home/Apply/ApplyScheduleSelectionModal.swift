@@ -1,29 +1,30 @@
 import UIKit
 import Combine
 
-protocol ScheduleSelectionModalDelegate: AnyObject {
-    func didSelectSchedule(index: Int, days: [String], startTime: String, endTime: String)
+protocol ApplyScheduleSelectionModalDelegate: AnyObject {
+    func didSelectSchedule(index: Int, date: String, startTime: String, endTime: String)
 }
 
-class ScheduleSelectionModal: UIViewController {
-    weak var delegate: ScheduleSelectionModalDelegate?
-    private let viewModel: ScheduleSelectionViewModel
+extension ApplyScheduleSelectionModal: BatonCalendarDelegate {
+    func didSelectDate(_ date: String) {
+        self.viewModel.updateDate(date)
+        print(date)
+    }
+}
+
+class ApplyScheduleSelectionModal: UIViewController {
+    weak var delegate: ApplyScheduleSelectionModalDelegate?
+    private let viewModel: ApplyScheduleSelectionViewModel
     private var cancellables = Set<AnyCancellable>()
-    
-    private let ordinalNumbers = ["첫", "두", "세"]
-    private let days: [String] = ["월", "화", "수", "목", "금", "토", "일"]
-    private var dayButtons: [MulitSelectButton] = []
-    private let weedayButton = MulitSelectButton(title: "평일")
-    private let weekendButton = MulitSelectButton(title: "주말")
-    
-    
     private let modalView = UIView()
     private let headerView: ModalHeaderView
     
+    private let calendar = BatonCalendarView()
     private let dayTitleLabel = SelectionTitleLabel(title: "요일", style: .body4, color: .bblack)
     private let timeTitleLabel = SelectionTitleLabel(title: "시간", style: .body4, color: .bblack)
     
-    private let daySelectionStackView = UIStackView()
+    private let dayView: CheckDateView
+    
     private let timeSelectionStackView = UIStackView()
     private let timeRangeLabel = SelectionTitleLabel(title: "~", style: .head1, color: .gray3)
     private let startTimePicker = CustomTimePickerButton()
@@ -39,10 +40,11 @@ class ScheduleSelectionModal: UIViewController {
         return button
     }()
     
-    init(index: Int, selectedDays: Set<String>, startTime: String, endTime: String ){
-        self.viewModel = ScheduleSelectionViewModel(index: index, selectedDays: selectedDays, startTime: startTime, endTime: endTime)
-        let headerTitle = ordinalNumbers[index] + "번째 일정"
-        self.headerView = ModalHeaderView(title: headerTitle)
+    init(index: Int, date: String, startTime: String, endTime: String ){
+        self.viewModel = ApplyScheduleSelectionViewModel(index: index, date: date, startTime: startTime, endTime: endTime)
+        self.headerView = ModalHeaderView(title: "")
+        self.dayView = CheckDateView(date: date)
+        
         super.init(nibName: nil, bundle: nil)
         
         setupUI()
@@ -54,6 +56,8 @@ class ScheduleSelectionModal: UIViewController {
         
         modalPresentationStyle = .overFullScreen
         modalTransitionStyle = .coverVertical
+        
+        calendar.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -61,9 +65,9 @@ class ScheduleSelectionModal: UIViewController {
     }
     
     private func bindViewModel() {
-        viewModel.$selectedDays
-            .sink { selectedDays in
-                print("현재 선택된 요일: \(selectedDays)")
+        viewModel.$date
+            .sink { selectedDate in
+                self.dayView.updateDateLabel(selectedDate)
             }
             .store(in: &cancellables)
         
@@ -87,10 +91,6 @@ class ScheduleSelectionModal: UIViewController {
         modalView.layer.cornerRadius = 16
         modalView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
-        daySelectionStackView.axis = .horizontal
-        daySelectionStackView.spacing = 3
-        daySelectionStackView.distribution = .fillEqually
-        
         timeSelectionStackView.axis = .horizontal
         timeSelectionStackView.spacing = 16
         timeSelectionStackView.distribution = .fill
@@ -101,9 +101,10 @@ class ScheduleSelectionModal: UIViewController {
         modalView.addSubview(headerView)
         modalView.addSubview(actionButton)
         
+        modalView.addSubview(calendar)
         modalView.addSubview(dayTitleLabel)
-        modalView.addSubview(daySelectionStackView)
-
+        modalView.addSubview(dayView)
+        
         modalView.addSubview(timeTitleLabel)
         modalView.addSubview(timeSelectionStackView)
         
@@ -111,24 +112,15 @@ class ScheduleSelectionModal: UIViewController {
         timeSelectionStackView.addArrangedSubview(timeRangeLabel)
         timeSelectionStackView.addArrangedSubview(endTimePicker)
         
+        calendar.translatesAutoresizingMaskIntoConstraints = false
         modalView.translatesAutoresizingMaskIntoConstraints = false
         headerView.translatesAutoresizingMaskIntoConstraints = false
         actionButton.translatesAutoresizingMaskIntoConstraints = false
+        dayView.translatesAutoresizingMaskIntoConstraints = false
         dayTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        daySelectionStackView.translatesAutoresizingMaskIntoConstraints = false
         timeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         timeSelectionStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        // 월 - 금 버튼
-        for day in days {
-            let button = MulitSelectButton(title: day)
-            button.translatesAutoresizingMaskIntoConstraints = false
-            button.onSelectionChanged = { [weak self] isSelected in
-                self?.viewModel.updateSelection(day: day, isSelected: isSelected)
-            }
-            dayButtons.append(button)
-            daySelectionStackView.addArrangedSubview(button)
-        }
         
         timeRangeLabel.setContentHuggingPriority(.required, for: .horizontal)
         startTimePicker.setContentHuggingPriority(.defaultLow, for: .horizontal)
@@ -140,37 +132,45 @@ class ScheduleSelectionModal: UIViewController {
     }
     
     private func setupConstraint(){
+        modalHeightConstraint = modalView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200)
+        modalHeightConstraint?.isActive = true
 
         NSLayoutConstraint.activate([
             modalView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             modalView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             modalView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            modalView.heightAnchor.constraint(equalToConstant: 740),
 
             headerView.leadingAnchor.constraint(equalTo: modalView.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: modalView.trailingAnchor),
             headerView.topAnchor.constraint(equalTo: modalView.topAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 52),
             
-            dayTitleLabel.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 17),
+            calendar.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 6),
+            calendar.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: Spacing.large.value),
+            calendar.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -Spacing.large.value),
+            calendar.heightAnchor.constraint(equalToConstant: 360),
+            
+            dayTitleLabel.topAnchor.constraint(equalTo: calendar.bottomAnchor, constant: 32),
             dayTitleLabel.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: Spacing.large.value),
             dayTitleLabel.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -Spacing.large.value),
             dayTitleLabel.heightAnchor.constraint(equalToConstant: 22),
             
-            daySelectionStackView.topAnchor.constraint(equalTo: dayTitleLabel.bottomAnchor, constant: 11),
-            daySelectionStackView.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: Spacing.large.value),
-            daySelectionStackView.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -Spacing.large.value),
-            daySelectionStackView.heightAnchor.constraint(equalToConstant: 44),
+            dayView.topAnchor.constraint(equalTo: dayTitleLabel.bottomAnchor, constant: 8),
+            dayView.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: Spacing.large.value),
+            dayView.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -Spacing.large.value),
+            dayView.heightAnchor.constraint(equalToConstant: 48),
             
-            timeTitleLabel.topAnchor.constraint(equalTo: daySelectionStackView.bottomAnchor, constant: 17),
+            timeTitleLabel.topAnchor.constraint(equalTo: dayView.bottomAnchor, constant: 17),
             timeTitleLabel.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: Spacing.large.value),
             timeTitleLabel.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -Spacing.large.value),
             timeTitleLabel.heightAnchor.constraint(equalToConstant: 22),
             
-            timeSelectionStackView.topAnchor.constraint(equalTo: timeTitleLabel.bottomAnchor, constant: 11),
+            timeSelectionStackView.topAnchor.constraint(equalTo: timeTitleLabel.bottomAnchor, constant: 8),
             timeSelectionStackView.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: Spacing.large.value),
             timeSelectionStackView.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -Spacing.large.value),
-            timeSelectionStackView.heightAnchor.constraint(equalToConstant: 50),
-            timeSelectionStackView.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: -70),
+            timeSelectionStackView.heightAnchor.constraint(equalToConstant: 48),
+            timeSelectionStackView.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: -40),
             
             timeRangeLabel.heightAnchor.constraint(equalToConstant: 34),
             timeRangeLabel.widthAnchor.constraint(equalToConstant: 15),
@@ -182,13 +182,14 @@ class ScheduleSelectionModal: UIViewController {
             actionButton.heightAnchor.constraint(equalToConstant: 52),
             actionButton.leadingAnchor.constraint(equalTo: modalView.leadingAnchor, constant: Spacing.large.value),
             actionButton.trailingAnchor.constraint(equalTo: modalView.trailingAnchor, constant: -Spacing.large.value),
-            actionButton.bottomAnchor.constraint(equalTo: modalView.bottomAnchor, constant: -20),
+            actionButton.bottomAnchor.constraint(equalTo: modalView.bottomAnchor, constant: -51),
         ])
 
     }
     
     private func setupAction() {
         headerView.onCloseTapped = { [weak self] in
+            print("닫아줘 모달")
             self?.dismissModal()
         }
         actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
@@ -212,11 +213,11 @@ class ScheduleSelectionModal: UIViewController {
     @objc private func actionButtonTapped(){
         dismissModal()
         let index = viewModel.index
-        let days = Array(viewModel.selectedDays)
+        let date = viewModel.date
         let startTime = viewModel.startTime
         let endTime = viewModel.endTime
         
-        self.delegate?.didSelectSchedule(index: index, days: days, startTime: startTime, endTime: endTime)
+        self.delegate?.didSelectSchedule(index: index, date: date, startTime: startTime, endTime: endTime)
     }
     
     @objc private func dismissModal() {
@@ -236,4 +237,28 @@ class ScheduleSelectionModal: UIViewController {
         }
     }
     
+}
+
+
+import SwiftUI
+
+struct ApplyScheduleSelectionModalRepresentable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> ApplyScheduleSelectionModal {
+        return ApplyScheduleSelectionModal(
+            index: 0,
+            date: "",
+            startTime: "",
+            endTime: ""
+        )
+    }
+    
+    func updateUIViewController(_ uiViewController: ApplyScheduleSelectionModal, context: Context) {}
+}
+
+struct ApplyScheduleSelectionModal_Previews: PreviewProvider {
+    static var previews: some View {
+        ApplyScheduleSelectionModalRepresentable()
+            .edgesIgnoringSafeArea(.all)
+            .previewDisplayName("Apply Schedule Selection Modal")
+    }
 }

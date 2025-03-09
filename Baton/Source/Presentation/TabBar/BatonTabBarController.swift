@@ -36,8 +36,8 @@ class BatonTabBarController: UITabBarController {
         NSLayoutConstraint.activate([
             customTabBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             customTabBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            customTabBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            customTabBar.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.11)
+            customTabBar.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            customTabBar.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1)
         ])
         
         customTabBar.delegate = self
@@ -48,15 +48,19 @@ class BatonTabBarController: UITabBarController {
         selectedIndex = index
     }
     
-    /// ✅ 탭바 숨기기
+    /// ✅ 탭바 완전히 숨기기 (isHidden 활용)
     func hideTabBar() {
         UIView.animate(withDuration: 0.3) {
             self.customTabBar.alpha = 0
+            self.customTabBar.isHidden = true // ✅ 아예 보이지 않게
         }
     }
 
-    /// ✅ 탭바 보이기
+    /// ✅ 탭바 다시 보이기
     func showTabBar() {
+        guard self.customTabBar.isHidden else { return } // ✅ 중복 실행 방지
+
+        self.customTabBar.isHidden = false // ✅ 다시 보이게 설정
         UIView.animate(withDuration: 0.3) {
             self.customTabBar.alpha = 1
         }

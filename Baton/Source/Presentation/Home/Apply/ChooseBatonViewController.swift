@@ -87,13 +87,6 @@ class ChooseBatonViewController: UIViewController {
         }
         setupNavigationBar()
     }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if let tabBarController = self.tabBarController as? BatonTabBarController {
-            tabBarController.showTabBar()
-        }
-    }
     
     private func setupNavigationBar() {
         let backButton = BatonNavigationButton.backButton(target: self, action: #selector(baseBackButtonTapped))
@@ -200,7 +193,7 @@ class ChooseBatonViewController: UIViewController {
         
         switch selectedType {
         case "1:1 바통":
-            nextViewController = HomeViewController()
+            nextViewController = ApplyBatonViewController()
         case "포트폴리오 리뷰":
             nextViewController = HomeViewController()
         case "이력서 첨삭":

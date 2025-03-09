@@ -117,3 +117,24 @@ final class HomeViewController: UIViewController {
         let mentorListVC = MentorListViewController(category: category, segmentTitles: ["디자인", "디자인2"])
         navigationController?.pushViewController(mentorListVC, animated: true)
     }}
+
+
+#if DEBUG
+import SwiftUI
+
+struct HomeViewControllerRepresentable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> HomeViewController {
+        return HomeViewController()
+    }
+    
+    func updateUIViewController(_ uiViewController: HomeViewController, context: Context) {}
+}
+
+struct HomeViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeViewControllerRepresentable()
+            .edgesIgnoringSafeArea(.all)
+            .previewLayout(.sizeThatFits)
+    }
+}
+#endif

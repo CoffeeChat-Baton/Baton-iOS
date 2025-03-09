@@ -33,14 +33,12 @@ class BatonTabBar: UIView {
         stackView.distribution = .fillEqually
         stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        
         addSubview(stackView)
         
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
         ])
         
         for (index, item) in items.enumerated() {
@@ -109,3 +107,24 @@ class BatonTabBar: UIView {
         delegate?.tabBarDidSelect(index: sender.tag)
     }
 }
+
+
+#if DEBUG
+import SwiftUI
+
+struct TabViewControllerRepresentable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> HomeViewController {
+        return HomeViewController()
+    }
+    
+    func updateUIViewController(_ uiViewController: HomeViewController, context: Context) {}
+}
+
+struct TabViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        TabViewControllerRepresentable()
+            .edgesIgnoringSafeArea(.all)
+            .previewLayout(.sizeThatFits)
+    }
+}
+#endif
