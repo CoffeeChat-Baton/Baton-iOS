@@ -66,10 +66,16 @@
 		20B1BE6B2D7738310051EAA2 /* BatonApplyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE6A2D7738310051EAA2 /* BatonApplyButton.swift */; };
 		20B1BE6D2D7750A10051EAA2 /* ApplyBatonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE6C2D7750A10051EAA2 /* ApplyBatonViewController.swift */; };
 		20B1BE6F2D77599D0051EAA2 /* AttachmentPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE6E2D77599D0051EAA2 /* AttachmentPickerView.swift */; };
-		20B1BE7C2D7C406D0051EAA2 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE7B2D7C406D0051EAA2 /* DateUtils.swift */; };
+		20B1BE7C2D7C406D0051EAA2 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE7B2D7C406D0051EAA2 /* DateUtil.swift */; };
 		20B1BE7E2D7C40800051EAA2 /* CheckDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE7D2D7C40800051EAA2 /* CheckDateView.swift */; };
 		20B1BE802D7C40F10051EAA2 /* BatonCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE7F2D7C40F10051EAA2 /* BatonCalendarView.swift */; };
 		20B1BE822D7C424F0051EAA2 /* MulitSelectTimeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE812D7C424F0051EAA2 /* MulitSelectTimeButton.swift */; };
+		20B1BE842D7C468D0051EAA2 /* ApplyScheduleSelectionModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE832D7C468D0051EAA2 /* ApplyScheduleSelectionModal.swift */; };
+		20B1BE862D7C46F90051EAA2 /* ApplyScheduleSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE852D7C46F90051EAA2 /* ApplyScheduleSelectionViewModel.swift */; };
+		20B1BE882D7C69EC0051EAA2 /* ApplyBatonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE872D7C69EC0051EAA2 /* ApplyBatonViewModel.swift */; };
+		20B1BE8A2D7C72B30051EAA2 /* ApplyBatonCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE892D7C72B30051EAA2 /* ApplyBatonCompleteViewController.swift */; };
+		20B1BE8C2D7C76FC0051EAA2 /* NumberFormatUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE8B2D7C76FC0051EAA2 /* NumberFormatUtil.swift */; };
+		20B1BE8E2D7C94FC0051EAA2 /* SuccessBatonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE8D2D7C94FC0051EAA2 /* SuccessBatonViewController.swift */; };
 		20BCD0DC2D611EE4000213AF /* SelectionTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0DB2D611EE4000213AF /* SelectionTitleLabel.swift */; };
 		20BCD0E22D6126FA000213AF /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0E12D6126FA000213AF /* BasicTextField.swift */; };
 		20BCD0E42D612B5E000213AF /* JobCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0E32D612B5E000213AF /* JobCategory.swift */; };
@@ -200,10 +206,16 @@
 		20B1BE6A2D7738310051EAA2 /* BatonApplyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonApplyButton.swift; sourceTree = "<group>"; };
 		20B1BE6C2D7750A10051EAA2 /* ApplyBatonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyBatonViewController.swift; sourceTree = "<group>"; };
 		20B1BE6E2D77599D0051EAA2 /* AttachmentPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentPickerView.swift; sourceTree = "<group>"; };
-		20B1BE7B2D7C406D0051EAA2 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		20B1BE7B2D7C406D0051EAA2 /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		20B1BE7D2D7C40800051EAA2 /* CheckDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckDateView.swift; sourceTree = "<group>"; };
 		20B1BE7F2D7C40F10051EAA2 /* BatonCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatonCalendarView.swift; sourceTree = "<group>"; };
 		20B1BE812D7C424F0051EAA2 /* MulitSelectTimeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulitSelectTimeButton.swift; sourceTree = "<group>"; };
+		20B1BE832D7C468D0051EAA2 /* ApplyScheduleSelectionModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyScheduleSelectionModal.swift; sourceTree = "<group>"; };
+		20B1BE852D7C46F90051EAA2 /* ApplyScheduleSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyScheduleSelectionViewModel.swift; sourceTree = "<group>"; };
+		20B1BE872D7C69EC0051EAA2 /* ApplyBatonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyBatonViewModel.swift; sourceTree = "<group>"; };
+		20B1BE892D7C72B30051EAA2 /* ApplyBatonCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyBatonCompleteViewController.swift; sourceTree = "<group>"; };
+		20B1BE8B2D7C76FC0051EAA2 /* NumberFormatUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatUtil.swift; sourceTree = "<group>"; };
+		20B1BE8D2D7C94FC0051EAA2 /* SuccessBatonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessBatonViewController.swift; sourceTree = "<group>"; };
 		20BCD0DB2D611EE4000213AF /* SelectionTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTitleLabel.swift; sourceTree = "<group>"; };
 		20BCD0E12D6126FA000213AF /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
 		20BCD0E32D612B5E000213AF /* JobCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCategory.swift; sourceTree = "<group>"; };
@@ -332,7 +344,8 @@
 		20535D472D5B922D00E4904E /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				20B1BE7B2D7C406D0051EAA2 /* DateUtils.swift */,
+				20B1BE8B2D7C76FC0051EAA2 /* NumberFormatUtil.swift */,
+				20B1BE7B2D7C406D0051EAA2 /* DateUtil.swift */,
 				20BCD0E32D612B5E000213AF /* JobCategory.swift */,
 				20BCD0E52D612BEF000213AF /* ExperienceYears.swift */,
 				20535D912D6104C700E4904E /* UIView+Extensions.swift */,
@@ -469,6 +482,10 @@
 				20B1BE6E2D77599D0051EAA2 /* AttachmentPickerView.swift */,
 				20B1BE7D2D7C40800051EAA2 /* CheckDateView.swift */,
 				20B1BE7F2D7C40F10051EAA2 /* BatonCalendarView.swift */,
+				20B1BE832D7C468D0051EAA2 /* ApplyScheduleSelectionModal.swift */,
+				20B1BE852D7C46F90051EAA2 /* ApplyScheduleSelectionViewModel.swift */,
+				20B1BE872D7C69EC0051EAA2 /* ApplyBatonViewModel.swift */,
+				20B1BE892D7C72B30051EAA2 /* ApplyBatonCompleteViewController.swift */,
 			);
 			path = Apply;
 			sourceTree = "<group>";
@@ -502,6 +519,7 @@
 				20BCD0EE2D6240FB000213AF /* SuccessViewController.swift */,
 				20535D162D5B916400E4904E /* BaseViewController.swift */,
 				20535D722D60DDE700E4904E /* BaseContent.swift */,
+				20B1BE8D2D7C94FC0051EAA2 /* SuccessBatonViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -744,11 +762,13 @@
 				20535D4E2D60AED400E4904E /* HomeViewController.swift in Sources */,
 				20BCD0E42D612B5E000213AF /* JobCategory.swift in Sources */,
 				20535D7F2D60EEEA00E4904E /* ChatScheduleView.swift in Sources */,
+				20B1BE8A2D7C72B30051EAA2 /* ApplyBatonCompleteViewController.swift in Sources */,
 				20535D172D5B916400E4904E /* BaseViewController.swift in Sources */,
 				20B1BE502D74B07F0051EAA2 /* RoundProfileButton.swift in Sources */,
 				20CFB64C2D743BA100614104 /* LoginViewModel.swift in Sources */,
 				20535D502D60B55A00E4904E /* UIFont+DesignSystem.swift in Sources */,
 				20B1BE622D75C62F0051EAA2 /* BatonReviewView.swift in Sources */,
+				20B1BE862D7C46F90051EAA2 /* ApplyScheduleSelectionViewModel.swift in Sources */,
 				20B1BE522D74B2780051EAA2 /* SetProfileImageView.swift in Sources */,
 				20B1BE462D74A0B60051EAA2 /* SetProfileView.swift in Sources */,
 				20CFB64E2D743FED00614104 /* adBannerView.swift in Sources */,
@@ -785,16 +805,18 @@
 				20CFB64A2D743B9900614104 /* LoginViewController.swift in Sources */,
 				20CFB6132D6C8B6C00614104 /* MyBatonViewController.swift in Sources */,
 				20B1BE5A2D7585A30051EAA2 /* HomeCategoryBatonsViewController.swift in Sources */,
+				20B1BE8C2D7C76FC0051EAA2 /* NumberFormatUtil.swift in Sources */,
 				20535D5E2D60C32B00E4904E /* UILabel+DesignSystem.swift in Sources */,
 				20CFB6212D6CC8EE00614104 /* ShowBatonsViewController.swift in Sources */,
 				20BCD0F72D68906C000213AF /* ScheduleSelectionModalViewModel.swift in Sources */,
 				20CFB6502D743FF500614104 /* HomeViewModel.swift in Sources */,
 				20CFB63B2D6F585C00614104 /* BatonNavigationBackButton.swift in Sources */,
 				20CFB6192D6CB94900614104 /* BatonProfileView.swift in Sources */,
-				20B1BE7C2D7C406D0051EAA2 /* DateUtils.swift in Sources */,
+				20B1BE7C2D7C406D0051EAA2 /* DateUtil.swift in Sources */,
 				20CFB6242D6DF42700614104 /* ShowBatonsViewModel.swift in Sources */,
 				20CFB61B2D6CBF1000614104 /* BatonTag.swift in Sources */,
 				20B1BE802D7C40F10051EAA2 /* BatonCalendarView.swift in Sources */,
+				20B1BE882D7C69EC0051EAA2 /* ApplyBatonViewModel.swift in Sources */,
 				20CFB6112D6C8AE400614104 /* MyPageViewController.swift in Sources */,
 				20BCD0E22D6126FA000213AF /* BasicTextField.swift in Sources */,
 				20473BA22D7453A100F04ED7 /* UIColor+DesignSystem.swift in Sources */,
@@ -808,11 +830,13 @@
 				20535D672D60C7A200E4904E /* Spacing.swift in Sources */,
 				20B1BE562D7576CC0051EAA2 /* SegmentedControlView.swift in Sources */,
 				20535D7D2D60EEDE00E4904E /* JobInfoView.swift in Sources */,
+				20B1BE842D7C468D0051EAA2 /* ApplyScheduleSelectionModal.swift in Sources */,
 				20B1BE422D749C210051EAA2 /* ProfileSettingViewController.swift in Sources */,
 				20B1BE692D77351E0051EAA2 /* ChooseBatonViewModel.swift in Sources */,
 				20B1BE4E2D74ADD40051EAA2 /* SetEmailView.swift in Sources */,
 				20B1BE4A2D74A2E20051EAA2 /* MultiSelectImageButton.swift in Sources */,
 				20535D152D5B916400E4904E /* SceneDelegate.swift in Sources */,
+				20B1BE8E2D7C94FC0051EAA2 /* SuccessBatonViewController.swift in Sources */,
 				20535D732D60DDE700E4904E /* BaseContent.swift in Sources */,
 				20535D652D60C77500E4904E /* CornerRadius.swift in Sources */,
 			);
