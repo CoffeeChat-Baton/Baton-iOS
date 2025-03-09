@@ -29,16 +29,20 @@ class CategoryButton: UIButton {
 
 class RoundImageButtonWithLabelCell: UICollectionViewCell {
     static let identifier = "RoundImageButtonWithLabelCell"
+    private let containerView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 26 // 크기 설정에 따라 자동 조정
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
-    private let categoryButton: UIButton = {
-        let button = UIButton()
+    private let categoryButton: UIImageView = {
+        let button = UIImageView()
         button.backgroundColor = .white
         button.tintColor = .black
-        button.layer.cornerRadius = 26 // 크기 설정에 따라 자동 조정
         button.clipsToBounds = true
-        button.imageView?.contentMode = .scaleAspectFit
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.isEnabled = false
         button.isUserInteractionEnabled = false
         return button
     }()
@@ -54,19 +58,22 @@ class RoundImageButtonWithLabelCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        contentView.addSubview(categoryButton)
+        contentView.addSubview(containerView)
+        containerView.addSubview(categoryButton)
         contentView.addSubview(textLabel)
 
         NSLayoutConstraint.activate([
             // 🔹 원형 버튼 설정
-            categoryButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            categoryButton.topAnchor.constraint(equalTo: contentView.topAnchor),
-            categoryButton.widthAnchor.constraint(equalToConstant: 52),
-            categoryButton.heightAnchor.constraint(equalTo: categoryButton.widthAnchor), // 정사각형
+            containerView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            containerView.widthAnchor.constraint(equalToConstant: 52),
+            containerView.heightAnchor.constraint(equalTo: containerView.widthAnchor), // 정사각형
             
+            categoryButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            categoryButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+
             // 🔹 라벨 설정
-            textLabel.topAnchor.constraint(equalTo: categoryButton.bottomAnchor, constant: 2),
+            textLabel.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 2),
             textLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             textLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             textLabel.heightAnchor.constraint(equalToConstant: 23)
@@ -78,8 +85,7 @@ class RoundImageButtonWithLabelCell: UICollectionViewCell {
     }
     
     func configure(with image: UIImage?, title: String) {
-        let originalImage = image?.withRenderingMode(.alwaysOriginal)
-        categoryButton.setImage(originalImage, for: .normal)
+        categoryButton.image = image
         textLabel.text = title
     }
 }

@@ -108,7 +108,7 @@ final class HomeViewController: UIViewController {
             adBannerView.heightAnchor.constraint(equalToConstant: 166),
 
             // 🔹 컬렉션 뷰 높이 설정 (동적으로 계산)
-            collectionView.heightAnchor.constraint(equalToConstant: 600) // ⬅ 필요에 따라 동적 설정 가능
+            collectionView.heightAnchor.constraint(equalToConstant: 600) 
         ])
     }
     
