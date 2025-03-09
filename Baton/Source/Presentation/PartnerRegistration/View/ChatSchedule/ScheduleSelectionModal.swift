@@ -140,8 +140,6 @@ class ScheduleSelectionModal: UIViewController {
     }
     
     private func setupConstraint(){
-        modalHeightConstraint = modalView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200)
-        modalHeightConstraint?.isActive = true
 
         NSLayoutConstraint.activate([
             modalView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

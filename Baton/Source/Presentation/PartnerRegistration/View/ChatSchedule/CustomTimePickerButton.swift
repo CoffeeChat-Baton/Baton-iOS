@@ -6,7 +6,7 @@ class CustomTimePickerButton: UIButton {
     var selectedTime: String?
        
     
-    init(title: String = "시간 선택") {
+    init(title: String = "") {
         super.init(frame: .zero)
         setupButton(title: title)
     }
@@ -16,12 +16,11 @@ class CustomTimePickerButton: UIButton {
     }
     
     private func setupButton(title: String) {
-        setTitle(title, for: .normal)
-        setTitleColor(.bblack, for: .normal)
+        updateTitle(title)
         titleLabel?.pretendardStyle = .body2
         backgroundColor = UIColor.white
         layer.cornerRadius = 12
-        layer.borderColor = UIColor.gray3.cgColor
+        layer.borderColor = UIColor.gray2.cgColor
         layer.borderWidth = 1
         
         addTarget(self, action: #selector(showTimePicker), for: .touchUpInside)
@@ -53,6 +52,12 @@ class CustomTimePickerButton: UIButton {
     }
     
     func updateTitle(_ title: String) {
-        setTitle(title, for: .normal)
+        if title.isEmpty {
+            setTitle("시간 선택", for: .normal)
+            setTitleColor(.gray4, for: .normal)
+        } else {
+            setTitle(title, for: .normal)
+            setTitleColor(.bblack, for: .normal)
+        }
     }
 }
