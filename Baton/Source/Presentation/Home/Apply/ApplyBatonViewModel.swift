@@ -34,4 +34,8 @@ class ApplyBatonViewModel: ObservableObject {
     func updateAttachedFile(_ file: Data) {
         self.attachedFile = file
     }
+    
+    func successApplyBaton() {
+        
+    }
 }

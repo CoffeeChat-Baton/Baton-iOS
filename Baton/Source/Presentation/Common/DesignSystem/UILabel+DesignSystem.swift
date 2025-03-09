@@ -8,7 +8,7 @@ extension UILabel {
         label.textColor = textColor
         label.pretendardStyle = fontStyle
         label.translatesAutoresizingMaskIntoConstraints = false
-//        label.setTextWithLineSpacing(text, style: fontStyle)
+        label.setTextWithLineSpacing(text, style: fontStyle)
         return label
     }
 
@@ -19,26 +19,25 @@ extension UILabel {
             self.font = style.font
 
             let paragraphStyle = NSMutableParagraphStyle()
-            let lineSpacing = style.font.lineHeight * 0.3// ✅ 폰트 라인 높이의 160% (적절한 값으로 조정)
-
-            paragraphStyle.lineSpacing = lineSpacing  // ✅ 줄 간격 적용
-            paragraphStyle.alignment = self.textAlignment  // ✅ 기존 정렬 방식 유지
+            paragraphStyle.lineHeightMultiple = 1.62  // ✅ 폰트 lineHeight의 162% 적용
+            paragraphStyle.alignment = self.textAlignment
 
             let attributedText = NSAttributedString(
                 string: self.text ?? "",
                 attributes: [
-                    .font: style.font,  // ✅ 기존 폰트 유지
-                    .foregroundColor: self.textColor ?? UIColor.black, // ✅ 기존 텍스트 색상 유지
+                    .font: style.font,
+                    .foregroundColor: self.textColor ?? UIColor.black,
                     .kern: style.tracking,
                     .paragraphStyle: paragraphStyle
                 ]
             )
-            
+
             self.attributedText = attributedText
-            self.numberOfLines = 0  // ✅ 여러 줄 지원
-            
+            self.numberOfLines = 0
         }
     }
+
+
     
     func setTextWithLineSpacing(_ text: String, style: UIFont.Pretendard, lineSpacing: CGFloat = 8.0, lineHeightMultiple: CGFloat = 1.6) {
         let paragraphStyle = NSMutableParagraphStyle()

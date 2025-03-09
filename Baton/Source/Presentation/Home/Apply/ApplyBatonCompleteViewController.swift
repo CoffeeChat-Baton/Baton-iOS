@@ -85,7 +85,7 @@ class ApplyBatonCompleteViewController: UIViewController {
     lazy var actionButton: BasicButton = {
         let priceString = NumberFormatUtil.formatPrice(self.price)
         let button = BasicButton(title: priceString + "원 결제하기", status: .enabled)
-        button.isEnabled = false // 초기에는 비활성화
+        button.isEnabled = true // 초기에는 비활성화
         button.isUserInteractionEnabled = true
         button.translatesAutoresizingMaskIntoConstraints = false
 //        button.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
@@ -135,6 +135,8 @@ class ApplyBatonCompleteViewController: UIViewController {
         setupConstraint()
         
         scrollView.isScrollEnabled = true
+        
+        actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -298,6 +300,20 @@ class ApplyBatonCompleteViewController: UIViewController {
             actionButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Spacing.large.value),
             actionButton.heightAnchor.constraint(equalToConstant: 52)
         ])
+    }
+    // MARK: - Button Actions
+    // ✅ "다음" 버튼 클릭 시 선택된 버튼 타입에 따라 다른 화면으로 이동
+    @objc private func actionButtonTapped() {
+        print("다음 버튼 클릭됨")
+        let nextVC = SuccessBatonViewController(
+            title: "바통 신청이 완료되었어요",
+            subtitle: "바통을 건넸어요!\n멘토님의 응답이 오면 알림을 통해 알려드릴게요.",
+            primaryButtonText: "확인",
+            secondaryButtonText: "신청 정보 상세보기",
+            primaryAction: nil,
+            secondaryAction: nil,
+            step: 1)
+        navigationController?.pushViewController(nextVC, animated: true)
     }
     
     // MARK: - Modal Animation
