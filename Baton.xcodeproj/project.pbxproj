@@ -76,6 +76,10 @@
 		20B1BE8A2D7C72B30051EAA2 /* ApplyBatonCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE892D7C72B30051EAA2 /* ApplyBatonCompleteViewController.swift */; };
 		20B1BE8C2D7C76FC0051EAA2 /* NumberFormatUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE8B2D7C76FC0051EAA2 /* NumberFormatUtil.swift */; };
 		20B1BE8E2D7C94FC0051EAA2 /* SuccessBatonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE8D2D7C94FC0051EAA2 /* SuccessBatonViewController.swift */; };
+		20B1BE902D7DA0690051EAA2 /* BaseAlertModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE8F2D7DA0690051EAA2 /* BaseAlertModalViewController.swift */; };
+		20B1BE922D7DA4C30051EAA2 /* TextInputAlertModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE912D7DA4C20051EAA2 /* TextInputAlertModalViewController.swift */; };
+		20B1BE942D7DACD10051EAA2 /* SelectOptionAlertModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE932D7DACD10051EAA2 /* SelectOptionAlertModalViewController.swift */; };
+		20B1BE962D7DB0800051EAA2 /* AllowBatonAlertModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1BE952D7DB0800051EAA2 /* AllowBatonAlertModalViewController.swift */; };
 		20BCD0DC2D611EE4000213AF /* SelectionTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0DB2D611EE4000213AF /* SelectionTitleLabel.swift */; };
 		20BCD0E22D6126FA000213AF /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0E12D6126FA000213AF /* BasicTextField.swift */; };
 		20BCD0E42D612B5E000213AF /* JobCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCD0E32D612B5E000213AF /* JobCategory.swift */; };
@@ -216,6 +220,10 @@
 		20B1BE892D7C72B30051EAA2 /* ApplyBatonCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyBatonCompleteViewController.swift; sourceTree = "<group>"; };
 		20B1BE8B2D7C76FC0051EAA2 /* NumberFormatUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatUtil.swift; sourceTree = "<group>"; };
 		20B1BE8D2D7C94FC0051EAA2 /* SuccessBatonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessBatonViewController.swift; sourceTree = "<group>"; };
+		20B1BE8F2D7DA0690051EAA2 /* BaseAlertModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAlertModalViewController.swift; sourceTree = "<group>"; };
+		20B1BE912D7DA4C20051EAA2 /* TextInputAlertModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputAlertModalViewController.swift; sourceTree = "<group>"; };
+		20B1BE932D7DACD10051EAA2 /* SelectOptionAlertModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOptionAlertModalViewController.swift; sourceTree = "<group>"; };
+		20B1BE952D7DB0800051EAA2 /* AllowBatonAlertModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowBatonAlertModalViewController.swift; sourceTree = "<group>"; };
 		20BCD0DB2D611EE4000213AF /* SelectionTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTitleLabel.swift; sourceTree = "<group>"; };
 		20BCD0E12D6126FA000213AF /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
 		20BCD0E32D612B5E000213AF /* JobCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCategory.swift; sourceTree = "<group>"; };
@@ -520,6 +528,10 @@
 				20535D162D5B916400E4904E /* BaseViewController.swift */,
 				20535D722D60DDE700E4904E /* BaseContent.swift */,
 				20B1BE8D2D7C94FC0051EAA2 /* SuccessBatonViewController.swift */,
+				20B1BE8F2D7DA0690051EAA2 /* BaseAlertModalViewController.swift */,
+				20B1BE912D7DA4C20051EAA2 /* TextInputAlertModalViewController.swift */,
+				20B1BE932D7DACD10051EAA2 /* SelectOptionAlertModalViewController.swift */,
+				20B1BE952D7DB0800051EAA2 /* AllowBatonAlertModalViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -789,6 +801,7 @@
 				20B1BE7E2D7C40800051EAA2 /* CheckDateView.swift in Sources */,
 				20B1BE4C2D74AA040051EAA2 /* SetStatusView.swift in Sources */,
 				20CFB6362D6F4E1500614104 /* BatonNavigationConfigurable.swift in Sources */,
+				20B1BE902D7DA0690051EAA2 /* BaseAlertModalViewController.swift in Sources */,
 				20535D832D60EF8A00E4904E /* PartnerRegistrationViewModel.swift in Sources */,
 				20BCD0F12D67655E000213AF /* ModalHeaderView.swift in Sources */,
 				20BCD0DC2D611EE4000213AF /* SelectionTitleLabel.swift in Sources */,
@@ -803,6 +816,7 @@
 				20B1BE482D74A12D0051EAA2 /* SetNicknameView.swift in Sources */,
 				20BCD0ED2D61DEE4000213AF /* BaseTextView.swift in Sources */,
 				20CFB64A2D743B9900614104 /* LoginViewController.swift in Sources */,
+				20B1BE942D7DACD10051EAA2 /* SelectOptionAlertModalViewController.swift in Sources */,
 				20CFB6132D6C8B6C00614104 /* MyBatonViewController.swift in Sources */,
 				20B1BE5A2D7585A30051EAA2 /* HomeCategoryBatonsViewController.swift in Sources */,
 				20B1BE8C2D7C76FC0051EAA2 /* NumberFormatUtil.swift in Sources */,
@@ -823,7 +837,9 @@
 				20535D7B2D60EDBC00E4904E /* EmployeeStatusView.swift in Sources */,
 				20BCD0EF2D6240FB000213AF /* SuccessViewController.swift in Sources */,
 				20535D692D60C80300E4904E /* ButtonSize.swift in Sources */,
+				20B1BE962D7DB0800051EAA2 /* AllowBatonAlertModalViewController.swift in Sources */,
 				20B1BE442D749C2E0051EAA2 /* ProfileSettingViewModel.swift in Sources */,
+				20B1BE922D7DA4C30051EAA2 /* TextInputAlertModalViewController.swift in Sources */,
 				20BCD0F52D688C52000213AF /* MulitSelectButton.swift in Sources */,
 				20535D902D61042F00E4904E /* SelectionModal.swift in Sources */,
 				20B1BE5E2D75968B0051EAA2 /* MentoDatailViewController.swift in Sources */,
